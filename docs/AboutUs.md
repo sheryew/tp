@@ -21,9 +21,9 @@ You can reach us at the email `e0725260[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Tan Sher Yew
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/sheryew.png" width="200px">
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
