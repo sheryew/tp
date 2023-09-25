@@ -11,7 +11,7 @@ You can reach us at the email `e0725260[at]comp.nus.edu.sg`
 
 ## Project team
 
-### Nixon Widjaja
+### Marcus Chua
 
 <img src="images/johndoe.png" width="200px">
 
@@ -25,36 +25,37 @@ You can reach us at the email `e0725260[at]comp.nus.edu.sg`
 
 <img src="images/sheryew.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/sheryew)]
 [[portfolio](team/johndoe.md)]
 
 - Role: Team Lead
 - Responsibilities: UI
 
-### Johnny Doe
+### Nixon Widjaja
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/nixonwidjaja.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/nixonwidjaja)]
+[[portfolio](team/johndoe.md)]
 
 - Role: Developer
 - Responsibilities: Data
 
-### Jean Doe
+### Remus Lum
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/remuslum.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/remuslum)]
 [[portfolio](team/johndoe.md)]
 
 - Role: Developer
 - Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Marcella Antania
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/marcellaantania.png" width="200px">
 
-[[github](http://github.com/johndoe)]
+[[github](http://github.com/marcellaantania)]
 [[portfolio](team/johndoe.md)]
 
 - Role: Developer
