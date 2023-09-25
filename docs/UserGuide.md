@@ -6,7 +6,7 @@ title: User Guide
 HR Insight is a **desktop app for HR people, optimized for use via a Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 * Table of Contents
-  {:toc}
+{:toc}
 
 ---
 
