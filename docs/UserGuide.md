@@ -90,8 +90,8 @@ Format: `list [d/DEPARTMENT]`
 
 Examples:
 
-- `list`
-- `list d/Engineering`
+- `list` Lists all employees in the employee list.
+- `list d/Engineering` Lists all employees in the Engineering department.
 
 ### Editing an employee's information : `edit`
 
