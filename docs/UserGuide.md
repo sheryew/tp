@@ -1,15 +1,14 @@
 ---
-  layout: default.md
-  title: "User Guide"
-  pageNav: 3
+layout: page
+title: User Guide
 ---
 
 # HR Insight User Guide
 
 HR Insight is a **desktop app for HR people, optimized for use via a Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
-<!-- * Table of Contents -->
-<page-nav-print />
+- Table of Contents
+  {:toc}
 
 ---
 
@@ -44,9 +43,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 ## Features
 
-<box type="info" seamless>
+<div markdown="block" class="alert alert-info">
 
-**Notes about the command format:**<br>
+**:information_source: Notes about the command format:**<br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
