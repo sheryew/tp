@@ -5,55 +5,44 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### John Doe
+### Tan Sher Yew
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/sheryew.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/sheryew)]
+[[portfolio](team/sheryew.md)]
 
-* Role: Project Advisor
+- Role: Team Lead
+- Responsibilities: UI
 
-### Jane Doe
+### Nixon Widjaja
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/nixonwidjaja.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/nixonwidjaja)]
+[[portfolio](team/nixonwidjaja.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+- Role: Developer
+- Responsibilities: Data
 
-### Johnny Doe
+### Remus Lum
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/remuslum.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/remuslum)]
+[[portfolio](team/remuslum.md)]
 
-* Role: Developer
-* Responsibilities: Data
+- Role: Developer
+- Responsibilities: UI
 
-### Jean Doe
+### Marcella Antania
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/marcellaantania.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/marcellaantania)]
+[[portfolio](team/marcellaantania.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: UI
+- Role: Developer
+- Responsibilities: UI
