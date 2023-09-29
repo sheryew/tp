@@ -2,18 +2,18 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CLAIM_BUDGET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -22,11 +22,13 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Birthday;
+import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Money;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -35,20 +37,23 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the employee identified "
+            + "by the index number used in the displayed employee list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_SALARY + "SALARY] "
+            + "[" + PREFIX_CLAIM_BUDGET + "CLAIM BUDGET] "
+            + "[" + PREFIX_DEPARTMENT + "DEPARTMENT] "
+            + "[" + PREFIX_DOB + "BIRTHDATE (YYYY-MM-DD)\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited employee: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
@@ -99,9 +104,13 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Money updatedSalary = editPersonDescriptor.getSalary().orElse(personToEdit.getSalary());
+        Money updatedClaimBudget = editPersonDescriptor.getClaimBudget().orElse(personToEdit.getClaimBudget());
+        Department updatedDepartment = editPersonDescriptor.getDepartment().orElse(personToEdit.getDepartment());
+        Birthday updateDob = editPersonDescriptor.getDob().orElse(personToEdit.getDob());
 
-        return null;
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                updatedSalary, updatedClaimBudget, updatedDepartment, updateDob);
     }
 
     @Override
@@ -137,7 +146,10 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
-        private Set<Tag> tags;
+        private Money salary;
+        private Money claimBudget;
+        private Department department;
+        private Birthday dob;
 
         public EditPersonDescriptor() {}
 
@@ -150,14 +162,17 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
-            setTags(toCopy.tags);
+            setSalary(toCopy.salary);
+            setClaimBudget(toCopy.claimBudget);
+            setDepartment(toCopy.department);
+            setDob(toCopy.dob);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, salary, claimBudget, department, dob);
         }
 
         public void setName(Name name) {
@@ -192,21 +207,36 @@ public class EditCommand extends Command {
             return Optional.ofNullable(address);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
+        public void setSalary(Money salary) {
+            this.salary = salary;
         }
 
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        public Optional<Money> getSalary() {
+            return Optional.ofNullable(salary);
+        }
+
+        public void setClaimBudget(Money claimBudget) {
+            this.claimBudget = claimBudget;
+        }
+
+        public Optional<Money> getClaimBudget() {
+            return Optional.ofNullable(claimBudget);
+        }
+
+        public void setDepartment(Department department) {
+            this.department = department;
+        }
+
+        public Optional<Department> getDepartment() {
+            return Optional.ofNullable(department);
+        }
+
+        public void setDob(Birthday dob) {
+            this.dob = dob;
+        }
+
+        public Optional<Birthday> getDob() {
+            return Optional.ofNullable(dob);
         }
 
         @Override
@@ -225,7 +255,10 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(salary, otherEditPersonDescriptor.salary)
+                    && Objects.equals(claimBudget, otherEditPersonDescriptor.claimBudget)
+                    && Objects.equals(department, otherEditPersonDescriptor.department)
+                    && Objects.equals(dob, otherEditPersonDescriptor.dob);
         }
 
         @Override
@@ -235,7 +268,10 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("address", address)
-                    .add("tags", tags)
+                    .add("salary", salary)
+                    .add("claimBudget", claimBudget)
+                    .add("department", department)
+                    .add("dob", dob)
                     .toString();
         }
     }
