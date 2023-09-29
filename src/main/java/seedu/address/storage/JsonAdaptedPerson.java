@@ -1,34 +1,33 @@
 package seedu.address.storage;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Birthday;
+import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Money;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link Person}.
  */
 class JsonAdaptedPerson {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Employee's %s field is missing!";
 
     private final String name;
     private final String phone;
     private final String email;
     private final String address;
-    private final List<JsonAdaptedTag> tags = new ArrayList<>();
+    private final String salary;
+    private final String claimBudget;
+    private final String department;
+    private final String dob;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -36,14 +35,16 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("salary") String salary, @JsonProperty("claimBudget") String claimBudget,
+            @JsonProperty("department") String department, @JsonProperty("dob") String dob) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        if (tags != null) {
-            this.tags.addAll(tags);
-        }
+        this.salary = salary;
+        this.claimBudget = claimBudget;
+        this.department = department;
+        this.dob = dob;
     }
 
     /**
@@ -54,9 +55,10 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-                .map(JsonAdaptedTag::new)
-                .collect(Collectors.toList()));
+        salary = source.getSalary().amount;
+        claimBudget = source.getClaimBudget().amount;
+        department = source.getDepartment().department;
+        dob = source.getDob().dob;
     }
 
     /**
@@ -65,11 +67,6 @@ class JsonAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
     public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
-        }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -102,8 +99,40 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+        if (salary == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Money.class.getSimpleName()));
+        }
+        if (!Money.isValidMoney(salary)) {
+            throw new IllegalValueException(Money.MESSAGE_CONSTRAINTS);
+        }
+        final Money modelSalary = new Money(salary);
+
+        if (claimBudget == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Money.class.getSimpleName()));
+        }
+        if (!Money.isValidMoney(claimBudget)) {
+            throw new IllegalValueException(Money.MESSAGE_CONSTRAINTS);
+        }
+        final Money modelClaimBudget = new Money(claimBudget);
+
+        if (department == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Department.class.getSimpleName()));
+        }
+        if (!Department.isValidDepartment(department)) {
+            throw new IllegalValueException(Department.MESSAGE_CONSTRAINTS);
+        }
+        final Department modelDepartment = new Department(department);
+
+        if (dob == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Birthday.class.getSimpleName()));
+        }
+        if (!Birthday.isValidDob(dob)) {
+            throw new IllegalValueException(Birthday.MESSAGE_CONSTRAINTS);
+        }
+        final Birthday modelDob = new Birthday(dob);
+
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelSalary,
+                modelClaimBudget, modelDepartment, modelDob);
     }
 
 }
