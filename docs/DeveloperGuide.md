@@ -272,10 +272,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | HR employee                                  | add all employee's information       | manage all employee's information.                |
+| `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
+| `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
+| `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
+| `* * *`  | HR employee                                      | prcoess employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
+| `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
+| `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
+| `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
+| `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 
@@ -283,7 +288,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case: Delete a person**
 
@@ -307,6 +312,63 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: List Employees**
+
+**MSS**
+
+1.  HR Insight shows all employees of an organisation.
+2.  User requests to filter employees by departments.
+3.  HR Insight shows all employees of a specific department.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The employee's list is empty.
+
+  Use case ends.
+
+* 3a. The given department is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+**Use case: Managing Employee's Claim**
+
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to add/deduct an amount from a specific person's entitlement fund.
+4.  HR Insight displays the remainding entitlement fund of that specific person.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. User didn't provide an index and/or claim amount.
+
+   * 2a1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 3a. User provides a wrong index (Either negative or more than current headcount).
+
+    * 3a1. HR Insight shows an error message.
+  
+  Use case ends.
+
+* 4a. User didn't provide +/- when stating the claim amount.
+
+   * 4a1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 5a. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
+
+   * 5a1. HR Insight shows an error message.
+
+  Use case ends.
 
 *{More to be added}*
 
