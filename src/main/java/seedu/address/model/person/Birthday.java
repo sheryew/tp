@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  * Represents a Person's dob.
  */
 public class Birthday {
-    public static final String MESSAGE_CONSTRAINTS = 
+    public static final String MESSAGE_CONSTRAINTS =
             "Invalid date of birth. Please provide date of birth with format: YYYY-MM-DD";
 
     public final String dob;
