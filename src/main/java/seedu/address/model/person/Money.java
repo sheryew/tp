@@ -8,7 +8,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Money {
 
-    public static final String MESSAGE_CONSTRAINTS = "Dollar amount should be a positive integer";
+    public static final String MESSAGE_CONSTRAINTS = "Dollar amount should be a positive integer " + 
+            "with max value of $1,000,000,000,000";
+    public static final Long MAX_VALUE = (long) 1e12;
 
     public final String amount;
 
@@ -19,9 +21,10 @@ public class Money {
      */
     public Money(String numStr) {
         requireNonNull(numStr);
+        checkArgument(numStr.length() < 14, MESSAGE_CONSTRAINTS);
         try {
-            Integer num = Integer.valueOf(numStr);
-            checkArgument(num >= 0, MESSAGE_CONSTRAINTS);
+            Long num = Long.valueOf(numStr);
+            checkArgument(num >= 0 && num <= MAX_VALUE, MESSAGE_CONSTRAINTS);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
@@ -33,12 +36,11 @@ public class Money {
      */
     public static boolean isValidMoney(String test) {
         try {
-            Integer num = Integer.valueOf(test);
-            checkArgument(num >= 0, MESSAGE_CONSTRAINTS);
+            Long num = Long.valueOf(test);
+            return num >= 0 && num <= MAX_VALUE;
         } catch (NumberFormatException e) {
             return false;
         }
-        return true;
     }
 
     @Override
