@@ -25,11 +25,15 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   - `list` : Lists all contacts.
+   - `list` : Lists all the details of an organization's employees.
+
+   - `find` : Finds persons whose names contain any of the given keywords.
 
    - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
+
+   - `claim 2 $/-60` : Deducts $60 from the entitlement fund of the 2nd employee in the list.
 
    - `clear` : Deletes all contacts.
 
@@ -142,6 +146,21 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd person in the employee list.
 - `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Managing Employee's Claims: `claim`
+
+Performs adjustments to employee's entitlement funds.
+
+Format: `claim INDEX $/CLAIM_AMOUNT`
+
+- The `INDEX` refers to the index number shown in the displayed employee list.
+- The index **must be a positive integer** 1,2,3, ...
+- The `CLAIM_AMOUNT` should consist of either + or - which symbolizes adding/deducting respectively followed by the amount.
+
+Examples:
+
+- `list` followed by `claim 1 $/-500` deducts $50 from the entitlement fund of the 1st employee in the list.
+- `list` followed by `claim 2 $/+60` adds $60 to the entitlement fund of the 2nd employee in the list.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -197,4 +216,5 @@ _Details coming soon ..._
 | **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **List**   | `list`                                                                                                                                                                |
+| **Claim**   | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                |
 | **Help**   | `help`                                                                                                                                                                |
