@@ -116,7 +116,8 @@ class JsonAdaptedPerson {
         final Money modelClaimBudget = new Money(claimBudget);
 
         if (department == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Department.class.getSimpleName()));
+            throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Department.class.getSimpleName()));
         }
         if (!Department.isValidDepartment(department)) {
             throw new IllegalValueException(Department.MESSAGE_CONSTRAINTS);
@@ -124,7 +125,8 @@ class JsonAdaptedPerson {
         final Department modelDepartment = new Department(department);
 
         if (dob == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Birthday.class.getSimpleName()));
+            throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Birthday.class.getSimpleName()));
         }
         if (!Birthday.isValidDob(dob)) {
             throw new IllegalValueException(Birthday.MESSAGE_CONSTRAINTS);

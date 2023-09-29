@@ -129,7 +129,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String dob into a {@code Birthday}.
+     * Parses a {@code String dob} into a {@code Birthday}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code dob} is invalid.
