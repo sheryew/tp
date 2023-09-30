@@ -276,7 +276,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
 | `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
 | `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
-| `* * *`  | HR employee                                      | prcoess employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
+| `* * *`  | HR employee                                      | process employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
 | `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
 | `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
 | `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
@@ -295,7 +295,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list persons
-2.  AddressBook shows a list of persons
+2.  HR Insight shows a list of persons
 3.  User requests to delete a specific person in the list
 4.  AddressBook deletes the person
 
@@ -309,7 +309,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. HR Insight shows an error message.
 
       Use case resumes at step 2.
 
@@ -367,6 +367,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 5a. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
 
    * 5a1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use case: Adding Employee's Leaves**
+
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to add a leave of a specified month for an employee.
+4.  HR Insight records the leave of the employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. User provides a wrong index (Either negative or more than current headcount).
+
+    * 3a1. HR Insight shows an error message.
+  
+  Use case ends.
+
+* 3b. User provides a wrong month (Either negative or more than 12).
+
+   * 3b1. HR Insight shows an error message.
 
   Use case ends.
 
