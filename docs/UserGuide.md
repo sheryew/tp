@@ -161,11 +161,11 @@ Examples:
 - `list` followed by `claim 1 $/-500` deducts $50 from the entitlement fund of the 1st employee in the list.
 - `list` followed by `claim 2 $/+60` adds $60 to the entitlement fund of the 2nd employee in the list.
 
-### Adding Employee’s Leave: add_leave
+### Adding Employee’s Leave: `add_leave`
 
 Adds a new leave for an employee.
 
-Format:  add_leave  INDEX  m/MONTH
+Format:  `add_leave  INDEX  m/MONTH`
 
 - The `INDEX` refers to the index number shown in the displayed employee list.
 - The index **must be a positive integer** 1,2,3, ...
@@ -175,17 +175,36 @@ Examples:
 - `list` followed by `add_leave 1 m/3` adds a leave on January for the 1st employee in the list.
 - `list` followed by `add_leave 3 m/12` adds a leave on December for the 3rd employee in the list.
 
-### Clearing all entries : `clear`
+### Viewing all employees' leaves : `view_leave`
 
-Clears all entries from the address book.
+Views all employees who are on leave, with optional filters of month and department.
 
-Format: `clear`
+Format:  `view_leave [INDEX] [m/Month] [d/DEPARTMENT]`
 
-### Exiting the program : `exit`
+- Gives a list of **all employees** who have leaves planned for the year.
+- The index of the employee, month and department are optional arguments.
+- If no one has planned leave dates for the month, **No one is taking leave** output is shown.
 
-Exits the program.
+Examples: 
+- `view_leave` displays all employees who have planned leave dates in the current year
+- `view_leave m/10` displays all employees that are taking leave in October
+- `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
 
-Format: `exit`
+
+### Viewing all birthdays in a given month : `birthday`
+
+Views all employees’ birthday in the given month
+
+Format:  `birthday [m/MONTH]`
+
+- Gives a list of **all employees** who have upcoming birthdays in the **inquired month**
+- The month argument is optional. If **no month** is provided, the upcoming birthdays in the current month are listed.
+- If there is no birthday in the month provided or the birthday is past the current date in the same month, return **No upcoming birthdays**
+
+Examples: 
+- `birthday` followed by `10` displays all employees who have their birthday in the month of October
+
+
 
 ### Saving the data
 
@@ -222,14 +241,16 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                                                                                      |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
-| **Clear**  | `clear`                                                                                                                                                               |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
-| **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**   | `list`                                                                                                                                                                |
-| **Claim**   | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                |
-| **Add Leave**   | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                                                                |
-| **Help**   | `help`                                                                                                                                                                |
+| Action             | Format, Examples                                                                                                                                                      |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Clear**          | `clear`                                                                                                                                                               |
+| **Delete**         | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
+| **Edit**           | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
+| **List**           | `list`                                                                                                                                                                |
+| **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
+| **Add Leave**      | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                |
+| **Help**           | `help`                                                                                                                                                                |
+| **View Leave**     | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                              |
+| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                          |
