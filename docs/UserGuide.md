@@ -161,6 +161,20 @@ Examples:
 - `list` followed by `claim 1 $/-500` deducts $50 from the entitlement fund of the 1st employee in the list.
 - `list` followed by `claim 2 $/+60` adds $60 to the entitlement fund of the 2nd employee in the list.
 
+### Adding Employee’s Leave: add_leave
+
+Adds a new leave for an employee.
+
+Format:  add_leave  INDEX  m/MONTH
+
+- The `INDEX` refers to the index number shown in the displayed employee list.
+- The index **must be a positive integer** 1,2,3, ...
+- The `MONTH` refers to the month of the leave the employee is taking in integer format (between 1-12).
+
+Examples: 
+- `list` followed by `add_leave 1 m/3` adds a leave on January for the 1st employee in the list.
+- `list` followed by `add_leave 3 m/12` adds a leave on December for the 3rd employee in the list.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -217,4 +231,5 @@ _Details coming soon ..._
 | **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **List**   | `list`                                                                                                                                                                |
 | **Claim**   | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                |
+| **Add Leave**   | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                                                                |
 | **Help**   | `help`                                                                                                                                                                |
