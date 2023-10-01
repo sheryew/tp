@@ -8,8 +8,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Money {
 
-    public static final String MESSAGE_CONSTRAINTS = "Dollar amount should be a positive integer " + 
-            "with max value of $1,000,000,000,000";
+    public static final String MESSAGE_CONSTRAINTS = "Dollar amount should be a positive integer "
+            + "with max value of $1,000,000,000,000";
     public static final Long MAX_VALUE = (long) 1e12;
 
     public final String amount;
