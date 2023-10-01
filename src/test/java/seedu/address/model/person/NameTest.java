@@ -32,6 +32,10 @@ public class NameTest {
         assertTrue(Name.isValidName("^"));
         assertTrue(Name.isValidName("peter*"));
         assertTrue(Name.isValidName("Muhammad s/o Ali"));
+        assertTrue(Name.isValidName("X AE A-12"));
+        assertTrue(Name.isValidName("Exa Dark Sideræl"));
+        assertTrue(Name.isValidName("$helly"));
+        assertTrue(Name.isValidName("Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch"));
         assertTrue(Name.isValidName("peter jack")); // alphabets only
         assertTrue(Name.isValidName("12345")); // numbers only
         assertTrue(Name.isValidName("peter the 2nd")); // alphanumeric characters
