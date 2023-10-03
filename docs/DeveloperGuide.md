@@ -395,6 +395,51 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Viewing Employees' Leaves**
+
+**MSS**
+
+1. User requests to view the leave dates of all employees.
+2. HR Insight shows the leave dates of all employees.
+
+   Use case ends.
+
+**Extensions**
+* 1a. User provides the index of a specific employee.
+  * 1a1. HR Insight shows the leave dates of the specified employee.
+  
+  Use case ends.
+* 1b. User provides a specific month.
+  * 1b1. HR Insight shows the leave dates of all employees occurring in the specified month.
+
+  Use case ends
+* 1c. User provides a specific department.
+  * 1c1. HR Insight shows the leave dates of all employees in the specified department. 
+
+  Use case ends. 
+* 1d. User provides an invalid index/month/department.
+  * 1d1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use Case: Viewing Employees' Birthdays**
+
+**MSS**
+
+1. User requests to view the birthdays of all employees.
+2. HR Insight shows the birthdays of all employees.
+   Use case ends.
+
+**Extensions**
+* 1a. User provides a specific month.
+  * 1a1. HR Insight shows all birthdays in the specified month.
+  
+  Use case ends.
+* 1b. User provides an invalid month.
+  * 1b1. HR Insight shows an error message. 
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
