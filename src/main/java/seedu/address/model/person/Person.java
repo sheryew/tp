@@ -23,18 +23,26 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final Money salary;
+    private final Money claimBudget;
+    private final Department department;
+    private final Birthday dob;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address,
+            Money salary, Money claimBudget, Department dep, Birthday dob) {
+        requireAllNonNull(name, phone, email, address, salary, claimBudget, dep, dob);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags.addAll(tags);
+        this.salary = salary;
+        this.claimBudget = claimBudget;
+        this.department = dep;
+        this.dob = dob;
     }
 
     public Name getName() {
@@ -51,6 +59,22 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public Money getSalary() {
+        return salary;
+    }
+
+    public Money getClaimBudget() {
+        return claimBudget;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public Birthday getDob() {
+        return dob;
     }
 
     /**
@@ -93,14 +117,13 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags);
+                && address.equals(otherPerson.address);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, salary, claimBudget, department, dob);
     }
 
     @Override
@@ -110,7 +133,10 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
-                .add("tags", tags)
+                .add("salary", salary)
+                .add("claimBudget", claimBudget)
+                .add("department", department)
+                .add("dob", dob)
                 .toString();
     }
 
