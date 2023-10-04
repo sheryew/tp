@@ -346,27 +346,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. User didn't provide an index and/or claim amount.
+* 3a. User didn't provide an index and/or claim amount.
 
-   * 2a1. HR Insight shows an error message.
+   * 3a1. HR Insight shows an error message.
 
   Use case ends.
 
-* 3a. User provides a wrong index (Either negative or more than current headcount).
+* 3b. User provides a wrong index (Either negative or more than current headcount).
 
-    * 3a1. HR Insight shows an error message.
+    * 3b1. HR Insight shows an error message.
   
   Use case ends.
 
-* 4a. User didn't provide +/- when stating the claim amount.
+* 3c. User didn't provide +/- when stating the claim amount.
 
-   * 4a1. HR Insight shows an error message.
+   * 3c1. HR Insight shows an error message.
 
   Use case ends.
 
-* 5a. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
+* 3d. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
 
-   * 5a1. HR Insight shows an error message.
+   * 3d1. HR Insight shows an error message.
 
   Use case ends.
 
