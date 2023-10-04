@@ -1,15 +1,18 @@
 package seedu.address.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.MatchingDepartmentPredicate;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DOB;
 
+/**
+ * Parses input arguments and creates a new ListCommand object
+ */
 public class ListCommandParser implements Parser<ListCommand> {
 
     /**

@@ -17,8 +17,7 @@ public class MatchingDepartmentPredicate implements Predicate<Person> {
      * Evaluates this predicate on the given argument.
      *
      * @param person the input argument
-     * @return {@code true} if the input argument matches the predicate,
-     * otherwise {@code false}
+     * @return {@code true} if the input argument matches the predicate, otherwise {@code false}
      */
     @Override
     public boolean test(Person person) {
