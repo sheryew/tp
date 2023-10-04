@@ -1,14 +1,19 @@
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
+[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/AY2324S1-CS2103-F13-2/tp/actions)
 
 ![Ui](docs/images/Ui.png)
 
-* This is **a sample project for Software Engineering (SE) students**.<br>
+* This is **a project that utilises CLI to aid HR admins with their administrative tasks.**.<br>
   Example usages:
-  * as a starting point of a course project (as opposed to writing everything from scratch)
-  * as a case study
-* The project is constructed based an ongoing software project (called _AddressBook3_) for a desktop application (called _HR Insight_) used for managing employee details.
+  * As a HR admin, I can perform basic CRUD operations (Add/Delete/List) for all the employees in my organisation.
+  * As a HR admin, I can list all the employees in the organisation.
+  * As a HR admin, I can better forecast manpower issues by tracking which months have the highest number of leaves.
+  * As a HR admin, I can better plan birthday celebrations by tracking which employees have birthdays for that particular month.
+  * As a HR admin, I can process employee's claims efficiently and accurately.
+
+* The project is constructed based an ongoing software project (called _HR Insight_), a desktop application used for managing employee details.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
   * It comes with a **reasonable level of user and developer documentation**.
-* It is named `AddressBook Level 3` (`AB3` for short) because it was initially created as a part of a series of `AddressBook` projects (`Level 1`, `Level 2`, `Level 3` ...).
-* For the detailed documentation of this project, see the **[Address Book Product Website](https://se-education.org/addressbook-level3)**.
-* This project is a **part of the se-education.org** initiative. If you would like to contribute code to this project, see [se-education.org](https://se-education.org#https://se-education.org/#contributing) for more info.
+
+* It is named `HR Insight` because it provides HR employees an extensive insight into an organisation. 
+* For the detailed documentation of this project, see the **[HR Insight Product Website](https://ay2324s1-cs2103-f13-2.github.io/tp/)**.
+* This project is a **part of the CS2103** course structure.
