@@ -27,6 +27,7 @@ public class Person {
     private final Money claimBudget;
     private final Department department;
     private final Birthday dob;
+    private final Leave leave;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -43,6 +44,24 @@ public class Person {
         this.claimBudget = claimBudget;
         this.department = dep;
         this.dob = dob;
+        this.leave = new Leave();
+    }
+
+    /**
+     * Constructs a {@code Person}.
+     */
+    public Person(Name name, Phone phone, Email email, Address address,
+            Money salary, Money claimBudget, Department dep, Birthday dob, Leave leave) {
+        requireAllNonNull(name, phone, email, address, salary, claimBudget, dep, dob);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.salary = salary;
+        this.claimBudget = claimBudget;
+        this.department = dep;
+        this.dob = dob;
+        this.leave = leave;
     }
 
     public Name getName() {
@@ -75,6 +94,10 @@ public class Person {
 
     public Birthday getDob() {
         return dob;
+    }
+
+    public Leave getLeave() {
+        return leave;
     }
 
     /**
@@ -123,7 +146,7 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, salary, claimBudget, department, dob);
+        return Objects.hash(name, phone, email, address, salary, claimBudget, department, dob, leave);
     }
 
     @Override
@@ -137,6 +160,7 @@ public class Person {
                 .add("claimBudget", claimBudget)
                 .add("department", department)
                 .add("dob", dob)
+                .add("leave", leave)
                 .toString();
     }
 
