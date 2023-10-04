@@ -18,6 +18,11 @@ public class Messages {
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
+    public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "department name cannot be empty!";
+
+    public static final String MESSAGE_LIST_SUCCESS = "Listed all employees (%1$d)";
+
+    public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
