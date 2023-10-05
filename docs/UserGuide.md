@@ -29,13 +29,13 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `find` : Finds persons whose names contain any of the given keywords.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Employee Database.
+   - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : Adds a contact named `John Doe` to the Employee Database.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
    - `claim 2 $/-60` : Deducts $60 from the entitlement fund of the 2nd employee in the list.
 
-   - `clear` : Deletes all contacts.
+   - `clear` : Deletes all employees from the database.
 
    - `exit` : Exits the app.
 
@@ -217,10 +217,6 @@ HR Insight data are saved automatically as a JSON file `[JAR file location]/data
 If your changes to the data file makes its format invalid, HR Insight will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
-
 ---
 
 ## FAQ
@@ -240,10 +236,10 @@ _Details coming soon ..._
 
 | Action             | Format, Examples                                                                                                                                                      |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
 | **Clear**          | `clear`                                                                                                                                                               |
 | **Delete**         | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**           | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Edit**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
 | **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **List**           | `list`                                                                                                                                                                |
 | **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
