@@ -288,16 +288,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR people`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add an Employee**
 
 **MSS**
 
-1.  User requests to list persons
-2.  HR Insight shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add an employee with specified information.
+2.  HR Insight adds an employee with the given information.
+3.  HR Insight indicates that the new employee has been added.
+4.  HR Insight shows a list of employees including the new employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. At least one of the required information is empty or invalid.
+  
+    * 2a1. HR Insight shows an error message.
+
+      Use case ends.
+
+* 3a. The employee already exists.
+
+    * 3a1. HR Insight indicates that the employee already exists.
+
+      Use case ends.
+      
+**Use case: Edit an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to edit an employee in the list specified by its index, with the employee's new information.
+4.  HR Insight edits the employee.
+5.  HR Insight indicates that the employee has been edited.
+6.  HR Insight shows a list of employees, with the employee's information now edited.
 
     Use case ends.
 
@@ -311,15 +338,53 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. HR Insight shows an error message.
 
-      Use case resumes at step 2.
+      Use case resumes from step 2.
+      
+* 3b. User does not specify any new information for the employee.
+
+   * 3b1. HR Insight shows an error message that at least one field to edit must be provided.
+
+     Use case resumes from step 2.
+
+* 3c. At least one of the field given by the user is empty or invalid.
+
+   * 3c1. HR Insight shows an error message.
+
+     Use case resumes from step 2.
+
+**Use case: Delete an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to delete an employee in the list specified by its index.
+4.  HR Insight deletes the employee.
+5.  HR Insight indicates that the employee has been deleted.
+6.  HR Insight shows a list of employees excluding the deleted employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
 
 **Use case: List Employees**
 
 **MSS**
 
-1.  HR Insight shows all employees of an organisation.
-2.  User requests to filter employees by departments.
-3.  HR Insight shows all employees of a specific department.
+1.  User requests to list all employees.
+2.  HR Insight shows all employees of an organisation.
+3.  User requests to filter employees by a specified department.
+4.  HR Insight shows all employees of the specified department.
 
     Use case ends.
 
@@ -333,14 +398,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     * 3a1. HR Insight shows an error message.
 
+      Use case resumes from step 3.
+
 **Use case: Managing Employee's Claim**
 
 **MSS**
 
 1.  User requests to list all employees.
 2.  HR Insight shows a list of employees.
-3.  User requests to add/deduct an amount from a specific person's entitlement fund.
-4.  HR Insight displays the remainding entitlement fund of that specific person.
+3.  User requests to add or deduct an amount from an employee's claim by specifying the employee's index.
+4.  HR Insight displays the updated claim of the specified employee.
 
     Use case ends.
 
