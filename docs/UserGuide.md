@@ -16,7 +16,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 2. Download the latest `HRInsight.jar` from [here](https://github.com/AY2324S1-CS2103-F13-2/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your HR Insight.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar HRInsight.jar` command to run the application.<br>
 
