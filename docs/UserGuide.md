@@ -161,7 +161,7 @@ Examples:
 
 Adds a new leave for an employee.
 
-Format:  `add_leave  INDEX  m/MONTH`
+Format:  `add_leave INDEX m/MONTH`
 
 - The `INDEX` refers to the index number shown in the displayed employee list.
 - The index **must be a positive integer** 1,2,3, ...
@@ -238,11 +238,11 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
 | **Clear**          | `clear`                                                                                                                                                               |
 | **Delete**         | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
+| **Edit**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`|
 | **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**           | `list`                                                                                                                                                                |
+| **List**           | `list [d/DEPARTMENT]`                                                                                                                                                 |
 | **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
 | **Add Leave**      | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                |
 | **Help**           | `help`                                                                                                                                                                |
 | **View Leave**     | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                              |
-| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                          |
+| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                         |
