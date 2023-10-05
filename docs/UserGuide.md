@@ -14,25 +14,26 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `HRInsight.jar` from [here](https://github.com/AY2324S1-CS2103-F13-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar HRInsight.jar` command to run the application.<br>
+
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    - `list` : Lists all the details of an organization's employees.
 
-   - `find` : Finds persons whose names contain any of the given keywords.
+   - `find` : Finds employees whose names contain any of the given keywords.
 
    - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : <br>
-     Adds a contact named `John Doe` to the Employee Database.
+     Adds an employee named `John Doe` to the employee list.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+   - `delete 3` : Deletes the 3rd employee shown in the current list.
 
    - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
 
@@ -40,7 +41,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -54,10 +55,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 - Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-- Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g `list [d/DEPARTMENT]` can be used as `list` or as `list d/Engineering`.
 
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
