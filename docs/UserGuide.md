@@ -29,11 +29,12 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `find` : Finds persons whose names contain any of the given keywords.
 
-   - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : Adds a contact named `John Doe` to the Employee Database.
+   - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : <br>
+     Adds a contact named `John Doe` to the Employee Database.
 
    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   - `claim 2 $/-60` : Deducts $60 from the entitlement fund of the 2nd employee in the list.
+   - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
 
    - `clear` : Deletes all employees from the database.
 
@@ -145,7 +146,7 @@ Examples:
 
 ### Managing Employee's Claims: `claim`
 
-Performs adjustments to employee's entitlement funds.
+Performs adjustments to employee's claims.
 
 Format: `claim INDEX $/CLAIM_AMOUNT`
 
@@ -155,8 +156,8 @@ Format: `claim INDEX $/CLAIM_AMOUNT`
 
 Examples:
 
-- `list` followed by `claim 1 $/-500` deducts $50 from the entitlement fund of the 1st employee in the list.
-- `list` followed by `claim 2 $/+60` adds $60 to the entitlement fund of the 2nd employee in the list.
+- `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
+- `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
 
 ### Adding Employee’s Leave: `add_leave`
 
