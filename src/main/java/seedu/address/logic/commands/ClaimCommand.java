@@ -70,7 +70,7 @@ public class ClaimCommand extends Command {
      * @return Money Object that highlights the new claim budget the user has.
      * @throws CommandException Exception if the subtracted claim amount is more the user's claim budget.
      */
-    private Money calculateNewClaimBudget(long prevClaimBudget) throws CommandException{
+    public Money calculateNewClaimBudget(long prevClaimBudget) throws CommandException{
         if (this.isSubtract && (this.amount > prevClaimBudget)) {
             throw new CommandException(Messages.MESSAGE_OVER_CLAIM);
         }
@@ -91,9 +91,23 @@ public class ClaimCommand extends Command {
      * @param claimBudget Money object which reflects the new claim budget user has.
      * @return Person Object that contains the new claim budget whilst other variables remain unchanged.
      */
-    private Person postClaimPerson(Person personToEdit, Money claimBudget) {
+    public Person postClaimPerson(Person personToEdit, Money claimBudget) {
         return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getSalary(), claimBudget,
                     personToEdit.getDepartment(), personToEdit.getDob());
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true; // Both are the same instance
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false; // Other is not an instance of ClaimCommand
+        }
+        ClaimCommand that = (ClaimCommand) other;
+        return index.equals(that.index) &&
+                isSubtract.equals(that.isSubtract) &&
+                amount == that.amount;
     }
 }
