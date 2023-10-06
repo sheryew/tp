@@ -14,32 +14,34 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `HRInsight.jar` from [here](https://github.com/AY2324S1-CS2103-F13-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your HR Insight.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar HRInsight.jar` command to run the application.<br>
+
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    - `list` : Lists all the details of an organization's employees.
 
-   - `find` : Finds persons whose names contain any of the given keywords.
+   - `find` : Finds employees whose names contain any of the given keywords.
 
-   - `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : <br>
+     Adds an employee named `John Doe` to the employee list.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+   - `delete 3` : Deletes the 3rd employee shown in the current list.
 
-   - `claim 2 $/-60` : Deducts $60 from the entitlement fund of the 2nd employee in the list.
+   - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
 
-   - `clear` : Deletes all contacts.
+   - `clear` : Deletes all employees from the database.
 
    - `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -53,10 +55,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 - Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-- Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g `list [d/DEPARTMENT]` can be used as `list` or as `list d/Engineering`.
 
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -69,9 +68,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
+Shows a message explaining how to access the help page.
 
 Format: `help`
 
@@ -129,7 +126,6 @@ Examples:
 
 - `find John` returns `john` and `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting an employee : `delete`
 
@@ -148,7 +144,7 @@ Examples:
 
 ### Managing Employee's Claims: `claim`
 
-Performs adjustments to employee's entitlement funds.
+Performs adjustments to employee's claims.
 
 Format: `claim INDEX $/CLAIM_AMOUNT`
 
@@ -158,14 +154,14 @@ Format: `claim INDEX $/CLAIM_AMOUNT`
 
 Examples:
 
-- `list` followed by `claim 1 $/-500` deducts $50 from the entitlement fund of the 1st employee in the list.
-- `list` followed by `claim 2 $/+60` adds $60 to the entitlement fund of the 2nd employee in the list.
+- `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
+- `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
 
 ### Adding Employee’s Leave: `add_leave`
 
 Adds a new leave for an employee.
 
-Format:  `add_leave  INDEX  m/MONTH`
+Format:  `add_leave INDEX m/MONTH`
 
 - The `INDEX` refers to the index number shown in the displayed employee list.
 - The index **must be a positive integer** 1,2,3, ...
@@ -208,28 +204,24 @@ Examples:
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+HR Insight data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+HR Insight data are saved automatically as a JSON file `[JAR file location]/data/hrinsight.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file makes its format invalid, HR Insight will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </box>
-
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
 
 ---
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HR Insight home folder.
 
 ---
 
@@ -243,14 +235,14 @@ _Details coming soon ..._
 
 | Action             | Format, Examples                                                                                                                                                      |
 |--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` |
+| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
 | **Clear**          | `clear`                                                                                                                                                               |
 | **Delete**         | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**           | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           |
+| **Edit**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`|
 | **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**           | `list`                                                                                                                                                                |
+| **List**           | `list [d/DEPARTMENT]`                                                                                                                                                 |
 | **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
 | **Add Leave**      | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                |
 | **Help**           | `help`                                                                                                                                                                |
 | **View Leave**     | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                              |
-| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                          |
+| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                         |
