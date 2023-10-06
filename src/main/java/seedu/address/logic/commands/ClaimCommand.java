@@ -23,12 +23,26 @@ public class ClaimCommand extends Command {
     private final Boolean isSubtract;
     private final long amount;
 
+    /**
+     *  Initialises a ClaimCommand Objects with three variables being index, isSubtract and amount.
+     *
+     * @param index Index Object representing the position of individual within the list of employees.
+     * @param isSubtract Boolean Object where True represents deduction and False represents addition.
+     * @param amount Long Object representing the claim amount user is submitting.
+     */
     public ClaimCommand(Index index, Boolean isSubtract, long amount) {
         this.index = index;
         this.isSubtract = isSubtract;
         this.amount = amount;
     }
 
+    /**
+     * Returns CommandResult Object after successfully updating user's claim budget and updating the Person Object in the list.
+     *
+     * @param model {@code Model} which the command should operate on.
+     * @return CommandResult which highlights the new claim budget the individual has.
+     * @throws CommandException Exception thrown if index input from HR is beyond the pre-existing max list index.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -49,6 +63,13 @@ public class ClaimCommand extends Command {
         return new CommandResult(String.format("%s Remaining claim %s has: %s", CLAIM_SUCCESS, editedPerson.getName(), claimBudget));
     }
 
+    /**
+     * Returns a Money Object which represents the new amount the user has after the claiming process is completed.
+     *
+     * @param prevClaimBudget long object that highlighted how many claim budget user was left with before the claim process.
+     * @return Money Object that highlights the new claim budget the user has.
+     * @throws CommandException Exception if the subtracted claim amount is more the user's claim budget.
+     */
     private Money calculateNewClaimBudget(long prevClaimBudget) throws CommandException{
         if (this.isSubtract && (this.amount > prevClaimBudget)) {
             throw new CommandException(Messages.MESSAGE_OVER_CLAIM);
@@ -62,6 +83,14 @@ public class ClaimCommand extends Command {
         return new Money(String.valueOf(newClaimBudget));
     }
 
+    /**
+     * Returns a  Person object which contains the new claim budget.
+     * Other variables of the person remains unchanged.
+     *
+     * @param personToEdit Person object (Old).
+     * @param claimBudget Money object which reflects the new claim budget user has.
+     * @return Person Object that contains the new claim budget whilst other variables remain unchanged.
+     */
     private Person postClaimPerson(Person personToEdit, Money claimBudget) {
         return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getSalary(), claimBudget,

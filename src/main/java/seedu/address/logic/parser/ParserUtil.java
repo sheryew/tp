@@ -137,6 +137,15 @@ public class ParserUtil {
         return new Birthday(trimmed);
     }
 
+    /**
+     * Returns a Claim Object upon successful checks.
+     * Checks consist of ensuring user inputted either + or - before the claim amount.
+     * Checks also consist of ensuring the claim amount contains only digits.
+     *
+     * @param claimAmount String Object which is parsed out from the user's command line input. Example: +500
+     * @return Claim Object which stores variables like claim amount as well as boolean variable to indicate addition/subtraction.
+     * @throws ParseException Exception thrown when no symbols were inputted (+/-) or claim amount consists of non-digits.
+     */
     public static Claim parseClaim(String claimAmount) throws ParseException {
         requireNonNull(claimAmount);
         String trimmed = claimAmount.trim();
