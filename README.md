@@ -4,7 +4,7 @@
 
 * This is **a project that utilises CLI to aid HR admins with their administrative tasks.**.<br>
   Example usages:
-  * As a HR admin, I can perform basic CRUD operations (Add/Delete/List) for all the employees in my organisation.
+  * As a HR admin, I can perform basic CRUD operations (Create/Read/Update/Delete) for all the employees in my organisation.
   * As a HR admin, I can list all the employees in the organisation.
   * As a HR admin, I can better forecast manpower issues by tracking which months have the highest number of leaves.
   * As a HR admin, I can better plan birthday celebrations by tracking which employees have birthdays for that particular month.
