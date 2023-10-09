@@ -5,8 +5,8 @@ package seedu.address.model.person;
  * Ensures boolean variable and amount is provided.
  */
 public class Claim {
-    public static final String NO_SYMBOLS_ERROR = "Kindly state whether the employee wants to deduct/add " +
-            "the claim amount! Provide either +/- in front of the amount!";
+    public static final String NO_SYMBOLS_ERROR = "Kindly state whether the employee wants to deduct/add "
+            + "the claim amount! Provide either +/- in front of the amount!";
     public static final String ALPHABETS_ERROR = "Kindly only input integers for the claim amount!";
 
     public final boolean isSubtract;

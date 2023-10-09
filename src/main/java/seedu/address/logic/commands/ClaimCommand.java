@@ -2,15 +2,15 @@ package seedu.address.logic.commands;
 
 import java.util.List;
 
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Money;
 import seedu.address.model.person.Person;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 /**
  * Performs claims for each employee and alters respective claim budgets.
@@ -71,7 +71,7 @@ public class ClaimCommand extends Command {
     /**
      * Returns a Money Object which represents the new amount the user has after the claiming process is completed.
      *
-     * @param prevClaimBudget long object that highlighted how many claim budget user was left with before the claim process.
+     * @param prevClaimBudget long object on user's claim budget before the claim process.
      * @return Money Object that highlights the new claim budget the user has.
      * @throws CommandException Exception if the subtracted claim amount is more the user's claim budget.
      */
