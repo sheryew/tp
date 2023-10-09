@@ -22,7 +22,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.person.Money;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -78,8 +77,10 @@ public class CommandTestUtil {
     public static final String CLAIM_AMOUNT_STR = "500";
     public static final String CLAIM_ADDITION = "+";
     public static final String CLAIM_DELIMITER = "$/";
-    public static final String CLAIM_EMPTY_INDEX = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClaimCommand.MESSAGE_EMPTY);
-    public static final String CLAIM_EMPTY_AMOUNT = String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClaimCommand.AMOUNT_EMPTY);
+    public static final String CLAIM_EMPTY_INDEX = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            ClaimCommand.MESSAGE_EMPTY);
+    public static final String CLAIM_EMPTY_AMOUNT = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            ClaimCommand.AMOUNT_EMPTY);
 
 
     static {
