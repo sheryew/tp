@@ -22,8 +22,8 @@ public class ClaimCommandParserTest {
 
     @Test
     public void parse_withAllFields_presentReturnsSuccess() {
-        String userInput = INDEX_FIRST_PERSON.getOneBased() + " " +  CLAIM_DELIMITER
-                + CLAIM_ADDITION + CLAIM_AMOUNT_STR;
+        String userInput = String.format("%s %s%s%s", INDEX_FIRST_PERSON.getOneBased(),
+                CLAIM_DELIMITER, CLAIM_ADDITION, CLAIM_AMOUNT_STR);
         ClaimCommand successClaimCommand = new ClaimCommand(INDEX_FIRST_PERSON,
                 false, CLAIM_AMOUNT);
         assertParseSuccess(parser, userInput, successClaimCommand);
@@ -43,15 +43,15 @@ public class ClaimCommandParserTest {
 
     @Test
     public void parse_withEmptySymbols_returnsFailure() {
-        String userInput = INDEX_FIRST_PERSON.getOneBased() + " " + CLAIM_DELIMITER
-                + CLAIM_AMOUNT_STR;
+        String userInput = String.format("%s %s%s", INDEX_FIRST_PERSON.getOneBased(),
+                CLAIM_DELIMITER, CLAIM_AMOUNT_STR);
         assertParseFailure(parser, userInput, NO_SYMBOLS_ERROR);
     }
 
     @Test
     public void parse_withNonDigitClaimAmount_returnsFailure() {
-        String userInput = INDEX_FIRST_PERSON.getOneBased() + " " + CLAIM_DELIMITER
-                + CLAIM_ADDITION + CLAIM_AMOUNT_STR + "b";
+        String userInput = String.format("%s %s%s%s%s", INDEX_FIRST_PERSON.getOneBased(),
+                CLAIM_DELIMITER, CLAIM_ADDITION, CLAIM_AMOUNT_STR, "b");
         assertParseFailure(parser, userInput, ALPHABETS_ERROR);
     }
 }
