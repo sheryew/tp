@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.ClaimCommand.CLAIM_SUCCESS;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
@@ -12,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -26,11 +29,37 @@ public class ClaimCommandTest {
     private long originalBudget = Long.parseLong(targetPerson.getClaimBudget().amount);
 
     @Test
+    public void execute_validPersonIndexUnfilteredList_success() {
+        Person personToClaim = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        long prevClaimBudget = Integer.parseInt(personToClaim.getClaimBudget().amount);
+        Money claimBudget = new Money(Long.toString(prevClaimBudget - 1));
+        Person expectedPersonAfterClaim = new Person(personToClaim.getName(), personToClaim.getPhone(),
+                personToClaim.getEmail(), personToClaim.getAddress(), personToClaim.getSalary(),
+                claimBudget, personToClaim.getDepartment(), personToClaim.getDob());
+        ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, true, 1);
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(personToClaim, expectedPersonAfterClaim);
+        String expectedMessage = String.format("%s Remaining claim %s has: %s",
+                CLAIM_SUCCESS, expectedPersonAfterClaim.getName(), claimBudget);
+        assertCommandSuccess(claimCommand, model, expectedMessage, expectedModel);
+    }
+    
+    @Test
     public void execute_calculationNewBudget_success() throws CommandException {
         long claimAmount = originalBudget - 1;
         ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, isSubtract, claimAmount);
         Money newMoney = claimCommand.calculateNewClaimBudget(originalBudget);
         long expectedBudgetAmount = originalBudget - claimAmount;
+        Money expectedMoney = new Money(String.valueOf(expectedBudgetAmount));
+        assertEquals(newMoney, expectedMoney);
+    }
+
+    @Test
+    public void execute_calculationNewBudget_addsuccess() throws CommandException {
+        long claimAmount = originalBudget + 1;
+        ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, false, claimAmount);
+        Money newMoney = claimCommand.calculateNewClaimBudget(originalBudget);
+        long expectedBudgetAmount = originalBudget + claimAmount;
         Money expectedMoney = new Money(String.valueOf(expectedBudgetAmount));
         assertEquals(newMoney, expectedMoney);
     }
@@ -71,7 +100,11 @@ public class ClaimCommandTest {
         ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, true, 1);
         ClaimCommand commandWithSameValues = new ClaimCommand(INDEX_FIRST_PERSON, true, 1);
         ClaimCommand commandWithDifferentValues = new ClaimCommand(INDEX_FIRST_PERSON, false, 1);
+        String notACommand = "This is a string, not a command";
+        assertTrue(claimCommand.equals(claimCommand));
         assertTrue(claimCommand.equals(commandWithSameValues));
         assertFalse(claimCommand.equals(commandWithDifferentValues));
+        assertFalse(claimCommand == null);
+        assertFalse(claimCommand.equals(notACommand));
     }
 }
