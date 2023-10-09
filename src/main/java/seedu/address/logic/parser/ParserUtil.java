@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
+import seedu.address.model.person.Claim;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Money;
@@ -141,6 +142,26 @@ public class ParserUtil {
             throw new ParseException(Birthday.MESSAGE_CONSTRAINTS);
         }
         return new Birthday(trimmed);
+    }
+
+    /**
+     * Returns a Claim Object upon successful checks.
+     * Checks consist of ensuring user inputted either + or - before the claim amount.
+     * Checks also consist of ensuring the claim amount contains only digits.
+     *
+     * @param claimAmount String Object which is parsed out from the user's command line input. Example: +500
+     * @return Claim Object which stores claim amount as well as boolean  to indicate addition/subtraction.
+     * @throws ParseException Exception when no symbols were inputted or amount consists of non-digits.
+     */
+    public static Claim parseClaim(String claimAmount) throws ParseException {
+        requireNonNull(claimAmount);
+        String trimmed = claimAmount.trim();
+        if (!Claim.comtainsSymbol(trimmed)) {
+            throw new ParseException(Claim.NO_SYMBOLS_ERROR);
+        } else if (!Claim.isCorrectAmountType(trimmed)) {
+            throw new ParseException(Claim.ALPHABETS_ERROR);
+        }
+        return new Claim(trimmed);
     }
 
     /**
