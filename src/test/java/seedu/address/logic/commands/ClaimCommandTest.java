@@ -35,7 +35,7 @@ public class ClaimCommandTest {
         Money claimBudget = new Money(Long.toString(prevClaimBudget - 1));
         Person expectedPersonAfterClaim = new Person(personToClaim.getName(), personToClaim.getPhone(),
                 personToClaim.getEmail(), personToClaim.getAddress(), personToClaim.getSalary(),
-                claimBudget, personToClaim.getDepartment(), personToClaim.getDob());
+                    claimBudget, personToClaim.getDepartment(), personToClaim.getDob());
         ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, true, 1);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(personToClaim, expectedPersonAfterClaim);
@@ -43,7 +43,7 @@ public class ClaimCommandTest {
                 CLAIM_SUCCESS, expectedPersonAfterClaim.getName(), claimBudget);
         assertCommandSuccess(claimCommand, model, expectedMessage, expectedModel);
     }
-    
+
     @Test
     public void execute_calculationNewBudget_success() throws CommandException {
         long claimAmount = originalBudget - 1;
