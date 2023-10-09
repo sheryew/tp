@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import java.util.List;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -7,11 +9,12 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Money;
 import seedu.address.model.person.Person;
 
-import java.util.List;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+/**
+ * Performs claims for each employee and alters respective claim budgets.
+ */
 public class ClaimCommand extends Command {
 
     public static final String COMMAND_WORD = "claim";
@@ -37,7 +40,8 @@ public class ClaimCommand extends Command {
     }
 
     /**
-     * Returns CommandResult Object after successfully updating user's claim budget and updating the Person Object in the list.
+     * Returns CommandResult Object after successfully updating user's claim budget.
+     * Updating the Person Object in the list.
      *
      * @param model {@code Model} which the command should operate on.
      * @return CommandResult which highlights the new claim budget the individual has.
@@ -60,7 +64,8 @@ public class ClaimCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        return new CommandResult(String.format("%s Remaining claim %s has: %s", CLAIM_SUCCESS, editedPerson.getName(), claimBudget));
+        return new CommandResult(String.format("%s Remaining claim %s has: %s",
+                CLAIM_SUCCESS, editedPerson.getName(), claimBudget));
     }
 
     /**
@@ -70,7 +75,7 @@ public class ClaimCommand extends Command {
      * @return Money Object that highlights the new claim budget the user has.
      * @throws CommandException Exception if the subtracted claim amount is more the user's claim budget.
      */
-    public Money calculateNewClaimBudget(long prevClaimBudget) throws CommandException{
+    public Money calculateNewClaimBudget(long prevClaimBudget) throws CommandException {
         if (this.isSubtract && (this.amount > prevClaimBudget)) {
             throw new CommandException(Messages.MESSAGE_OVER_CLAIM);
         }
@@ -106,8 +111,8 @@ public class ClaimCommand extends Command {
             return false; // Other is not an instance of ClaimCommand
         }
         ClaimCommand that = (ClaimCommand) other;
-        return index.equals(that.index) &&
-                isSubtract.equals(that.isSubtract) &&
-                amount == that.amount;
+        return index.equals(that.index)
+                && isSubtract.equals(that.isSubtract)
+                    && amount == that.amount;
     }
 }

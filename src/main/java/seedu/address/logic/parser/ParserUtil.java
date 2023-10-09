@@ -9,7 +9,14 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Money;
+import seedu.address.model.person.Department;
+import seedu.address.model.person.Birthday;
+import seedu.address.model.person.Claim;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -143,8 +150,8 @@ public class ParserUtil {
      * Checks also consist of ensuring the claim amount contains only digits.
      *
      * @param claimAmount String Object which is parsed out from the user's command line input. Example: +500
-     * @return Claim Object which stores variables like claim amount as well as boolean variable to indicate addition/subtraction.
-     * @throws ParseException Exception thrown when no symbols were inputted (+/-) or claim amount consists of non-digits.
+     * @return Claim Object which stores claim amount as well as boolean  to indicate addition/subtraction.
+     * @throws ParseException Exception when no symbols were inputted or amount consists of non-digits.
      */
     public static Claim parseClaim(String claimAmount) throws ParseException {
         requireNonNull(claimAmount);

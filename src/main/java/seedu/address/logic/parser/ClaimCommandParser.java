@@ -1,20 +1,24 @@
 package seedu.address.logic.parser;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClaimCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Claim;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CLAIM_AMOUNT;
+
+/**
+ * Parses input arguments and creates a new ClaimCommand object.
+ */
 public class ClaimCommandParser implements Parser<ClaimCommand> {
 
     /**
-     * Returns ClaimCommand which contains the employee-of-interest's index, boolean to represent subtraction/addition as well as the claim amount.
-     * Parser to parse out the index as well as claim amount (containing both symbol [+/-] and amount) based on delimiter of "$/".
+     * Returns ClaimCommand which contains the employee-of-interest's index,
+     * boolean to represent subtraction/addition as well as the claim amount.
+     * Parser to parse out the index as well as claim amount
+     * (containing both symbol [+/-] and amount) based on delimiter of "$/".
      * Checks are in place to ensure the index is inputted and claim amount consists of only digits.
      *
      * @param args String object which represents the user's input.
