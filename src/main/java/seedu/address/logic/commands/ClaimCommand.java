@@ -1,9 +1,9 @@
 package seedu.address.logic.commands;
 
-import java.util.List;
-
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static java.util.Objects.requireNonNull;
+
+import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
