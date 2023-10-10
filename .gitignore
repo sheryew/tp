@@ -3,6 +3,7 @@
 /build/
 src/main/resources/docs/
 /bin
+/.settings
 
 # IDEA files
 /.idea/
