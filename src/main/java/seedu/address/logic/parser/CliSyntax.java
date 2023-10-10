@@ -15,4 +15,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEPARTMENT = new Prefix("d/");
     public static final Prefix PREFIX_DOB = new Prefix("dob/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+    public static final Prefix PREFIX_CLAIM_AMOUNT = new Prefix("$/");
 }
