@@ -48,7 +48,7 @@ public class Department {
         }
 
         Department otherDep = (Department) other;
-        return department.equals(otherDep.department);
+        return department.equalsIgnoreCase(otherDep.department);
     }
 
     @Override
