@@ -26,8 +26,15 @@ public class ListCommandParser implements Parser<ListCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_DEPARTMENT);
+
         if (argMultimap.getValue(PREFIX_DEPARTMENT).isEmpty()) {
-            return new ListCommand();
+            try {
+                String secondArg = args.split(" ")[1];
+                throw new ParseException(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_LIST_COMMAND_FORMAT));
+            } catch (IndexOutOfBoundsException e) {
+                return new ListCommand();
+            }
         }
         try {
             Department filteringDepartment = new Department(argMultimap.getValue(PREFIX_DEPARTMENT).get());
