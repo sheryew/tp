@@ -8,7 +8,8 @@
       "salary": "100000",
       "claimBudget": "1",
       "department": "Finance",
-      "dob": "2002-02-27"
+      "dob": "2002-02-27",
+      "leave": "111101010101"
     },
     {
       "name": "Alice Pauline",
@@ -18,7 +19,8 @@
       "salary": "100000",
       "claimBudget": "1",
       "department": "Finance",
-      "dob": "2002-02-27"
+      "dob": "2002-02-27",
+      "leave": "111101010101"
     }
   ]
 }

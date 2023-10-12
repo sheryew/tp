@@ -43,6 +43,7 @@ public class CommandTestUtil {
     public static final String VALID_BUDGET = "2500";
     public static final String VALID_DEPARTMENT = "Engineering";
     public static final String VALID_DOB = "2000-01-01";
+    public static final String VALID_LEAVE = "101010101010";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 

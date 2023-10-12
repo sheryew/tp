@@ -9,7 +9,8 @@
       "salary": "10000",
       "claimBudget": "5000",
       "department": "Engineering",
-      "dob": "2000-01-01"
+      "dob": "2000-01-01",
+      "leave": "111101010101"
     },
     {
       "name": "Benson Meier",
@@ -19,7 +20,8 @@
       "salary": "100",
       "claimBudget": "5",
       "department": "Sales",
-      "dob": "1997-05-05"
+      "dob": "1997-05-05",
+      "leave": "010101010101"
     },
     {
       "name": "Carl Kurz",
@@ -29,7 +31,8 @@
       "salary": "1000000000000",
       "claimBudget": "500000",
       "department": "Executive",
-      "dob": "1991-12-31"
+      "dob": "1991-12-31",
+      "leave": "000101010001"
     },
     {
       "name": "Daniel Meier",
@@ -39,7 +42,8 @@
       "salary": "23232323232",
       "claimBudget": "19191919",
       "department": "Marketing",
-      "dob": "1969-07-27"
+      "dob": "1969-07-27",
+      "leave": "111111111111"
     },
     {
       "name": "Elle Meyer",
@@ -49,7 +53,8 @@
       "salary": "3000",
       "claimBudget": "200",
       "department": "HR",
-      "dob": "1999-06-17"
+      "dob": "1999-06-17",
+      "leave": "000000000001"
     },
     {
       "name": "Fiona Kunz",
@@ -59,7 +64,8 @@
       "salary": "100000",
       "claimBudget": "1",
       "department": "Finance",
-      "dob": "2002-02-27"
+      "dob": "2002-02-27",
+      "leave": "000000100000"
     },
     {
       "name": "George Best",
@@ -69,7 +75,8 @@
       "salary": "10000",
       "claimBudget": "5000",
       "department": "Engineering",
-      "dob": "2005-09-30"
+      "dob": "2005-09-30",
+      "leave": "111111000000"
     }
   ]
 }
