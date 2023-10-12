@@ -27,7 +27,7 @@ public class LeaveCommand extends Command {
             + "1: Jan, 2: Feb, ..., 12: Dec.\n"
             + "Positive MONTHS add leaves on the specified months and negative MONTHS remove them.\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_MONTH + "3,-4 to add leave in March and remove leave in April for the 1st employee in the list";
+            + PREFIX_MONTH + "3,-4 to add leave in March and remove leave in April for the 1st employee in the list.";
 
     public static final String MESSAGE_AMBIGUOUS = "Please check your MONTHS. Ambiguous leave(s) assignment\n";
     public static final String MESSAGE_EMPTY = "MONTHS cannot be empty.\n";
