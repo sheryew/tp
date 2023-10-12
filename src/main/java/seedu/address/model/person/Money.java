@@ -21,13 +21,7 @@ public class Money {
      */
     public Money(String numStr) {
         requireNonNull(numStr);
-        checkArgument(numStr.length() < 14, MESSAGE_CONSTRAINTS);
-        try {
-            Long num = Long.valueOf(numStr);
-            checkArgument(num >= 0 && num <= MAX_VALUE, MESSAGE_CONSTRAINTS);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
-        }
+        checkArgument(isValidMoney(numStr), MESSAGE_CONSTRAINTS);
         amount = numStr;
     }
 
@@ -35,6 +29,9 @@ public class Money {
      * Returns true if a given string is a valid dollar amount.
      */
     public static boolean isValidMoney(String test) {
+        if (test.length() >= 14) {
+            return false;
+        }
         try {
             Long num = Long.valueOf(test);
             return num >= 0 && num <= MAX_VALUE;
