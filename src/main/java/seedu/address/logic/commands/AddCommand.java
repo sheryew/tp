@@ -44,7 +44,7 @@ public class AddCommand extends Command {
             + PREFIX_DOB + "1999-07-23";
 
     public static final String MESSAGE_SUCCESS = "New employee added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_PERSON = "The employee already exists in the address book";
 
     private final Person toAdd;
 

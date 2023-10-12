@@ -9,6 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Leave {
     public static final int LEAVE_LENGTH = 12;
     public static final String MESSAGE_CONSTRAINTS = "Invalid leave format";
+    public static final String NO_LEAVE = "000000000000";
+    private static final String[] MONTHS = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public final String leave;
 
@@ -16,7 +19,7 @@ public class Leave {
      * Constructs an empty {@code Leave}.
      */
     public Leave() {
-        this.leave = "000000000000";
+        this.leave = NO_LEAVE;
     }
 
     /**
@@ -40,16 +43,46 @@ public class Leave {
             return false;
         }
         for (int i = 0; i < LEAVE_LENGTH; i++) {
-            if (test.charAt(i) != '0' || test.charAt(i) != '1') {
+            if (test.charAt(i) != '0' && test.charAt(i) != '1') {
                 return false;
             }
         }
         return true;
     }
 
+    /**
+     * Updates current leave.
+     * @param change
+     * @return
+     */
+    public Leave update(String change) {
+        StringBuilder newLeave = new StringBuilder(leave);
+        for (int i = 0; i < LEAVE_LENGTH; i++) {
+            if (change.charAt(i) == '+') {
+                newLeave.setCharAt(i, '1');
+            }
+            if (change.charAt(i) == '-') {
+                newLeave.setCharAt(i, '0');
+            }
+        }
+        return new Leave(newLeave.toString());
+    }
+
     @Override
     public String toString() {
-        return leave;
+        if (leave.equals(NO_LEAVE)) {
+            return "-";
+        }
+        String leaves = "";
+        for (int i = 0; i < LEAVE_LENGTH; i++) {
+            if (leave.charAt(i) == '1') {
+                if (leaves.length() > 0) {
+                    leaves += ", ";
+                }
+                leaves += MONTHS[i];
+            }
+        }
+        return leaves;
     }
 
     @Override

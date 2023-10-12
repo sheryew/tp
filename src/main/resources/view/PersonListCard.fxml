@@ -35,6 +35,7 @@
       <Label fx:id="claimBudget" styleClass="cell_small_label" text="\$claimBudget" />
       <Label fx:id="department" styleClass="cell_small_label" text="\$department" />
       <Label fx:id="dob" styleClass="cell_small_label" text="\$dob" />
+      <Label fx:id="leave" styleClass="cell_small_label" text="\$leave" />
     </VBox>
   </GridPane>
 </HBox>
