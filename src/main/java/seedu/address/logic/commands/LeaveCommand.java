@@ -24,7 +24,7 @@ public class LeaveCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds leave months for an employee.\n"
             + "Parameters: INDEX (must be a positive integer) " + PREFIX_MONTH + "MONTHS\n"
             + "Format: MONTHS must be integers separated by commas without spaces. "
-            + "1 - Jan, 2 - Feb, ..., 12 - Dec.\n"
+            + "1: Jan, 2: Feb, ..., 12: Dec.\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_MONTH + "3,-4 to add leave in March and remove leave in April.";
 
