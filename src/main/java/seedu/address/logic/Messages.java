@@ -22,7 +22,8 @@ public class Messages {
             + "the funds the Employee currently has!";
     public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "department name cannot be empty!";
 
-    public static final String MESSAGE_LIST_COMMAND_FORMAT = "list: Lists all the details of an organization’s employees, "
+    public static final String MESSAGE_LIST_COMMAND_FORMAT = "list: "
+            + "Lists all the details of an organization’s employees, "
             + "or list all employees of a specified department (case-insensitive).\n"
             + "Parameters: [d/DEPARTMENT] (optional)\n"
             + "Example: list (to list all employees) or "
