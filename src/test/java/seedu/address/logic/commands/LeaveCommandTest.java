@@ -45,7 +45,7 @@ public class LeaveCommandTest {
         assertCommandFailure(command, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
 
         Person person = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
-        assertCommandFailure(leaveSecondCommand, model, 
+        assertCommandFailure(leaveSecondCommand, model,
                 String.format(LeaveCommand.MESSAGE_NOT_EDITED, person.getLeave().toString()));
     }
 }
