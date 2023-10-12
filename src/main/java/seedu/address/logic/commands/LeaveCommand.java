@@ -29,6 +29,7 @@ public class LeaveCommand extends Command {
             + PREFIX_MONTH + "3,-4 to add leave in March and remove leave in April.";
 
     public static final String MESSAGE_AMBIGUOUS = "Please check your MONTHS. Ambiguous leave(s) assignment\n";
+    public static final String MESSAGE_EMPTY = "MONTHS cannot be empty.\n";
     public static final String MESSAGE_INVALID_MONTH = "Please check your MONTHS. Invalid month provided.\n";
     public static final String MESSAGE_LEAVE_SUCCESS = "Leave(s) successfully updated for employee: %1$s";
     public static final String MESSAGE_NOT_A_NUMBER = "Please check your MONTHS. Some is not a number.\n";
@@ -85,7 +86,7 @@ public class LeaveCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof LeaveCommand)) {
             return false;
         }
 

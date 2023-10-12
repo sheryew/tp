@@ -40,6 +40,9 @@ public class LeaveCommandParser implements Parser<LeaveCommand> {
 
     private String parseLeave(String arg) throws ParseException {
         arg = arg.trim();
+        if (arg.length() == 0) {
+            throw new ParseException(LeaveCommand.MESSAGE_EMPTY + LeaveCommand.MESSAGE_USAGE);
+        }
         int len = arg.split("\\s+").length;
         if (len > 1) {
             throw new ParseException(LeaveCommand.MESSAGE_SPACES_DETECTED + LeaveCommand.MESSAGE_USAGE);
