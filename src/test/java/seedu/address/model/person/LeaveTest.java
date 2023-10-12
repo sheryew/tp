@@ -19,8 +19,15 @@ public class LeaveTest {
         assertTrue(Leave.isValidLeave(BOB.getLeave().leave));
         assertTrue(Leave.isValidLeave(VALID_LEAVE));
         assertFalse(Leave.isValidLeave(INVALID_LEAVE));
+        assertFalse(Leave.isValidLeave("111101010102"));
         assertEquals(new Leave().toString(), "-");
         assertEquals(ALICE.getLeave().leave, "111101010101");
         assertEquals(ALICE.getLeave().toString(), "Jan, Feb, Mar, Apr, Jun, Aug, Oct, Dec");
+        assertEquals(new Leave().update("++++0+0+0+0+"), ALICE.getLeave());
+        assertEquals(new Leave(), ALICE.getLeave().update("----0-0-0-0-"));
+        assertEquals(ALICE.getLeave(), ALICE.getLeave());
+        assertFalse(ALICE.getLeave().equals(null));
+        assertFalse(ALICE.getLeave().equals(new Leave()));
+        assertEquals(ALICE.getLeave().hashCode(), ALICE.getLeave().leave.hashCode());
     }
 }
