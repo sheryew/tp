@@ -15,8 +15,8 @@ import seedu.address.model.person.Leave;
 public class LeaveCommandParser implements Parser<LeaveCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the LeaveCommand
+     * and returns an LeaveCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public LeaveCommand parse(String args) throws ParseException {
