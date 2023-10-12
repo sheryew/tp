@@ -157,19 +157,20 @@ Examples:
 - `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
 - `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
 
-### Adding Employee’s Leave: `add_leave`
+### Adding Employee’s Leave: `leave`
 
-Adds a new leave for an employee.
+Adds leave months for an employee.
 
-Format:  `add_leave INDEX m/MONTH`
+Format:  `leave INDEX m/MONTHS`
 
 - The `INDEX` refers to the index number shown in the displayed employee list.
-- The index **must be a positive integer** 1,2,3, ...
-- The `MONTH` refers to the month of the leave the employee is taking in integer format (between 1-12).
+- The `INDEX` **must be a positive integer** 1,2,3, ...
+- The `MONTHS` refers to the month of the leave the employee is taking in integer format (between 1-12).
+- Positive `MONTHS` add leaves on the specified months and negative `MONTHS` remove them.
 
 Examples: 
-- `list` followed by `add_leave 1 m/3` adds a leave on January for the 1st employee in the list.
-- `list` followed by `add_leave 3 m/12` adds a leave on December for the 3rd employee in the list.
+- `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
+- `list` followed by `leave 3 m/11,-12` adds a leave in Nov and removes a leave in Dec for the 3rd employee in the list.
 
 ### Viewing all employees' leaves : `view_leave`
 
@@ -242,7 +243,7 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
 | **List**           | `list [d/DEPARTMENT]`                                                                                                                                                 |
 | **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
-| **Add Leave**      | `add_leave INDEX m/MONTH` <br> e.g., `add_leave 1 m/3`                                                                                                                |
+| **Add Leave**      | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                |
 | **Help**           | `help`                                                                                                                                                                |
 | **View Leave**     | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                              |
 | **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                         |
