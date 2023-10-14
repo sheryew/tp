@@ -15,6 +15,7 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Leave;
 import seedu.address.model.person.Person;
 
 public class LeaveCommandTest {
@@ -33,7 +34,8 @@ public class LeaveCommandTest {
     @Test
     public void execute_success() {
         Person person = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        String expected = String.format(LeaveCommand.MESSAGE_LEAVE_SUCCESS, Messages.format(person));
+        Leave leave = person.getLeave().update("0000+0000000");
+        String expected = String.format(LeaveCommand.MESSAGE_LEAVE_SUCCESS, person.getName(), leave.toString());
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         assertCommandSuccess(leaveFirstCommand, model, expected, expectedModel);
     }
