@@ -11,16 +11,13 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
 
+import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
 public class PersonTest {
-
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Person person = new PersonBuilder().build();
-    }
 
     @Test
     public void isSamePerson() {
@@ -47,6 +44,10 @@ public class PersonTest {
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new PersonBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertTrue(BOB.isSamePerson(editedBob));
+
+        assertEquals(ALICE.hashCode(), Objects.hash(ALICE.getName(), ALICE.getPhone(), ALICE.getEmail(),
+                ALICE.getAddress(), ALICE.getSalary(), ALICE.getClaimBudget(), ALICE.getDepartment(),
+                ALICE.getDob(), ALICE.getLeave()));
     }
 
     @Test
@@ -89,7 +90,7 @@ public class PersonTest {
         String expected = Person.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", salary=" + ALICE.getSalary()
                 + ", claimBudget=" + ALICE.getClaimBudget() + ", department=" + ALICE.getDepartment()
-                + ", dob=" + ALICE.getDob() + "}";
+                + ", dob=" + ALICE.getDob() + ", leave=" + ALICE.getLeave() + "}";
         assertEquals(expected, ALICE.toString());
     }
 }

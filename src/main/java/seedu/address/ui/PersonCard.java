@@ -43,6 +43,8 @@ public class PersonCard extends UiPart<Region> {
     private Label department;
     @FXML
     private Label dob;
+    @FXML
+    private Label leave;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -59,5 +61,6 @@ public class PersonCard extends UiPart<Region> {
         claimBudget.setText("Claim budget: " + person.getClaimBudget().toString());
         department.setText("Department: " + person.getDepartment().toString());
         dob.setText("DOB: " + person.getDob().toString());
+        leave.setText("Leave: " + person.getLeave().toString());
     }
 }

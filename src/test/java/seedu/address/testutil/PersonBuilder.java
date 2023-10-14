@@ -4,6 +4,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Leave;
 import seedu.address.model.person.Money;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -22,6 +23,7 @@ public class PersonBuilder {
     public static final String DEFAULT_BUDGET = "2500";
     public static final String DEFAULT_DEPARTMENT = "Engineering";
     public static final String DEFAULT_DOB = "2000-01-01";
+    public static final String DEFAULT_LEAVE = "000000000000";
 
     private Name name;
     private Phone phone;
@@ -31,6 +33,7 @@ public class PersonBuilder {
     private Money claimBudget;
     private Department department;
     private Birthday dob;
+    private Leave leave;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -44,6 +47,7 @@ public class PersonBuilder {
         claimBudget = new Money(DEFAULT_BUDGET);
         department = new Department(DEFAULT_DEPARTMENT);
         dob = new Birthday(DEFAULT_DOB);
+        leave = new Leave(DEFAULT_LEAVE);
     }
 
     /**
@@ -58,6 +62,7 @@ public class PersonBuilder {
         claimBudget = personToCopy.getClaimBudget();
         department = personToCopy.getDepartment();
         dob = personToCopy.getDob();
+        leave = personToCopy.getLeave();
     }
 
     /**
@@ -131,8 +136,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Leave} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withLeave(String leave) {
+        this.leave = new Leave(leave);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, phone, email, address, salary, claimBudget, department, dob);
+        return new Person(name, phone, email, address, salary, claimBudget, department, dob, leave);
     }
 
 }

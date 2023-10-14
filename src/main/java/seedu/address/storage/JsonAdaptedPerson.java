@@ -8,6 +8,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Leave;
 import seedu.address.model.person.Money;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -28,6 +29,7 @@ class JsonAdaptedPerson {
     private final String claimBudget;
     private final String department;
     private final String dob;
+    private final String leave;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -36,7 +38,8 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("salary") String salary, @JsonProperty("claimBudget") String claimBudget,
-            @JsonProperty("department") String department, @JsonProperty("dob") String dob) {
+            @JsonProperty("department") String department, @JsonProperty("dob") String dob,
+            @JsonProperty("leave") String leave) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -45,6 +48,7 @@ class JsonAdaptedPerson {
         this.claimBudget = claimBudget;
         this.department = department;
         this.dob = dob;
+        this.leave = leave;
     }
 
     /**
@@ -59,6 +63,7 @@ class JsonAdaptedPerson {
         claimBudget = source.getClaimBudget().amount;
         department = source.getDepartment().department;
         dob = source.getDob().dob;
+        leave = source.getLeave().leave;
     }
 
     /**
@@ -133,8 +138,17 @@ class JsonAdaptedPerson {
         }
         final Birthday modelDob = new Birthday(dob);
 
+        if (leave == null) {
+            throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Leave.class.getSimpleName()));
+        }
+        if (!Leave.isValidLeave(leave)) {
+            throw new IllegalValueException(Leave.MESSAGE_CONSTRAINTS);
+        }
+        final Leave modelLeave = new Leave(leave);
+
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelSalary,
-                modelClaimBudget, modelDepartment, modelDob);
+                modelClaimBudget, modelDepartment, modelDob, modelLeave);
     }
 
 }
