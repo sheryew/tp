@@ -20,7 +20,7 @@ public class Messages {
             + "following single-valued field(s): ";
     public static final String MESSAGE_OVER_CLAIM = "Claim is REJECTED as the amount is greater than "
             + "the funds the Employee currently has!";
-    public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "department name cannot be empty!";
+    public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "Department name cannot be empty!";
 
     public static final String MESSAGE_LIST_COMMAND_FORMAT = "list: "
             + "Lists all the details of an organization’s employees, "
