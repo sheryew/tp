@@ -29,6 +29,7 @@ public class ClaimCommandParser implements Parser<ClaimCommand> {
     public ClaimCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_CLAIM_AMOUNT);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_CLAIM_AMOUNT);
 
         Index index;
         Claim claim;

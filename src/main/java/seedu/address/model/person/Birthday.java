@@ -1,17 +1,20 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 /**
  * Represents a Person's dob.
  */
 public class Birthday {
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid date of birth. Please provide date of birth with format: YYYY-MM-DD";
+            "Invalid date of birth. Please provide date of birth with format: YYYY-MM-DD.\n"
+            + "An employee must be at least 13 years old.";
 
     public final String dob;
 
@@ -23,12 +26,8 @@ public class Birthday {
     public Birthday(String dateStr) {
         requireNonNull(dateStr);
         dateStr = dateStr.trim();
-        try {
-            LocalDate.parse(dateStr);
-            dob = dateStr;
-        } catch (DateTimeException e) {
-            throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
-        }
+        checkArgument(isValidDob(dateStr), MESSAGE_CONSTRAINTS);
+        dob = dateStr;
     }
 
     /**
@@ -37,7 +36,11 @@ public class Birthday {
     public static boolean isValidDob(String test) {
         String dateStr = test.trim();
         try {
-            LocalDate.parse(dateStr);
+            LocalDate birthday = LocalDate.parse(dateStr);
+            LocalDate legalBirthday = LocalDate.now().minusYears(13);
+            if (legalBirthday.until(birthday, ChronoUnit.DAYS) > 0) {
+                return false;
+            }
         } catch (DateTimeException e) {
             return false;
         }
