@@ -18,7 +18,10 @@ import seedu.address.model.person.Person;
 public class ClaimCommand extends Command {
 
     public static final String COMMAND_WORD = "claim";
-    public static final String MESSAGE_EMPTY = "Kindly state the index and amount that the employee hopes to process!";
+    public static final String MESSAGE_EMPTY = "Kindly state the index and amount that the employee hopes to process!\n" +
+            "Parameters: INDEX (must be positive integer) $/CLAIM_AMOUNT.\n" +
+                "Format: Positive CLAIM_AMOUNT indicates addition and negative indicates subtraction.\n" +
+                    "Example: claim 1 $/+500";
     public static final String AMOUNT_EMPTY = "Kindly state the amount that the employee hopes to process!";
     public static final String CLAIM_SUCCESS = "Claim has been successfully processed!\n";
 

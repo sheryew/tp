@@ -75,4 +75,19 @@ public class ArgumentMultimap {
             throw new ParseException(Messages.getErrorMessageForDuplicatePrefixes(duplicatedPrefixes));
         }
     }
+
+    /**
+     * Returns the list of Prefixes from the argMultimap object.
+     *
+     * @return List<Prefix> parsed from argMultimap object.
+     */
+    public List<Prefix> userPrefixes() {
+        List<Prefix> userInputPrefixes = new ArrayList<>();
+        for (Map.Entry<Prefix, List<String>> entry : argMultimap.entrySet()) {
+            if (!entry.getKey().toString().isEmpty()) {
+                userInputPrefixes.add(entry.getKey());
+            }
+        }
+        return userInputPrefixes;
+    }
 }
