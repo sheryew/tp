@@ -1,23 +1,26 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.ViewCommandParser.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.ViewCommandParser.*;
-
+/**
+ * Returns ViewCommand Object based on what user's wants to view.
+ */
 public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
-    public static final String WRONG_PREFIX = "Allowed Formats: n/, a/, e/, s/, b/, d/, dob/.\n" +
-            "Example: view n/1,2 e/1,2.";
+    public static final String WRONG_PREFIX = "Allowed Formats: n/, a/, e/, s/, b/, d/, dob/.\n"
+            + "Example: view n/1,2 e/1,2.";
     public final HashMap<String, List<Index>> references;
 
     /**
@@ -57,7 +60,7 @@ public class ViewCommand extends Command {
                 if (Objects.equals(key, NAME_IDENTIFIER)) {
                     tempStr += String.format("%s. %s.\n", index, personRelevantInfo.get(NAME_IDENTIFIER));
                 } else if (Objects.equals(key, PHONE_IDENTIFIER)) {
-                    tempStr += generateNiceStr(personRelevantInfo,index , PHONE_IDENTIFIER);
+                    tempStr += generateNiceStr(personRelevantInfo, index, PHONE_IDENTIFIER);
                 } else if (Objects.equals(key, EMAIL_IDENTIFIER)) {
                     tempStr += generateNiceStr(personRelevantInfo, index, EMAIL_IDENTIFIER);
                 } else if (Objects.equals(key, ADDRESS_IDENTIFIER)) {
