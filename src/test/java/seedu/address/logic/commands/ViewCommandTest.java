@@ -35,8 +35,8 @@ public class ViewCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private Person targetPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getOneBased());
     private final HashMap<String, List<Index>> templateReference = new HashMap<String, List<Index>>() {{
-        put("Salary", List.of(INDEX_FIRST_PERSON));
-    }};
+            put("Salary", List.of(INDEX_FIRST_PERSON));
+        }};
     private HashMap<String, String> personInfo;
 
     private final ViewCommand viewCommand = new ViewCommand(templateReference);
@@ -65,13 +65,13 @@ public class ViewCommandTest {
     @Test
     public void execute_validViewClaimBudgetDepartment_success() {
         HashMap<String, List<Index>> claimBudgetAndDepartment = new HashMap<String, List<Index>>() {{
-            put("Claim Budget", List.of(INDEX_FIRST_PERSON));
-            put("Department", List.of(INDEX_FIRST_PERSON));
-        }};
+                put("Claim Budget", List.of(INDEX_FIRST_PERSON));
+                    put("Department", List.of(INDEX_FIRST_PERSON));
+            }};
         ViewCommand newViewCommand = new ViewCommand(claimBudgetAndDepartment);
         Person personToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        String expectedResponse = String.format("You are viewing Department:\n" +
-                "1. %s's Department is %s.\n\n", personToView.getName(), personToView.getDepartment())
+        String expectedResponse = String.format("You are viewing Department:\n"
+                + "1. %s's Department is %s.\n\n", personToView.getName(), personToView.getDepartment())
                     + String.format("You are viewing Claim Budget:\n"
                             + "1. %s's Claim Budget is %s.\n\n", personToView.getName(), personToView.getClaimBudget());
         assertCommandSuccess(newViewCommand, model, expectedResponse, model);
