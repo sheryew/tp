@@ -51,35 +51,35 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.viewTokenize(args);
         HashMap<String, List<Index>> map = new HashMap<>();
         validatePrefixes(argMultimap);
-        if ( argMultimap.getAllValues(PREFIX_NAME).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_NAME).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_NAME);
             map.put(NAME_IDENTIFIER, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_PHONE).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_PHONE).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_PHONE);
             map.put(PHONE_IDENTIFIER, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_EMAIL).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_EMAIL).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_EMAIL);
             map.put(EMAIL_IDENTIFIER, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_ADDRESS).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_ADDRESS).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_ADDRESS);
             map.put(ADDRESS_IDENTIFIER, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_SALARY).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_SALARY).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_SALARY);
             map.put(SALARY_IDENTIFIER, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_CLAIM_BUDGET).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_CLAIM_BUDGET).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_CLAIM_BUDGET);
             map.put(CLAIM_BUDGET, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_DEPARTMENT).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_DEPARTMENT).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_DEPARTMENT);
             map.put(DEPARTMENT, new ArrayList<>(resultIndex));
         }
-        if ( argMultimap.getAllValues(PREFIX_DOB).size() != 0 ) {
+        if (argMultimap.getAllValues(PREFIX_DOB).size() != 0) {
             List<Index> resultIndex = relevantIndexes(argMultimap, PREFIX_DOB);
             map.put(BIRTHDAY, new ArrayList<>(resultIndex));
         }

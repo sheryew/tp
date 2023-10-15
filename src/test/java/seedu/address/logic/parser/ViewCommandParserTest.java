@@ -1,27 +1,28 @@
 package seedu.address.logic.parser;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ViewCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
+import static seedu.address.logic.parser.ViewCommandParser.CLAIM_BUDGET;
+import static seedu.address.logic.parser.ViewCommandParser.DEPARTMENT;
+import static seedu.address.logic.parser.ViewCommandParser.EMAIL_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
-import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.EMAIL_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.CLAIM_BUDGET;
-import static seedu.address.logic.parser.ViewCommandParser.DEPARTMENT;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class ViewCommandParserTest {
     private ViewCommandParser parser = new ViewCommandParser();
