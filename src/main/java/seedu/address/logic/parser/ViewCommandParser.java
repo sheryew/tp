@@ -86,7 +86,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @param arg List<String> returned by getAllValues function.
      * @return List<String> containing all valid prefixes.
      */
-    private List<String> parseView(List<String> arg) {
+    public List<String> parseView(List<String> arg) {
         List<String> splitList = new ArrayList<>();
         for (String item : arg) {
             String[] parts = item.split(",");
@@ -103,7 +103,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @return List containing all indexes the particular prefix operation has to be performed on.
      * @throws ParseException If index is not of the correct format [Non-integer].
      */
-    private List<Index> relevantIndexes(ArgumentMultimap argumentMultimap, Prefix prefix) throws ParseException {
+    public List<Index> relevantIndexes(ArgumentMultimap argumentMultimap, Prefix prefix) throws ParseException {
         List<Index> finalIndex = new ArrayList<>();
         List<String> listStringIndex = argumentMultimap.getAllValues(prefix);
         List<String> indexList = parseView(listStringIndex);
@@ -119,7 +119,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
      * @param argMultimap Object containing the prefixes user typed.
      * @throws ParseException In the event user input wrong prefix or didn't input any prefix.
      */
-    private void validatePrefixes(ArgumentMultimap argMultimap) throws ParseException {
+    public void validatePrefixes(ArgumentMultimap argMultimap) throws ParseException {
         List<Prefix> userGivenPrefixes = argMultimap.userPrefixes();
         if (userGivenPrefixes.size() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.WRONG_PREFIX));

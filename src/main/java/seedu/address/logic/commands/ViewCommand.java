@@ -104,9 +104,27 @@ public class ViewCommand extends Command {
      * @param identifier String which represents what attribute to view from.
      * @return String representation of relevant information.
      */
-    private String generateNiceStr(HashMap<String, String> personInfo, int index, String identifier) {
+    public String generateNiceStr(HashMap<String, String> personInfo, int index, String identifier) {
         String result = personInfo.get(identifier);
         String name = personInfo.get(NAME_IDENTIFIER);
         return String.format("%s. %s's %s is %s.\n", index, name, identifier, result);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ViewCommand that = (ViewCommand) o;
+        return references.equals(that.references);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(references);
+    }
+
 }
