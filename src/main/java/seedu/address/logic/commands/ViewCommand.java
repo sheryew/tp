@@ -1,14 +1,14 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
-import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.EMAIL_IDENTIFIER;
 import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
 import static seedu.address.logic.parser.ViewCommandParser.CLAIM_BUDGET;
 import static seedu.address.logic.parser.ViewCommandParser.DEPARTMENT;
+import static seedu.address.logic.parser.ViewCommandParser.EMAIL_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
+import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
 
 import java.util.HashMap;
 import java.util.List;

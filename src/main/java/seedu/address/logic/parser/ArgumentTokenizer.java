@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -156,7 +156,7 @@ public class ArgumentTokenizer {
      * This function is required since user's can chain prefixes for view.
      *
      * @param argsString Input arguments.
-     * @return List<String>
+     * @return List containing user's prefixes.
      */
     private static List<String> extractPrefixes(String argsString) {
         Pattern pattern = Pattern.compile("\\b[^\\s]+/");
