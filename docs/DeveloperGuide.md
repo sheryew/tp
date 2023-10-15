@@ -507,6 +507,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Viewing Employee(s)' Attributes**
+
+**MSS**
+
+1. User requests to view specific attributes of employee(s).
+2. HR Insight shows the specific attributes of the employee(s).
+   Use case ends.
+
+**Extensions**
+* 1a. User provides a false attribute (Prefix).
+    * 1a1. HR Insight shows an error message.
+    * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
+
+  Use case ends.
+
+* 1b. User didn't provide any attribute that it wants to view.
+    * 1b1. HR Insight shows an error message.
+    * 1b2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
+
+  Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
