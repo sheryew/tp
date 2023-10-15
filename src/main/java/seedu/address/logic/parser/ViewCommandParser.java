@@ -1,18 +1,24 @@
 package seedu.address.logic.parser;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ViewCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SALARY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CLAIM_BUDGET;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DOB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.ViewCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Parses input arguments and creates a new ViewCommand object.
@@ -83,8 +89,8 @@ public class ViewCommandParser implements Parser<ViewCommand> {
     /**
      * Returns List of all  prefixes split by ",".
      *
-     * @param arg List<String> returned by getAllValues function.
-     * @return List<String> containing all valid prefixes.
+     * @param arg List returned by getAllValues function.
+     * @return List containing all valid prefixes.
      */
     public List<String> parseView(List<String> arg) {
         List<String> splitList = new ArrayList<>();
@@ -96,7 +102,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
     }
 
     /**
-     * Returns a List<Index> informing us of the various indexes view operations have to be performed on.
+     * Returns a List informing us of the various indexes view operations have to be performed on.
      *
      * @param argumentMultimap  Object containing the prefixes user typed.
      * @param prefix Prefix Object that user wants to view.

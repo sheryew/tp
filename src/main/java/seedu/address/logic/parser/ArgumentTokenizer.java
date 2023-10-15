@@ -1,11 +1,15 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -148,7 +152,7 @@ public class ArgumentTokenizer {
     }
 
     /**
-     * Returns List<String> containing user's prefixes.
+     * Returns List containing user's prefixes.
      * This function is required since user's can chain prefixes for view.
      *
      * @param argsString Input arguments.
