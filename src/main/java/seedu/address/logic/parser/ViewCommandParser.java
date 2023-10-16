@@ -130,6 +130,9 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         if (userGivenPrefixes.size() == 0) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.WRONG_PREFIX));
         }
+        if (userGivenPrefixes.size() > 1) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.EXCESS_PREFIX));
+        }
         for (Prefix prefix: userGivenPrefixes) {
             if (!VALIDPREFIXES.contains(prefix)) {
                 throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.WRONG_PREFIX));

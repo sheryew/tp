@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
 import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
@@ -23,6 +25,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Messages;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -63,6 +66,16 @@ public class ViewCommandTest {
     }
 
     @Test
+    public void execute_wrongIndex_failure() throws ParseException {
+        HashMap<String, List<Index>> nameWithWrongIndex = new HashMap<String, List<Index>>() {{
+            put("Name", List.of(ParserUtil.parseIndex("10000")));
+        }};
+        ViewCommand wrongViewCommand = new ViewCommand(nameWithWrongIndex);
+        String expectedResponse = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        assertCommandFailure(wrongViewCommand, model, expectedResponse);
+    }
+
+    @Test
     public void execute_validViewClaimBudgetDepartment_success() {
         HashMap<String, List<Index>> claimBudgetAndDepartment = new HashMap<String, List<Index>>() {{
                 put("Claim Budget", List.of(INDEX_FIRST_PERSON));
@@ -75,6 +88,11 @@ public class ViewCommandTest {
                     + String.format("You are viewing Claim Budget:\n"
                             + "1. %s's Claim Budget is %s.\n\n", personToView.getName(), personToView.getClaimBudget());
         assertCommandSuccess(newViewCommand, model, expectedResponse, model);
+    }
+
+    @Test
+    public void generate_assertionPrefix_failure() {
+        assertThrows(AssertionError.class, () -> viewCommand.massAssertionFn("INVALID_KEY"));
     }
 
     @Test

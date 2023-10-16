@@ -27,7 +27,11 @@ public class ViewCommand extends Command {
 
     public static final String COMMAND_WORD = "view";
     public static final String WRONG_PREFIX = "Allowed Formats: n/, a/, e/, s/, b/, d/, dob/.\n"
-            + "Example: view n/1,2 e/1,2.";
+            + "Example: view n/1,2";
+    public static final String EXCESS_PREFIX = "Kindly input only one prefix.\n"
+            + "Allowed Format: n/, a/, e/, s/, b/, dob/.\n"
+                + "Example: view n/1,2";
+
     public final HashMap<String, List<Index>> references;
 
     /**
@@ -64,6 +68,7 @@ public class ViewCommand extends Command {
                 Person personToEdit = lastShownList.get(indexList.get(i).getZeroBased());
                 HashMap<String, String> personRelevantInfo = generateArrInfo(personToEdit);
                 int index = indexList.get(i).getOneBased();
+                massAssertionFn(key);
                 if (Objects.equals(key, NAME_IDENTIFIER)) {
                     tempStr += String.format("%s. %s.\n", index, personRelevantInfo.get(NAME_IDENTIFIER));
                 } else if (Objects.equals(key, PHONE_IDENTIFIER)) {
@@ -85,6 +90,18 @@ public class ViewCommand extends Command {
             finalString += tempStr + "\n";
         }
         return new CommandResult(finalString);
+    }
+
+    /**
+     * Assertion test to ensure key corresponds to all the existing identifiers.
+     *
+     * @param key User Input of the prefixes one wants to view.
+     */
+    public void massAssertionFn(String key) {
+        assert Objects.equals(key, NAME_IDENTIFIER) || Objects.equals(key, PHONE_IDENTIFIER)
+                || Objects.equals(key, EMAIL_IDENTIFIER) || Objects.equals(key, ADDRESS_IDENTIFIER)
+                    || Objects.equals(key, SALARY_IDENTIFIER) || Objects.equals(key, CLAIM_BUDGET)
+                        || Objects.equals(key, DEPARTMENT) || Objects.equals(key, BIRTHDAY);
     }
 
     /**

@@ -5,14 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.BIRTHDAY;
 import static seedu.address.logic.parser.ViewCommandParser.CLAIM_BUDGET;
-import static seedu.address.logic.parser.ViewCommandParser.DEPARTMENT;
-import static seedu.address.logic.parser.ViewCommandParser.EMAIL_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
-import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,18 +22,11 @@ public class ViewCommandParserTest {
 
     @Test
     public void parse_withAllFields_presentreturnssuccess() throws ParseException {
-        String userInput = " n/1 p/1 e/1 a/1 s/1 b/1 d/1 dob/1";
+        String userInput = " b/1";
         Index index = ParserUtil.parseIndex("1");
         List<Index> indexOne = new ArrayList<>(List.of(index));
         HashMap<String, List<Index>> successHashMap = new HashMap<>();
-        successHashMap.put(NAME_IDENTIFIER, indexOne);
-        successHashMap.put(PHONE_IDENTIFIER, indexOne);
-        successHashMap.put(EMAIL_IDENTIFIER, indexOne);
-        successHashMap.put(ADDRESS_IDENTIFIER, indexOne);
-        successHashMap.put(SALARY_IDENTIFIER, indexOne);
         successHashMap.put(CLAIM_BUDGET, indexOne);
-        successHashMap.put(DEPARTMENT, indexOne);
-        successHashMap.put(BIRTHDAY, indexOne);
         ViewCommand successCommand = new ViewCommand(successHashMap);
         assertParseSuccess(parser, userInput, successCommand);
     }
@@ -85,6 +71,15 @@ public class ViewCommandParserTest {
     @Test
     public void parse_emptyparams_success() throws ParseException {
         String userInput = " ";
+        ArgumentMultimap argMultimap = ArgumentTokenizer.viewTokenize(userInput);
+        assertThrows(ParseException.class, () -> {
+            parser.validatePrefixes(argMultimap);
+        });
+    }
+
+    @Test
+    public void parse_excessparams_success() throws ParseException {
+        String userInput = " n/1,2 q/1,2";
         ArgumentMultimap argMultimap = ArgumentTokenizer.viewTokenize(userInput);
         assertThrows(ParseException.class, () -> {
             parser.validatePrefixes(argMultimap);

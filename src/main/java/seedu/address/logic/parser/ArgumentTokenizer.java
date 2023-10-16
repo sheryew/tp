@@ -181,6 +181,7 @@ public class ArgumentTokenizer {
         List<String> extractedPrefixes = extractPrefixes(argsString);
 
         Set<String> uniquePrefixes = new HashSet<>(extractedPrefixes);
+        assert(uniquePrefixes.size() == extractedPrefixes.size());
         if (uniquePrefixes.size() != extractedPrefixes.size()) {
             throw new ParseException("Duplicate prefix detected in input.");
         }
