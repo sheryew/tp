@@ -36,6 +36,7 @@ public class ListCommandParser implements Parser<ListCommand> {
                 return new ListCommand();
             }
         }
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_DEPARTMENT);
         try {
             Department filteringDepartment = new Department(argMultimap.getValue(PREFIX_DEPARTMENT).get());
             return new ListCommand(new MatchingDepartmentPredicate(filteringDepartment));
