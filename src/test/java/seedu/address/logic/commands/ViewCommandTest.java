@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.parser.ViewCommandParser.ADDRESS_IDENTIFIER;
@@ -68,8 +68,8 @@ public class ViewCommandTest {
     @Test
     public void execute_wrongIndex_failure() throws ParseException {
         HashMap<String, List<Index>> nameWithWrongIndex = new HashMap<String, List<Index>>() {{
-            put("Name", List.of(ParserUtil.parseIndex("10000")));
-        }};
+                put("Name", List.of(ParserUtil.parseIndex("10000")));
+            }};
         ViewCommand wrongViewCommand = new ViewCommand(nameWithWrongIndex);
         String expectedResponse = Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         assertCommandFailure(wrongViewCommand, model, expectedResponse);
