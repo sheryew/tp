@@ -68,6 +68,27 @@ public class Leave {
         return new Leave(newLeave.toString());
     }
 
+    /**
+     * Checks if leave exist
+     * @param month the month to check
+     * @return true if leave exists in specified month
+     */
+    public boolean leaveExistInMonth(String month) {
+        char leaveExist = '1';
+        int index = Integer.parseInt(month) - 1;
+        return leave.charAt(index) == leaveExist;
+    }
+
+    public boolean leaveExistInAnyMonth() {
+        char leaveExist = '1';
+        for (int i = 0; i < LEAVE_LENGTH; i++) {
+            if (leave.charAt(i) == leaveExist) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         if (leave.equals(NO_LEAVE)) {
