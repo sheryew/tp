@@ -33,6 +33,8 @@ public class Messages {
 
     public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
 
+    public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
