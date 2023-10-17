@@ -1,17 +1,22 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ViewLeaveCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.*;
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH;
 
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.logic.commands.ViewLeaveCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Department;
+import seedu.address.model.person.HasLeaveAnyMonthPredicate;
+import seedu.address.model.person.HasLeaveThisMonthPredicate;
+import seedu.address.model.person.MatchingDepartmentPredicate;
+import seedu.address.model.person.Person;
 
+/**
+ * Parses input arguments and creates a new ViewLeaveCommand object
+ */
 public class ViewLeaveCommandParser implements Parser<ViewLeaveCommand> {
 
     /**

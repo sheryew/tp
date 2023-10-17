@@ -69,7 +69,7 @@ public class Leave {
     }
 
     /**
-     * Checks if leave exist
+     * Checks if leave exist in the specified month
      * @param month the month to check
      * @return true if leave exists in specified month
      */
@@ -79,6 +79,10 @@ public class Leave {
         return leave.charAt(index) == leaveExist;
     }
 
+    /**
+     * Checks if leave exist in any month
+     * @return true if leave exists in specified month
+     */
     public boolean leaveExistInAnyMonth() {
         char leaveExist = '1';
         for (int i = 0; i < LEAVE_LENGTH; i++) {
