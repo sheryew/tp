@@ -1,10 +1,10 @@
 package seedu.address.logic.commands;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
-import java.util.ArrayList;
 import java.util.function.Predicate;
 
 import static java.util.Objects.requireNonNull;
@@ -17,33 +17,21 @@ public class ViewLeaveCommand extends Command {
 
     public static final String COMMAND_WORD = "view_leave";
 
-    public final String message;
+    public static final String message = Messages.MESSAGE_VIEW_LEAVE_SUCCESS;
 
-    public final ArrayList<Predicate<Person>> predicateArrayList;
-
-    /**
-     * Initializes ViewLeaveCommand with no predicates.
-     */
-    public ViewLeaveCommand() {
-        this.message = "";
-        this.predicateArrayList = new ArrayList<>();
-    }
+    public final Predicate<Person> combinedPredicate;
 
     /**
-     * Adds a new predicate (filter) to the predicate ArrayList.
-     *
-     * @param predicate predicate for the filtering
+     * Initializes ViewLeaveCommand with HasLeaveAnyMonthPredicate predicate.
      */
-    public void addPredicate(Predicate<Person> predicate) {
-        this.predicateArrayList.add(predicate);
+    public ViewLeaveCommand(Predicate<Person> combinedPredicate) {
+        this.combinedPredicate = combinedPredicate;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        for (Predicate<Person> predicate : predicateArrayList) {
-            model.updateFilteredPersonList(predicate);
-        }
+        model.updateFilteredPersonList(combinedPredicate);
         return new CommandResult(String.format(message, model.getFilteredPersonList().size()));
     }
 }
