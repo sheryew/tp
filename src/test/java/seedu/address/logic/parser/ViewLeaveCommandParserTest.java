@@ -67,5 +67,7 @@ class ViewLeaveCommandParserTest {
         assertParseFailure(parser, " m/1, 4", Messages.MESSAGE_MONTHS_SPACES_DETECTED
                 + Messages.MESSAGE_VIEW_LIST_COMMAND_FORMAT);
         assertParseFailure(parser, " m/15", Messages.MESSAGE_INVALID_MONTH);
+        assertParseFailure(parser, " d/", Messages.MESSAGE_EMPTY_DEPARTMENT_FILTER);
+        assertParseFailure(parser, " m/", Messages.MESSAGE_EMPTY_MONTH_LEAVE_FILTER);
     }
 }
