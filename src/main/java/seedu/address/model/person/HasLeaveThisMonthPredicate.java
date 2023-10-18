@@ -23,4 +23,19 @@ public class HasLeaveThisMonthPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         return person.getLeave().leaveExistInMonth(month);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof HasLeaveThisMonthPredicate)) {
+            return false;
+        }
+
+        HasLeaveThisMonthPredicate otherHasLeaveThisMonthPredicate = (HasLeaveThisMonthPredicate) other;
+        return month.equals(otherHasLeaveThisMonthPredicate.month);
+    }
 }
