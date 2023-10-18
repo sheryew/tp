@@ -45,8 +45,8 @@ public class LeaveCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         LeaveCommand command = new LeaveCommand(outOfBoundIndex, "0000+0000000");
         assertCommandFailure(command, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        assertCommandFailure(new LeaveCommand(INDEX_FIRST_PERSON, "0000-0-00000"), model,
-                String.format(Leave.ILLEGAL_MONTH, "May, July"));
+        assertCommandFailure(new LeaveCommand(INDEX_FIRST_PERSON, "0000---00000"), model,
+                String.format(Leave.ILLEGAL_MONTH, "May, Jul"));
 
         Person person = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
         assertCommandFailure(leaveSecondCommand, model,
