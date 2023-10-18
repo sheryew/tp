@@ -7,6 +7,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Represents a Person's leave.
  */
 public class Leave {
+    public static final String ILLEGAL_MONTH = "Cannot remove leave(s). "
+            + "The employee does not have leave(s) on %1$s.";
     public static final int LEAVE_LENGTH = 12;
     public static final String MESSAGE_CONSTRAINTS = "Invalid leave format";
     public static final String NO_LEAVE = "000000000000";
@@ -57,13 +59,23 @@ public class Leave {
      */
     public Leave update(String change) {
         StringBuilder newLeave = new StringBuilder(leave);
+        String illegalMonths = "";
         for (int i = 0; i < LEAVE_LENGTH; i++) {
             if (change.charAt(i) == '+') {
                 newLeave.setCharAt(i, '1');
             }
             if (change.charAt(i) == '-') {
+                if (newLeave.charAt(i) == '0') {
+                    if (illegalMonths.length() > 0) {
+                        illegalMonths += ", ";
+                    }
+                    illegalMonths += MONTHS[i];
+                }
                 newLeave.setCharAt(i, '0');
             }
+        }
+        if (!illegalMonths.equals("")) {
+            throw new IllegalArgumentException(String.format(ILLEGAL_MONTH, illegalMonths));
         }
         return new Leave(newLeave.toString());
     }

@@ -55,12 +55,18 @@ public class LeaveCommandParser implements Parser<LeaveCommand> {
             try {
                 if (args[i].charAt(0) == '-') {
                     Integer month = Integer.valueOf(args[i].substring(1));
+                    if (month < 1 || month > 12) {
+                        throw new ParseException(LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+                    }
                     if (months.charAt(month - 1) == '+') {
                         throw new ParseException(LeaveCommand.MESSAGE_AMBIGUOUS + LeaveCommand.MESSAGE_USAGE);
                     }
                     months.setCharAt(month - 1, '-');
                 } else {
                     Integer month = Integer.valueOf(args[i]);
+                    if (month < 1 || month > 12) {
+                        throw new ParseException(LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+                    }
                     if (months.charAt(month - 1) == '-') {
                         throw new ParseException(LeaveCommand.MESSAGE_AMBIGUOUS + LeaveCommand.MESSAGE_USAGE);
                     }

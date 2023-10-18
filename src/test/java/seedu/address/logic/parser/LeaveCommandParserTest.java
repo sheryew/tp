@@ -37,5 +37,13 @@ public class LeaveCommandParserTest {
         assertParseFailure(parser, " 1 m/-3,3", LeaveCommand.MESSAGE_AMBIGUOUS + LeaveCommand.MESSAGE_USAGE);
 
         assertParseFailure(parser, " 1 m/z", LeaveCommand.MESSAGE_NOT_A_NUMBER + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/0", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/-0", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/-13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
     }
 }

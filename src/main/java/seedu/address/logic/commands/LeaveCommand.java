@@ -66,7 +66,12 @@ public class LeaveCommand extends Command {
 
         Person oldPerson = lastShownList.get(index.getZeroBased());
         Leave oldLeave = oldPerson.getLeave();
-        Leave newLeave = oldLeave.update(change);
+        Leave newLeave;
+        try {
+            newLeave = oldLeave.update(change);
+        } catch (IllegalArgumentException e) {
+            throw new CommandException(e.getMessage());
+        }
 
         if (oldLeave.equals(newLeave)) {
             throw new CommandException(String.format(MESSAGE_NOT_EDITED, oldLeave.toString()));
