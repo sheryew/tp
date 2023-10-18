@@ -30,8 +30,10 @@ class ViewLeaveCommandTest {
         ViewLeaveCommand command1 = new ViewLeaveCommand(predicate1);
         ViewLeaveCommand command2 = new ViewLeaveCommand(predicate2);
         ViewLeaveCommand command3 = new ViewLeaveCommand(new HasLeaveThisMonthPredicate("12"));
+        assertEquals(command1, command1);
         assertEquals(command1, command2);
         assertFalse(command1.equals(command3));
+        assertFalse(command1.equals(null));
     }
 
     @Test

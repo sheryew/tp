@@ -25,10 +25,6 @@ public class HasLeaveAnyMonthPredicate implements Predicate<Person> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof HasLeaveThisMonthPredicate)) {
-            return false;
-        }
-
-        return true;
+        return other instanceof HasLeaveAnyMonthPredicate;
     }
 }
