@@ -36,7 +36,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    - `delete 3` : Deletes the 3rd employee shown in the current list.
 
    - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
-
+   
+   - `view n/1,2 s/1,2` : View the name and salary of employees with list index of 1 & 2 respectively.
+   
    - `clear` : Deletes all employees from the database.
 
    - `exit` : Exits the app.
@@ -201,6 +203,19 @@ Format:  `birthday [m/MONTH]`
 Examples: 
 - `birthday` followed by `10` displays all employees who have their birthday in the month of October
 
+
+### Viewing employee's details: `view`
+
+Views employee(s)'s personal attribute.
+
+Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [e/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]`
+
+- Gives an overview of employee(s)'s attributes.
+- Maximum of one prefix is allowed. This means user can only view one attribute at a time.
+- INDEX parameters can either be a single digit or digits separated by ",".
+
+- Examples:
+- `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
 
 
 ### Saving the data
