@@ -40,6 +40,10 @@ public class LeaveCommandParserTest {
 
         assertParseFailure(parser, " 1 m/0", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
 
+        assertParseFailure(parser, " 1 m/-0", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
         assertParseFailure(parser, " 1 m/13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/-13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
     }
 }
