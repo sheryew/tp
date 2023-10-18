@@ -34,4 +34,19 @@ public class ViewLeaveCommand extends Command {
         model.updateFilteredPersonList(combinedPredicate);
         return new CommandResult(String.format(MESSAGE, model.getFilteredPersonList().size()));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof ViewLeaveCommand)) {
+            return false;
+        }
+
+        ViewLeaveCommand otherCommand = (ViewLeaveCommand) other;
+        return combinedPredicate.equals(otherCommand.combinedPredicate);
+    }
 }
