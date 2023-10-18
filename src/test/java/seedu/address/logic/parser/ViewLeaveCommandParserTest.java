@@ -51,7 +51,8 @@ class ViewLeaveCommandParserTest {
 
         Model expectedModel4 = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel4.updateFilteredPersonList(testPredicateMonthAndDept);
-        assertCommandSuccess(parser.parse(" m/1 d/Engineering"), model, String.format(Messages.MESSAGE_VIEW_LEAVE_SUCCESS,
+        assertCommandSuccess(parser.parse(" m/1 d/Engineering"), model,
+                String.format(Messages.MESSAGE_VIEW_LEAVE_SUCCESS,
                 expectedModel4.getFilteredPersonList().size()), expectedModel4);
     }
 
