@@ -21,7 +21,6 @@ public class LeaveCommandParser implements Parser<LeaveCommand> {
      */
     public LeaveCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        System.out.println(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MONTH);
 
         Index index;
