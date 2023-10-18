@@ -13,7 +13,7 @@ public class Leave {
     public static final String MESSAGE_CONSTRAINTS = "Invalid leave format";
     public static final String NO_LEAVE = "000000000000";
     private static final String[] MONTHS = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public final String leave;
 
