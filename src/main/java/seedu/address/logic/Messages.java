@@ -21,6 +21,7 @@ public class Messages {
     public static final String MESSAGE_OVER_CLAIM = "Claim is REJECTED as the amount is greater than "
             + "the funds the Employee currently has!";
     public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "Department name cannot be empty!";
+    public static final String MESSAGE_EMPTY_MONTH_LEAVE_FILTER = "Month(s) cannot be empty!";
 
     public static final String MESSAGE_LIST_COMMAND_FORMAT = "list: "
             + "Lists all the details of an organization’s employees, "
@@ -29,9 +30,24 @@ public class Messages {
             + "Example: list (to list all employees) or "
             + "list d/Engineering (to list all employees in Engineering department)";
 
+    public static final String MESSAGE_VIEW_LIST_COMMAND_FORMAT = "view_list: "
+            + "Lists all employees with planned leave, optionally within "
+            + "specified department or months.\n"
+            + "Parameters: [d/DEPARTMENT] [m/MONTH(S)] (optional)\n"
+            + "Format: MONTHS must be integers separated by commas without spaces. "
+            + "1: Jan, 2: Feb, ..., 12: Dec.\n"
+            + "Positive MONTHS add leaves on the specified months and negative MONTHS remove them.\n"
+            + "Example: view_list d/Engineering m/1,5";
+
+    public static final String MESSAGE_MONTHS_SPACES_DETECTED = "Spaces detected in your MONTHS.\n";
+
+    public static final String MESSAGE_INVALID_MONTH = "Please check your MONTHS. Invalid month provided.\n";
+
     public static final String MESSAGE_LIST_SUCCESS = "Listed all employees (%1$d)";
 
     public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
+
+    public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
