@@ -208,9 +208,9 @@ Examples:
 
 Views employee(s)'s personal attribute.
 
-Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [e/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]`
+Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]`
 
-- Gives an overview of employee(s)'s attributes.
+- ViewCommand provides overview of employee(s)'s attributes.
 - Maximum of one prefix is allowed. This means user can only view one attribute at a time.
 - INDEX parameters can either be a single digit or digits separated by ",".
 

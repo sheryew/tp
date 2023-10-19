@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.ViewCommandParser.CLAIM_BUDGET;
+import static seedu.address.logic.parser.ViewCommandParser.DEPARTMENT;
+import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,12 +23,34 @@ public class ViewCommandParserTest {
     private ViewCommandParser parser = new ViewCommandParser();
 
     @Test
-    public void parse_withAllFields_presentreturnssuccess() throws ParseException {
+    public void parse_withClaim_presentReturnsSuccess() throws ParseException {
         String userInput = " b/1";
         Index index = ParserUtil.parseIndex("1");
         List<Index> indexOne = new ArrayList<>(List.of(index));
         HashMap<String, List<Index>> successHashMap = new HashMap<>();
         successHashMap.put(CLAIM_BUDGET, indexOne);
+        ViewCommand successCommand = new ViewCommand(successHashMap);
+        assertParseSuccess(parser, userInput, successCommand);
+    }
+
+    @Test
+    public void parse_withDepartment_presentReturnsSuccess() throws ParseException {
+        String userInput = " d/2";
+        Index index = ParserUtil.parseIndex("2");
+        List<Index> indexTwo = new ArrayList<>(List.of(index));
+        HashMap<String, List<Index>> successHashMap = new HashMap<>();
+        successHashMap.put(DEPARTMENT, indexTwo);
+        ViewCommand successCommand = new ViewCommand(successHashMap);
+        assertParseSuccess(parser, userInput, successCommand);
+    }
+
+    @Test
+    public void parse_withSalary_presentReturnsSuccess() throws ParseException {
+        String userInput = " s/4";
+        Index index = ParserUtil.parseIndex("4");
+        List<Index> indexTwo = new ArrayList<>(List.of(index));
+        HashMap<String, List<Index>> successHashMap = new HashMap<>();
+        successHashMap.put(SALARY_IDENTIFIER, indexTwo);
         ViewCommand successCommand = new ViewCommand(successHashMap);
         assertParseSuccess(parser, userInput, successCommand);
     }
