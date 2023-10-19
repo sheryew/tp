@@ -2,8 +2,14 @@ package seedu.address.logic.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Tokenizes arguments string of the form: {@code preamble <prefix>value <prefix>value ...}<br>
@@ -145,4 +151,42 @@ public class ArgumentTokenizer {
         }
     }
 
+    /**
+     * Returns List containing user's prefixes.
+     * This function is required since user's can chain prefixes for view.
+     *
+     * @param argsString Input arguments.
+     * @return List containing user's prefixes.
+     */
+    private static List<String> extractPrefixes(String argsString) {
+        Pattern pattern = Pattern.compile("\\b[^\\s]+/");
+        Matcher matcher = pattern.matcher(argsString);
+        List<String> prefixes = new ArrayList<>();
+        while (matcher.find()) {
+            prefixes.add(matcher.group().trim());
+        }
+        System.out.println(prefixes);
+        return prefixes;
+    }
+
+    /**
+     * Returns ArgumentMultimap object
+     * Converts user's chained prefixes into a list.
+     *
+     * @param argsString User's input.
+     * @return ArgumentMultimap object.
+     * @throws ParseException if duplicate prefixes are found.
+     */
+    public static ArgumentMultimap viewTokenize(String argsString) throws ParseException {
+        List<String> extractedPrefixes = extractPrefixes(argsString);
+
+        Set<String> uniquePrefixes = new HashSet<>(extractedPrefixes);
+        assert(uniquePrefixes.size() == extractedPrefixes.size());
+        if (uniquePrefixes.size() != extractedPrefixes.size()) {
+            throw new ParseException("Duplicate prefix detected in input.");
+        }
+        Prefix[] prefixArray = extractedPrefixes.stream().map(Prefix::new).toArray(Prefix[]::new);
+        List<PrefixPosition> positions = findAllPrefixPositions(argsString, prefixArray);
+        return extractArguments(argsString, positions);
+    }
 }
