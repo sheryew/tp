@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -16,6 +17,7 @@ import static seedu.address.logic.parser.ViewCommandParser.NAME_IDENTIFIER;
 import static seedu.address.logic.parser.ViewCommandParser.PHONE_IDENTIFIER;
 import static seedu.address.logic.parser.ViewCommandParser.SALARY_IDENTIFIER;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.HashMap;
@@ -26,6 +28,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -88,6 +91,41 @@ public class ViewCommandTest {
                     + String.format("You are viewing Claim Budget:\n"
                             + "1. %s's Claim Budget is %s.\n\n", personToView.getName(), personToView.getClaimBudget());
         assertCommandSuccess(newViewCommand, model, expectedResponse, model);
+    }
+
+    @Test
+    public void execute_validMultiplePhone_failure() throws CommandException {
+        HashMap<String, List<Index>> mutiplePhonesMap = new HashMap<String, List<Index>>() {{
+            put("Phone", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
+        }};
+        ViewCommand newViewCommand = new ViewCommand(mutiplePhonesMap);
+        Person firstPersonToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person secondPersonToView = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        String wrongReponse = String.format("You are viewing Department:\n"
+                + "1. %s's Department is %s.\n\n", firstPersonToView.getName(), firstPersonToView.getDepartment())
+                + String.format("You are viewing Claim Budget:\n"
+                + "1. %s's Claim Budget is %s.\n\n", secondPersonToView.getName(), secondPersonToView.getClaimBudget());
+        assertNotEquals(newViewCommand.execute(model).toString(), wrongReponse);
+    }
+
+    @Test
+    public void execute_validMultipleEmail_success() throws CommandException {
+        HashMap<String, List<Index>> mutiplePhonesMap = new HashMap<String, List<Index>>() {{
+            put("Email", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
+        }};
+        ViewCommand newViewCommand = new ViewCommand(mutiplePhonesMap);
+        Person firstPersonToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person secondPersonToView = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        String expectedResponse = String.format("You are viewing Email:\n"
+                + "1. %s's Email is %s.\n", firstPersonToView.getName(), firstPersonToView.getEmail())
+                + String.format("2. %s's Email is %s.\n\n", secondPersonToView.getName(),
+                    secondPersonToView.getEmail());
+        assertCommandSuccess(newViewCommand, model, expectedResponse, model);
+    }
+
+    @Test
+    public void generate_assertionPrefix_success() {
+        assertDoesNotThrow(() -> viewCommand.massAssertionFn("Name"));
     }
 
     @Test
