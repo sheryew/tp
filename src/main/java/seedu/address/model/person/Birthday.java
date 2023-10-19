@@ -15,7 +15,6 @@ public class Birthday {
     public static final String MESSAGE_CONSTRAINTS =
             "Invalid date of birth. Please provide date of birth with format: YYYY-MM-DD.\n"
             + "An employee must be at least 13 years old.";
-
     public final String dob;
 
     /**
@@ -70,6 +69,12 @@ public class Birthday {
     @Override
     public int hashCode() {
         return dob.hashCode();
+    }
+
+    public Month getMonth() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(dob, formatter);
+        return new Month(localDate.getMonthValue());
     }
 
 }
