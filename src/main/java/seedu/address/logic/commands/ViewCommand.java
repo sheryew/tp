@@ -28,11 +28,11 @@ public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
     public static final String WRONG_PREFIX = "ViewCommand provides "
             + "overview of employee(s)'s attributes.\n"
-                + "Allowed Formats: n/, a/, e/, p/, s/, b/, d/, dob/.\n"
-                    + "Example: view n/1,2";
+            + "Allowed Formats: n/, a/, e/, p/, s/, b/, d/, dob/.\n"
+            + "Example: view n/1,2 displays employees with list’s index of 1 and 2 respective salaries.";
     public static final String EXCESS_PREFIX = "Kindly input only one prefix.\n"
             + "Allowed Format: n/, a/, e/, p/, s/, b/, d/, dob/.\n"
-                + "Example: view n/1,2";
+            + "Example: view n/1,2 displays employees with list’s index of 1 and 2 respective salaries.";
 
     public final HashMap<String, List<Index>> references;
 
