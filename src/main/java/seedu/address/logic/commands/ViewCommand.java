@@ -31,7 +31,7 @@ public class ViewCommand extends Command {
                 + "Allowed Formats: n/, a/, e/, p/, s/, b/, d/, dob/.\n"
                     + "Example: view n/1,2";
     public static final String EXCESS_PREFIX = "Kindly input only one prefix.\n"
-            + "Allowed Format: n/, a/, e/, p/, s/, b/, dob/.\n"
+            + "Allowed Format: n/, a/, e/, p/, s/, b/, d/, dob/.\n"
                 + "Example: view n/1,2";
 
     public final HashMap<String, List<Index>> references;
