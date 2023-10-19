@@ -15,6 +15,7 @@ import seedu.address.model.person.Claim;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Money;
+import seedu.address.model.person.Month;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -189,5 +190,29 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String month} into a {@code int monthNumber}.
+     * @param month String representation of the month number.
+     * @return the integer representation of the given month.
+     * @throws ParseException if the given {@code String month} is invalid.
+     */
+    public static int parseMonth(String month) throws ParseException {
+        requireNonNull(month);
+        String trimmed = month.trim();
+        if (!trimmed.matches(Month.VALIDATION_REGEX)) {
+            throw new ParseException(Month.MESSAGE_CONSTRAINTS_BLANK_MONTH);
+        } else if (Month.containsAlphabetsOrDecimals(trimmed)) {
+            throw new ParseException(Month.MESSAGE_CONSTRAINTS_MONTH_INVALID_CHARACTERS);
+        } else if (Month.isZeroMonth(trimmed)) {
+            throw new ParseException(Month.MESSAGE_CONSTRAINTS_ZERO_MONTH);
+        } else if (Month.isNegativeMonth(trimmed)) {
+            throw new ParseException(Month.MESSAGE_CONSTRAINTS_NEGATIVE_MONTH);
+        } else if (!Month.isValidMonth(trimmed)) {
+            throw new ParseException(Month.MESSAGE_CONSTRAINTS_MONTH_OVER);
+        } else {
+            return Integer.parseInt(trimmed);
+        }
     }
 }

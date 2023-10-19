@@ -46,6 +46,7 @@ public class Messages {
     public static final String MESSAGE_LIST_SUCCESS = "Listed all employees (%1$d)";
 
     public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
+    public static final String MESSAGE_BIRTHDAY_FAILURE = "No employees have birthdays in this month.";
 
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
 

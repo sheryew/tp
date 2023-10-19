@@ -35,6 +35,11 @@ public class ParserUtilTest {
     private static final String VALID_TAG_2 = "neighbour";
 
     private static final String WHITESPACE = " \t\r\n";
+    private static final String INVALID_BLANK_MONTH = "m/";
+    private static final String INVALID_CHARACTERS_MONTH = "a";
+    private static final String INVALID_ZERO_MONTH = "0";
+    private static final String INVALID_NEGATIVE_MONTH = "-1";
+    private static final String INVALID_MONTH_OVER_12 = "13";
 
     @Test
     public void parseIndex_invalidInput_throwsParseException() {
@@ -192,5 +197,35 @@ public class ParserUtilTest {
         Set<Tag> expectedTagSet = new HashSet<Tag>(Arrays.asList(new Tag(VALID_TAG_1), new Tag(VALID_TAG_2)));
 
         assertEquals(expectedTagSet, actualTagSet);
+    }
+
+    @Test
+    public void parseBirthday_success() throws ParseException {
+        assertEquals(2, ParserUtil.parseMonth("2"));
+    }
+
+    @Test
+    public void parseBirthday_noMonthProvided() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMonth(INVALID_BLANK_MONTH));
+    }
+
+    @Test
+    public void parseBirthday_charProvided() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMonth(INVALID_CHARACTERS_MONTH));
+    }
+
+    @Test
+    public void parseBirthday_zeroMonthProvided() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMonth(INVALID_ZERO_MONTH));
+    }
+
+    @Test
+    public void parseBirthday_negativeMonthProvided() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMonth(INVALID_NEGATIVE_MONTH));
+    }
+
+    @Test
+    public void parseBirthday_monthOverProvided() throws ParseException {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMonth(INVALID_MONTH_OVER_12));
     }
 }
