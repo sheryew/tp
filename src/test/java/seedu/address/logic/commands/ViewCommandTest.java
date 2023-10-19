@@ -96,8 +96,8 @@ public class ViewCommandTest {
     @Test
     public void execute_validMultiplePhone_failure() throws CommandException {
         HashMap<String, List<Index>> mutiplePhonesMap = new HashMap<String, List<Index>>() {{
-            put("Phone", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
-        }};
+                put("Phone", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
+            }};
         ViewCommand newViewCommand = new ViewCommand(mutiplePhonesMap);
         Person firstPersonToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person secondPersonToView = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
@@ -111,8 +111,8 @@ public class ViewCommandTest {
     @Test
     public void execute_validMultipleEmail_success() throws CommandException {
         HashMap<String, List<Index>> mutiplePhonesMap = new HashMap<String, List<Index>>() {{
-            put("Email", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
-        }};
+                put("Email", List.of(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON));
+            }};
         ViewCommand newViewCommand = new ViewCommand(mutiplePhonesMap);
         Person firstPersonToView = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person secondPersonToView = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
