@@ -304,7 +304,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. At least one of the required information is empty or invalid.
-  
+
     * 2a1. HR Insight shows an error message.
 
       Use case ends.
@@ -314,7 +314,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. HR Insight indicates that the employee already exists.
 
       Use case ends.
-      
+
 **Use case: Edit an Employee**
 
 **MSS**
@@ -339,7 +339,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. HR Insight shows an error message.
 
       Use case resumes from step 2.
-      
+
 * 3b. User does not specify any new information for the employee.
 
    * 3b1. HR Insight shows an error message that at least one field to edit must be provided.
@@ -422,7 +422,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3b. User provides a wrong index (Either negative or more than current headcount).
 
     * 3b1. HR Insight shows an error message.
-  
+
   Use case ends.
 
 * 3c. User didn't provide +/- when stating the claim amount.
@@ -453,7 +453,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 3a. User provides a wrong index (Either negative or more than current headcount).
 
     * 3a1. HR Insight shows an error message.
-  
+
   Use case ends.
 
 * 3b. User provides a wrong month (Either negative or more than 12).
@@ -474,16 +474,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 1a. User provides the index of a specific employee.
   * 1a1. HR Insight shows the leave dates of the specified employee.
-  
+
   Use case ends.
 * 1b. User provides a specific month.
   * 1b1. HR Insight shows the leave dates of all employees occurring in the specified month.
 
   Use case ends
 * 1c. User provides a specific department.
-  * 1c1. HR Insight shows the leave dates of all employees in the specified department. 
+  * 1c1. HR Insight shows the leave dates of all employees in the specified department.
 
-  Use case ends. 
+  Use case ends.
 * 1d. User provides an invalid index/month/department.
   * 1d1. HR Insight shows an error message.
 
@@ -500,10 +500,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 1a. User provides a specific month.
   * 1a1. HR Insight shows all birthdays in the specified month.
-  
+
   Use case ends.
 * 1b. User provides an invalid month.
-  * 1b1. HR Insight shows an error message. 
+  * 1b1. HR Insight shows an error message.
 
   Use case ends.
 
