@@ -15,9 +15,10 @@ public class ClearCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, String commandText) {
         requireNonNull(model);
         model.setAddressBook(new AddressBook());
+        model.addCommandText(commandText);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

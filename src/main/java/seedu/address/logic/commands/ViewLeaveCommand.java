@@ -29,7 +29,7 @@ public class ViewLeaveCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, String commandText) throws CommandException {
         requireNonNull(model);
         model.updateFilteredPersonList(combinedPredicate);
         return new CommandResult(String.format(MESSAGE, model.getFilteredPersonList().size()));
