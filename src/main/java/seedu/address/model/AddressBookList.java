@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * Represents the history of AddressBook to allow undo and redo.
  */
 public class AddressBookList extends ArrayList<AddressBook> {
-    private static final String REDO_ERROR_MESSAGE = "There is no command to redo! "
+    public static final String REDO_ERROR_MESSAGE = "There is no command to redo! "
             + "The command to be redone need to previously modified the employee list.";
-    private static final String UNDO_ERROR_MESSAGE = "There is no command to undo! "
+    public static final String UNDO_ERROR_MESSAGE = "There is no command to undo! "
             + "The command to be undone need to previously modified the employee list.";
 
     private ArrayList<String> pastCommands = new ArrayList<String>();

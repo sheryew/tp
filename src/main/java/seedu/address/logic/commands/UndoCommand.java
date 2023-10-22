@@ -16,7 +16,7 @@ public class UndoCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Undo the most recent command that modified the employee list.";
 
-    private static final String MESSAGE_SUCCESS =
+    public static final String MESSAGE_SUCCESS =
             "The last command that modified the employee list has been undone!\n"
             + "Successfully undone the following command: %1$s";
 

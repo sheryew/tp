@@ -16,7 +16,7 @@ public class RedoCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Redo the most recent command that was undone.";
 
-    private static final String MESSAGE_SUCCESS =
+    public static final String MESSAGE_SUCCESS =
             "The last command that modified the employee list has been redone!\n"
             + "Successfully redone the following command: %1$s";
 

@@ -13,6 +13,8 @@ public class AddressBookListTest {
         addressBookList.add(new AddressBook());
         addressBookList.add(new AddressBook());
         assertEquals(addressBookList.undo(), new AddressBook());
+        addressBookList.add(new AddressBook());
+        assertEquals(addressBookList.undo(), new AddressBook());
     }
 
     @Test
