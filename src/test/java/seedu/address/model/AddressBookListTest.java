@@ -11,9 +11,12 @@ public class AddressBookListTest {
     @Test
     public void undo_success() {
         addressBookList.add(new AddressBook());
+        addressBookList.addCommandText("");
         addressBookList.add(new AddressBook());
+        addressBookList.addCommandText("");
         assertEquals(addressBookList.undo(), new AddressBook());
         addressBookList.add(new AddressBook());
+        addressBookList.addCommandText("");
         assertEquals(addressBookList.undo(), new AddressBook());
     }
 
