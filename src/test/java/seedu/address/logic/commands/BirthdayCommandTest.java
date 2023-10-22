@@ -43,7 +43,7 @@ public class BirthdayCommandTest {
 
     @Test
     public void execute_birthdayNoResults() {
-        CommandResult result = new BirthdayCommand(FILTER_TEST_PREDICATE_FAILURE).execute(model);
+        CommandResult result = new BirthdayCommand(FILTER_TEST_PREDICATE_FAILURE).execute(model, "");
         assertEquals(result.toString(), new CommandResult(MESSAGE_FAILURE).toString());
     }
 }

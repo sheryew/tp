@@ -105,7 +105,7 @@ public class ViewCommandTest {
                 + "1. %s's Department is %s.\n\n", firstPersonToView.getName(), firstPersonToView.getDepartment())
                 + String.format("You are viewing Claim Budget:\n"
                 + "1. %s's Claim Budget is %s.\n\n", secondPersonToView.getName(), secondPersonToView.getClaimBudget());
-        assertNotEquals(newViewCommand.execute(model).toString(), wrongReponse);
+        assertNotEquals(newViewCommand.execute(model, "").toString(), wrongReponse);
     }
 
     @Test
