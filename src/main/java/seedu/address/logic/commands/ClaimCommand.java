@@ -51,7 +51,7 @@ public class ClaimCommand extends Command {
      * @throws CommandException Exception thrown if index input from HR is beyond the pre-existing max list index.
      */
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, String commandText) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -65,6 +65,7 @@ public class ClaimCommand extends Command {
         Person editedPerson = postClaimPerson(personToEdit, claimBudget);
 
         model.setPerson(personToEdit, editedPerson);
+        model.addCommandText(commandText);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format("%s Remaining claim %s has: %s",

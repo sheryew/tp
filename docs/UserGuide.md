@@ -36,9 +36,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    - `delete 3` : Deletes the 3rd employee shown in the current list.
 
    - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
-   
+
    - `view n/1,2 s/1,2` : View the name and salary of employees with list index of 1 & 2 respectively.
-   
+
    - `clear` : Deletes all employees from the database.
 
    - `exit` : Exits the app.
@@ -170,7 +170,7 @@ Format:  `leave INDEX m/MONTHS`
 - The `MONTHS` refers to the month of the leave the employee is taking in integer format (between 1-12).
 - Positive `MONTHS` add leaves on the specified months and negative `MONTHS` remove them.
 
-Examples: 
+Examples:
 - `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
 - `list` followed by `leave 3 m/11,-12` adds a leave in Nov and removes a leave in Dec for the 3rd employee in the list.
 
@@ -184,7 +184,7 @@ Format:  `view_leave [INDEX] [m/Month] [d/DEPARTMENT]`
 - The index of the employee, month and department are optional arguments.
 - If no one has planned leave dates for the month, **No one is taking leave** output is shown.
 
-Examples: 
+Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year
 - `view_leave m/10` displays all employees that are taking leave in October
 - `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
@@ -200,7 +200,7 @@ Format:  `birthday [m/MONTH]`
 - The month argument is optional. If **no month** is provided, the upcoming birthdays in the current month are listed.
 - If there is no birthday in the month provided or the birthday is past the current date in the same month, return **No upcoming birthdays**
 
-Examples: 
+Examples:
 - `birthday` followed by `10` displays all employees who have their birthday in the month of October
 
 

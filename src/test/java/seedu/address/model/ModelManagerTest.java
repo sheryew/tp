@@ -85,7 +85,10 @@ public class ModelManagerTest {
     @Test
     public void hasPerson_personInAddressBook_returnsTrue() {
         modelManager.addPerson(ALICE);
+        modelManager.addCommandText("add Alice");
         assertTrue(modelManager.hasPerson(ALICE));
+        assertTrue(modelManager.undo().equals("add Alice"));
+        assertTrue(modelManager.redo().equals("add Alice"));
     }
 
     @Test

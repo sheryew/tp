@@ -56,7 +56,7 @@ public class LeaveCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, String commandText) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
@@ -82,6 +82,7 @@ public class LeaveCommand extends Command {
                 oldPerson.getDepartment(), oldPerson.getDob(), newLeave);
 
         model.setPerson(oldPerson, newPerson);
+        model.addCommandText(commandText);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_LEAVE_SUCCESS, newPerson.getName(), newLeave.toString()));
     }
