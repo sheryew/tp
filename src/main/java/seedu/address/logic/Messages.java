@@ -50,6 +50,9 @@ public class Messages {
 
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
 
+    public static final String WRONG_EXPORT_FILE_NAME_FAILURE = "Kindly provide one filename for this set of data.\n"
+            + "Example: export engineering_dept";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
