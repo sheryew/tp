@@ -9,7 +9,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * .Performs exporting of employee's data into csv format.
  */
-public class ExportCommandParser implements Parser<ExportCommand>  {
+public class ExportCommandParser implements Parser<ExportCommand> {
 
     /**
      * Returns ExportCommand containing the name in which user wants to name the file.

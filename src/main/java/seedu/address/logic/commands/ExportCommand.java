@@ -2,16 +2,16 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Person;
 
 /**
  * Creates a new CSV file containing employee's data.
@@ -48,7 +48,7 @@ public class ExportCommand extends Command {
         File csvOutputFile = generateFile(this.fileName);
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             dataLines.stream()
-                    .map(this::convertToCSV)
+                    .map(this::convertToCsv)
                     .forEach(pw::println);
             return new CommandResult(String.format("%s.csv has been successfully created!\n", this.fileName)
                     + "You can view the file in the Exported_CSVs folder.");
@@ -105,7 +105,7 @@ public class ExportCommand extends Command {
      * @param data List of Strings where each string is an attribute of a person.
      * @return String containing the various attributes joined together with ",".
      */
-    public String convertToCSV(List<String> data) {
+    public String convertToCsv(List<String> data) {
         return data.stream()
                 .map(this::escapeSpecialCharacters)
                 .collect(Collectors.joining(","));
