@@ -1,19 +1,23 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.Messages;
-import seedu.address.logic.commands.ExportCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.logic.Messages;
+import seedu.address.logic.commands.ExportCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+
+/**
+ * .Performs exporting of employee's data into csv format.
+ */
 public class ExportCommandParser implements Parser<ExportCommand>  {
 
-
+    /**
+     * Returns ExportCommand containing the name in which user wants to name the file.
+     *
+     * @param args CLI arguments that user typed.
+     * @return ExportCommand Object containing the file name user provided.
+     * @throws ParseException If user provides 2 or more filenames.
+     */
     @Override
     public ExportCommand parse(String args) throws ParseException {
         requireNonNull(args);
@@ -26,7 +30,13 @@ public class ExportCommandParser implements Parser<ExportCommand>  {
         }
         return new ExportCommand(nameArgs);
     }
-    
+
+    /**
+     * Returns boolean to check if user Args only contains exactly one filename.
+     *
+     * @param nameArgs String after the export word.
+     * @return boolean true if nameArgs is valid else false.
+     */
     public boolean nameChecker(String nameArgs) {
         String[] variousNames = nameArgs.split(" ");
         int strlen = variousNames.length;
