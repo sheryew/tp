@@ -66,7 +66,8 @@ public class ExportCommand extends Command {
      */
     public List<List<String>> generateListPeople(List<Person> existingData) {
         List<List<String>> dataLines = new ArrayList<>();
-        dataLines.add(List.of("Name", "Phone", "Email", "Address", "Salary", "Claim Budget", "DOB", "Department", "Leave"));
+        dataLines.add(List.of("Name", "Phone", "Email", "Address", "Salary", "Claim Budget", "DOB",
+                "Department", "Leave"));
         for (Person people: existingData) {
             List<String> peopleDetails = new ArrayList<>();
             peopleDetails.add(people.getName().toString());
