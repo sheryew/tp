@@ -534,6 +534,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Exporting Employee(s)' data**
+
+**MSS**
+
+1. User requests to download Employee(s)' data into CSV format.
+2. User provides the filename in which the data will be stored as.
+3. HR Insight will download the file into Exported_CSVs folder.
+   Use case ends.
+
+**Extensions**
+* 2a. User didn't provide any filename to store all the data.
+    * 2a1. HR Insight shows an error message requesting user to indicate a filename.
+  
+    Use case ends.
+
+* 2b. User provide excess filenames (> 1) to store the data.
+    * 2b1. HR Insight shows an error message requesting user to specify only one filename.
+
+  Use case ends.
+
+
 *{More to be added}*
 
 ### Non-Functional Requirements

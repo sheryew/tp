@@ -23,7 +23,6 @@ public class ExportCommandParser implements Parser<ExportCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.viewTokenize(args);
         String nameArgs = argMultimap.getPreamble();
-        System.out.println(nameArgs);
         boolean validFileName = nameChecker(nameArgs);
         if (!validFileName) {
             throw new ParseException(Messages.WRONG_EXPORT_FILE_NAME_FAILURE);

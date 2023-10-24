@@ -37,7 +37,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
 
-   - `view n/1,2 s/1,2` : View the name and salary of employees with list index of 1 & 2 respectively.
+   - `view n/1,2` : View the name of employees with list index of 1 & 2 respectively.
 
    - `clear` : Deletes all employees from the database.
 
@@ -217,6 +217,18 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 - Examples:
 - `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
 
+### Exporting employee's details: `export`
+
+Export employee's details into a csv file format.
+
+Format:  `export [file_name]`
+
+- ExportCommand provides HR employees a way to download employees' data into CSV format.
+- The exported file_name.csv will be found in the Exported_CSVs folder.
+- A maximum of one file_name has to be provided. File_name can comprise alphanumeric and special characters.
+
+- Examples:
+- `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
 ### Saving the data
 
@@ -249,16 +261,18 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 
 ## Command summary
 
-| Action             | Format, Examples                                                                                                                                                      |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**            | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
-| **Clear**          | `clear`                                                                                                                                                               |
-| **Delete**         | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   |
-| **Edit**           | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`|
-| **Find**           | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            |
-| **List**           | `list [d/DEPARTMENT]`                                                                                                                                                 |
-| **Claim**          | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                              |
-| **Add Leave**      | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                |
-| **Help**           | `help`                                                                                                                                                                |
-| **View Leave**     | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                              |
-| **View Birthdays** | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                         |
+| Action              | Format, Examples                                                                                                                                                                                                         |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**             | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
+| **Clear**           | `clear`                                                                                                                                                                                                                  |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                      |
+| **Edit**            | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                               |
+| **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                    |
+| **Claim**           | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                 |
+| **Add Leave**       | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                                                                       |
+| **Help**            | `help`                                                                                                                                                                                                                   |
+| **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                 |
+| **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                            |
+| **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                         |
+| **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |

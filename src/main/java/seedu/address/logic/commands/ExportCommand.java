@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -65,7 +66,7 @@ public class ExportCommand extends Command {
      */
     public List<List<String>> generateListPeople(List<Person> existingData) {
         List<List<String>> dataLines = new ArrayList<>();
-        dataLines.add(List.of("Name", "Phone", "Email", "Address", "Salary", "Claim Budget", "DOB", "Leave"));
+        dataLines.add(List.of("Name", "Phone", "Email", "Address", "Salary", "Claim Budget", "DOB", "Department", "Leave"));
         for (Person people: existingData) {
             List<String> peopleDetails = new ArrayList<>();
             peopleDetails.add(people.getName().toString());
@@ -75,6 +76,7 @@ public class ExportCommand extends Command {
             peopleDetails.add(people.getSalary().amount);
             peopleDetails.add(people.getClaimBudget().amount);
             peopleDetails.add(people.getDob().dob);
+            peopleDetails.add(people.getDepartment().toString());
             peopleDetails.add(people.getLeave().toString());
             dataLines.add(peopleDetails);
         }
@@ -127,5 +129,17 @@ public class ExportCommand extends Command {
             escapedData = "\"" + escapedData + "\"";
         }
         return escapedData;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true; // Both are the same instance
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false; // Other is not an instance of ExportCommand or is null
+        }
+        ExportCommand that = (ExportCommand) other;
+        return Objects.equals(fileName, that.fileName);
     }
 }
