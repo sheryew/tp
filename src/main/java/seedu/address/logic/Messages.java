@@ -50,6 +50,8 @@ public class Messages {
 
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
 
+    public static final String MESSAGE_NO_ARGUMENTS_EXPECTED = "\"%s\" command should not have any arguments";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
