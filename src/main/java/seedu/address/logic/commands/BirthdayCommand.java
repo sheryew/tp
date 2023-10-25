@@ -46,12 +46,10 @@ public class BirthdayCommand extends Command {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof BirthdayCommand)) {
             return false;
         }
-
         BirthdayCommand otherCommand = (BirthdayCommand) other;
         return predicate.equals(otherCommand.getPredicate());
     }

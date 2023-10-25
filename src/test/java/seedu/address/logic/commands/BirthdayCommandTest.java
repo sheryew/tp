@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.commands.BirthdayCommand.MESSAGE_FAILURE;
 import static seedu.address.logic.commands.BirthdayCommand.MESSAGE_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -42,5 +43,17 @@ public class BirthdayCommandTest {
     public void execute_birthdayNoResults() {
         CommandResult result = new BirthdayCommand(FILTER_TEST_PREDICATE_FAILURE).execute(model, "");
         assertEquals(result.toString(), new CommandResult(MESSAGE_FAILURE).toString());
+    }
+
+    @Test
+    public void checkEquals_success() {
+        BirthdayCommand command1 = new BirthdayCommand(FILTER_TEST_PREDICATE_SUCCESS);
+        assertEquals(command1, command1);
+    }
+
+    @Test
+    public void checkEquals_failure() {
+        BirthdayCommand command1 = new BirthdayCommand(FILTER_TEST_PREDICATE_SUCCESS);
+        assertNotEquals(command1, new ExitCommand());
     }
 }
