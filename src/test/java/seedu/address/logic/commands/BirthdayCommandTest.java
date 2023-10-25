@@ -6,8 +6,6 @@ import static seedu.address.logic.commands.BirthdayCommand.MESSAGE_SUCCESS;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-import java.util.function.Predicate;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,13 +13,12 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.MatchingBirthdayPredicate;
-import seedu.address.model.person.Person;
 import seedu.address.testutil.TypicalMonths;
 
 public class BirthdayCommandTest {
-    public static final Predicate<Person> FILTER_TEST_PREDICATE_SUCCESS =
+    public static final MatchingBirthdayPredicate FILTER_TEST_PREDICATE_SUCCESS =
             new MatchingBirthdayPredicate(TypicalMonths.VALID_MONTH_SUCCESS);
-    public static final Predicate<Person> FILTER_TEST_PREDICATE_FAILURE =
+    public static final MatchingBirthdayPredicate FILTER_TEST_PREDICATE_FAILURE =
             new MatchingBirthdayPredicate(TypicalMonths.VALID_MONTH_FAILURE);
     private Model model;
     private Model expectedFilteredModel;

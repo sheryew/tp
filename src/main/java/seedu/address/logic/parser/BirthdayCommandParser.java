@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH;
 import java.time.LocalDate;
 import java.util.stream.Stream;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.BirthdayCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.MatchingBirthdayPredicate;
@@ -24,11 +25,14 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
      */
     public BirthdayCommand parse(String args) throws ParseException {
         requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MONTH);
-        if (!arePrefixesPresent(argMultimap, PREFIX_MONTH)) {
+        if (args.trim().isEmpty()) {
             LocalDate date = LocalDate.now();
             MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(new Month(date.getMonthValue()));
             return new BirthdayCommand(predicate);
+        }
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MONTH);
+        if (!arePrefixesPresent(argMultimap, PREFIX_MONTH)) {
+            throw new ParseException(Messages.MESSAGE_INVALID_MONTH_PREFIX);
         } else {
             int monthValue = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).get());
             MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(new Month(monthValue));
@@ -36,6 +40,10 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
         }
     }
 
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
