@@ -70,7 +70,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+Automatically opens a new tab in your default brower to this User Guide page.
+
+If HRInsight is unable to redirect you to the page, it will show a dialog box containing URL to this page.
 
 Format: `help`
 
