@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.awt.Desktop;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -136,14 +138,18 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Opens the help window or focuses on it if it's already opened.
+     * Opens the help window.
      */
     @FXML
     public void handleHelp() {
-        if (!helpWindow.isShowing()) {
+        if (!Desktop.isDesktopSupported() || !Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             helpWindow.show();
-        } else {
-            helpWindow.focus();
+            return;
+        }
+        try {
+            Desktop.getDesktop().browse(new URL(HelpWindow.USERGUIDE_URL).toURI());
+        } catch (Exception e) {
+            helpWindow.show();
         }
     }
 

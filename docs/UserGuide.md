@@ -65,6 +65,13 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
+### Viewing help : `help`
+
+Automatically opens a new tab in your default brower to this User Guide page.
+
+If HRInsight is unable to redirect you to the page, it will show a dialog box containing URL to this page.
+
+Format: `help`
 
 ### Adding an employee: `add`
 
