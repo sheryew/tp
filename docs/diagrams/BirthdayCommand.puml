@@ -1,0 +1,41 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":BirthdayCommandParser" as BirthdayCommandParser LOGIC_COLOR
+participant ":BirthdayCommand" as BirthdayCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute(birthday m/1)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(birthday m/1)
+activate AddressBookParser
+
+create BirthdayCommandParser
+AddressBookParser -> BirthdayCommandParser : parse(m/1)
+activate BirthdayCommandParser
+
+create BirthdayCommand
+BirthdayCommandParser -> BirthdayCommand : BirthdayCommand(1)
+activate BirthdayCommand
+
+BirthdayCommand --> BirthdayCommandParser
+deactivate BirthdayCommand
+
+BirthdayCommandParser --> AddressBookParser
+deactivate BirthdayCommandParser
+
+AddressBookParser --> LogicManager : b
+deactivate AddressBookParser
+
+LogicManager -> BirthdayCommand : execute()
+activate BirthdayCommand
+
+BirthdayCommand -> LogicManager
+deactivate BirthdayCommand
+
+@enduml
