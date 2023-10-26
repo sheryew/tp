@@ -40,19 +40,13 @@ public class Messages {
             + "Example: view_list d/Engineering m/1,5";
 
     public static final String MESSAGE_MONTHS_SPACES_DETECTED = "Spaces detected in your MONTHS.\n";
-
     public static final String MESSAGE_INVALID_MONTH = "Please check your MONTHS. Invalid month provided.\n";
-
     public static final String MESSAGE_LIST_SUCCESS = "Listed all employees (%1$d)";
-
     public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
     public static final String MESSAGE_BIRTHDAY_FAILURE = "No employees have birthdays in this month.";
-
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
-  
     public static final String WRONG_EXPORT_FILE_NAME_FAILURE = "Kindly provide one filename for this set of data.\n"
             + "Example: export engineering_dept";
-  
     public static final String MESSAGE_NO_ARGUMENTS_EXPECTED = "\"%s\" command should not have any arguments";
 
     /**

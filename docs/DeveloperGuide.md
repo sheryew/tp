@@ -234,9 +234,445 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
+### Export Data Feature
 
-_{Explain here how the data archiving feature will be implemented}_
+#### Proposed Implementation
+
+The proposed export mechanism is facilitated by `AddressBook`. Additionally, the operation is exposed in the Model interface which allows users to perform `filter` operation to discard selected portions of the Model interface before exporting.
+
+The primary operations that aid in this mechanism are:
+* `getFilteredPersonList()` -- Used in conjunction with `filter` operation so that the model will display the latest Persons of interest.
+* `generateListPeople()` -- Performs extracting of Person objects from the latest model and obtaining the Person's attributes.
+* `generateFile()` -- Creates a directory for exported CSVs and a File object containing the filename imposed by the user.
+* `PrintWri
+
+#### Design considerations:
+
+**Aspect: How undo & redo executes:**
+
+* **Alternative 1 (current choice):** Saves the entire address book.
+    * Pros: Easy to implement.
+    * Cons: May have performance issues in terms of memory usage.
+
+* **Alternative 2:** Individual command knows how to undo/redo by
+  itself.
+    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Cons: We must ensure that the implementation of each individual command are correct.
+
+_{more aspects and alternatives to be added}_
+
+### Export Data Feature
+
+#### Proposed Implementation
+
+The proposed export mechanism is facilitated by `AddressBook`. Additionally, the operation is exposed in the Model interface which allows users to perform `filter` operation to discard selected portions of the Model interface before exporting.
+
+The primary operations that aid in this mechanism are:
+* `getFilteredPersonList()` -- Used in conjunction with `filter` operation so that the model will display the latest Persons of interest.
+* `generateListPeople()` -- Performs extracting of Person objects from the latest model and obtaining the Person's attributes.
+* `generateFile()` -- Creates a directory for exported CSVs and a File object containing the filename imposed by the user.
+* `convertToCsv()`-- Performs writing of Person's attributes into the created File Object in `generateFile()`.
+
+Given below is an example usage scenario and how the export mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The initial address book state will display all the employees.
+
+Step 2. The user executes `list d/Engineering` command which filters employees belonging to the Engineering department. This command also executes `getFilteredPersonList()` that alters the Model by containing only the filtered Person list.
+
+Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person Objects from the currentModel and extracting their attributes into a List.
+
+Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `convertToCsv()` are called sequentially to allow writing of Person' attributes into the exported CSV file.
+
+The following sequence diagram shows how the export operation works:
+
+![ExportSequenceDiagram](images/ExportSequenceDiagram.png)
+
+The following activity diagram summarizes what happens when a user attempts to export the current employees' data:
+
+<img src="images/ExportActivityDiagram.png" width="250" />
+
+#### Design considerations:
+
+**Aspect: How exports executes:**
+
+* **Alternative 1 (current choice):** User specifies filename and file is stored in fixed location.
+    * Pros: Easy to implement. Easy for user to find his newly exported file.
+    * Cons: Doesn't provide user a view on whether the filename has already been used. Loss of file is a concern.
+
+* **Alternative 2:** Full flexibility for user to select the exported location of one's files.
+    * Pros: User can perform better categorisation of data according to organisation's needs.
+    * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Documentation, logging, testing, configuration, dev-ops**
+
+* [Documentation guide](Documentation.md)
+* [Testing guide](Testing.md)
+* [Logging guide](Logging.md)
+* [Configuration guide](Configuration.md)
+* [DevOps guide](DevOps.md)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Requirements**
+
+### Product scope
+
+**Target user profile**:
+
+* for HR people to manage employee data in the company, including employees' claims and leaves
+* prefer desktop apps over other types
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI apps
+
+**Value proposition**: Provide a platform for Startup HR workers without a solid employee data management system.
+
+
+### User stories
+
+Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+
+| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `* * *`  | HR employee                                  | add all employee's information       | manage all employee's information.                |
+| `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
+| `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
+| `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
+| `* * *`  | HR employee                                      | process employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
+| `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
+| `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
+| `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
+| `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
+| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+
+*{More to be added}*
+
+### Use cases
+
+(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR people`, unless specified otherwise)
+
+**Use case: Add an Employee**
+
+**MSS**
+
+1.  User requests to add an employee with specified information.
+2.  HR Insight adds an employee with the given information.
+3.  HR Insight indicates that the new employee has been added.
+4.  HR Insight shows a list of employees including the new employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. At least one of the required information is empty or invalid.
+
+    * 2a1. HR Insight shows an error message.
+
+      Use case ends.
+
+* 3a. The employee already exists.
+
+    * 3a1. HR Insight indicates that the employee already exists.
+
+      Use case ends.
+
+**Use case: Edit an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to edit an employee in the list specified by its index, with the employee's new information.
+4.  HR Insight edits the employee.
+5.  HR Insight indicates that the employee has been edited.
+6.  HR Insight shows a list of employees, with the employee's information now edited.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
+
+* 3b. User does not specify any new information for the employee.
+
+    * 3b1. HR Insight shows an error message that at least one field to edit must be provided.
+
+      Use case resumes from step 2.
+
+* 3c. At least one of the field given by the user is empty or invalid.
+
+    * 3c1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
+
+**Use case: Delete an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to delete an employee in the list specified by its index.
+4.  HR Insight deletes the employee.
+5.  HR Insight indicates that the employee has been deleted.
+6.  HR Insight shows a list of employees excluding the deleted employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
+
+**Use case: List Employees**
+
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows all employees of an organisation.
+3.  User requests to filter employees by a specified department.
+4.  HR Insight shows all employees of the specified department.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The employee's list is empty.
+
+  Use case ends.
+
+* 3a. The given department is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 3.
+
+**Use case: Managing Employee's Claim**
+
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to add or deduct an amount from an employee's claim by specifying the employee's index.
+4.  HR Insight displays the updated claim of the specified employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. User didn't provide an index and/or claim amount.
+
+    * 3a1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 3b. User provides a wrong index (Either negative or more than current headcount).
+
+    * 3b1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 3c. User didn't provide +/- when stating the claim amount.
+
+    * 3c1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 3d. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
+
+    * 3d1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use case: Adding Employee's Leaves**
+
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to add a leave of a specified month for an employee.
+4.  HR Insight records the leave of the employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. User provides a wrong index (Either negative or more than current headcount).
+
+    * 3a1. HR Insight shows an error message.
+
+  Use case ends.
+
+* 3b. User provides a wrong month (Either negative or more than 12).
+
+    * 3b1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use Case: Viewing Employees' Leaves**
+
+**MSS**
+
+1. User requests to view the leave dates of all employees.
+2. HR Insight shows the leave dates of all employees.
+
+   Use case ends.
+
+**Extensions**
+* 1a. User provides the index of a specific employee.
+    * 1a1. HR Insight shows the leave dates of the specified employee.
+
+  Use case ends.
+* 1b. User provides a specific month.
+    * 1b1. HR Insight shows the leave dates of all employees occurring in the specified month.
+
+  Use case ends
+* 1c. User provides a specific department.
+    * 1c1. HR Insight shows the leave dates of all employees in the specified department.
+
+  Use case ends.
+* 1d. User provides an invalid index/month/department.
+    * 1d1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use Case: Viewing Employees' Birthdays**
+
+**MSS**
+
+1. User requests to view the birthdays of all employees.
+2. HR Insight shows the birthdays of all employees.
+   Use case ends.
+
+**Extensions**
+* 1a. User provides a specific month.
+    * 1a1. HR Insight shows all birthdays in the specified month.
+
+  Use case ends.
+* 1b. User provides an invalid month.
+    * 1b1. HR Insight shows an error message.
+
+  Use case ends.
+
+**Use Case: Viewing Employee(s)' Attribute**
+
+**MSS**
+
+1. User requests to view specific attribute of employee(s).
+2. HR Insight shows the specific attribute of the employee(s).
+   Use case ends.
+
+**Extensions**
+* 1a. User provides a false attribute (Prefix).
+    * 1a1. HR Insight shows an error message.
+    * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
+
+  Use case ends.
+
+* 1b. User didn't provide any attribute that one wants to view.
+    * 1b1. HR Insight shows an error message.
+    * 1b2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
+
+  Use case ends.
+
+* 1c. User provides more than 1 prefix/attribute that one wants to view.
+    * 1c1. HR Insight shows an error message informing user of the one attribute limit.
+    * 1c2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
+
+  Use case ends.
+
+**Use Case: Exporting Employee(s)' data**
+
+**MSS**
+
+1. User requests to download Employee(s)' data into CSV format.
+2. User provides the filename in which the data will be stored as.
+3. HR Insight will download the file into Exported_CSVs folder.
+   Use case ends.
+
+**Extensions**
+* 2a. User didn't provide any filename to store all the data.
+    * 2a1. HR Insight shows an error message requesting user to indicate a filename.
+
+  Use case ends.
+
+* 2b. User provide excess filenames (> 1) to store the data.
+    * 2b1. HR Insight shows an error message requesting user to specify only one filename.
+
+  Use case ends.
+
+
+*{More to be added}*
+
+### Non-Functional Requirements
+
+1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3.  HR people with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  Should respond quickly to user input with minimal latency.
+5.  Should not crash under normal usage conditions.
+6.  Should have mechanisms to recover gracefully from unexpected errors or crashes.
+7.  Should have comprehensive user guide and documentation for developers.
+
+*{More to be added}*
+
+### Glossary
+
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* **Private contact detail**: A contact detail that is not meant to be shared with others
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+ter()`-- Performs writing of Person's attributes into the created File Object in `generateFile()`.
+
+Given below is an example usage scenario and how the export mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The initial address book state will display all the employees.
+
+Step 2. The user executes `list d/Engineering` command which filters employees belonging to the Engineering department. This command also executes `getFilteredPersonList()` that alters the Model by containing only the filtered Person list.
+
+Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person Objects from the currentModel and extracting their attributes into a List.
+
+Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `PrintWriter()` are called sequentially to allow writing of Person' attributes into the exported CSV file. 
+
+The following sequence diagram shows how the export operation works:
+
+
+The following activity diagram summarizes what happens when a user attempts to export the current employees' data:
+
+#### Design considerations:
+
+**Aspect: How exports executes:**
+
+* **Alternative 1 (current choice):** User specifies filename and file is stored in fixed location.
+    * Pros: Easy to implement. Easy for user to find his newly exported file.
+    * Cons: Doesn't provide user a view on whether the filename has already been used. Loss of file is a concern.
+
+* **Alternative 2:** Full flexibility for user to select the exported location of one's files.
+    * Pros: User can perform better categorisation of data according to organisation's needs.
+    * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
 
 
 --------------------------------------------------------------------------------------------------------------------
