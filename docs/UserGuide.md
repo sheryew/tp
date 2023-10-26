@@ -62,17 +62,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-- Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-### Viewing help : `help`
-
-Shows a message explaining how to access the help page.
-
-Format: `help`
 
 ### Adding an employee: `add`
 
@@ -96,6 +88,21 @@ Examples:
 - `list` Lists all employees in the employee list.
 - `list d/Engineering` Lists all employees in the Engineering department.
 
+### Deleting an employee : `delete`
+
+Delete an employee in the employee list by the specified index.
+
+Format: `delete INDEX`
+
+- Deletes the employee at the specified `INDEX`.
+- The index refers to the index number shown in the displayed employee list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+- `list` followed by `delete 2` deletes the 2nd person in the employee list.
+- `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
 ### Editing an employee's information : `edit`
 
 Edits an existing employee in the employee list by the specified index.
@@ -111,9 +118,9 @@ Examples:
 
 - `edit 1 p/23423423 e/barry@example.com` Edits the phone number and email address of the 1st person to be `23423423` and `barry@example.com` respectively.
 
-### Locating persons by name: `find`
+### Finding employees by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds employees whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -129,20 +136,11 @@ Examples:
 - `find John` returns `john` and `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
-### Deleting an employee : `delete`
+### Clearing all entries: `clear`
 
-Delete an employee in the employee list by the specified index.
+Clear all entries from the employee list.
 
-Format: `delete INDEX`
-
-- Deletes the employee at the specified `INDEX`.
-- The index refers to the index number shown in the displayed employee list.
-- The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-
-- `list` followed by `delete 2` deletes the 2nd person in the employee list.
-- `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+Format: `clear`
 
 ### Managing Employee's Claims: `claim`
 
@@ -217,6 +215,18 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 - Examples:
 - `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
 
+### Undoing previous command: `undo`
+
+Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `redo` commands.
+
+Format: `undo`
+
+### Redoing previous undone command: `redo`
+
+Redo the most recent command that was undone.
+
+Format: `redo`
+
 ### Exporting employee's details: `export`
 
 Export employee's details into a csv file format.
@@ -229,6 +239,19 @@ Format:  `export [file_name]`
 
 - Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
+
+
+### Viewing help : `help`
+
+Shows a message explaining how to access the help page.
+
+Format: `help`
+
+### Exit the app: `exit`
+
+Exits the app.
+
+Format: `exit`
 
 ### Saving the data
 
@@ -264,15 +287,18 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | Action              | Format, Examples                                                                                                                                                                                                         |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add**             | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
-| **Clear**           | `clear`                                                                                                                                                                                                                  |
+| **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                    |
 | **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                      |
 | **Edit**            | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
 | **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                               |
-| **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                    |
+| **Clear**           | `clear`                                                                                                                                                                                                                  |
 | **Claim**           | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                 |
 | **Add Leave**       | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                                                                       |
-| **Help**            | `help`                                                                                                                                                                                                                   |
 | **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                 |
 | **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                            |
 | **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                         |
+| **Undo**           | `undo`                                                                                                                                                           |
+| **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
+| **Help**            | `help`                                                                                                                                                                                                                   |
+| **Exit**            | `exit`                                                                                                                                                                                                                   |
