@@ -248,12 +248,6 @@ Format:  `export [file_name]`
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
 
-### Viewing help : `help`
-
-Shows a message explaining how to access the help page.
-
-Format: `help`
-
 ### Exiting the app: `exit`
 
 Exits the app.
