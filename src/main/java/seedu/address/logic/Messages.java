@@ -52,6 +52,8 @@ public class Messages {
 
     public static final String MESSAGE_NO_ARGUMENTS_EXPECTED = "\"%s\" command should not have any arguments";
 
+    public static final String MESSAGE_INVALID_MONTH_PREFIX = "Invalid prefix provided. Did you mean to type 'm/'?";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
