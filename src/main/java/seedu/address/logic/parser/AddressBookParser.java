@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.Messages.MESSAGE_NO_ARGUMENTS_EXPECTED;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.logging.Logger;
@@ -70,6 +71,7 @@ public class AddressBookParser {
             return new DeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
+            ensureEmptyArguments(arguments, ClearCommand.COMMAND_WORD);
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
@@ -79,9 +81,11 @@ public class AddressBookParser {
             return new ListCommandParser().parse(arguments);
 
         case ExitCommand.COMMAND_WORD:
+            ensureEmptyArguments(arguments, ExitCommand.COMMAND_WORD);
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
+            ensureEmptyArguments(arguments, HelpCommand.COMMAND_WORD);
             return new HelpCommand();
 
         case ClaimCommand.COMMAND_WORD:
@@ -100,9 +104,11 @@ public class AddressBookParser {
             return new BirthdayCommandParser().parse(arguments);
 
         case UndoCommand.COMMAND_WORD:
+            ensureEmptyArguments(arguments, UndoCommand.COMMAND_WORD);
             return new UndoCommand();
 
         case RedoCommand.COMMAND_WORD:
+            ensureEmptyArguments(arguments, RedoCommand.COMMAND_WORD);
             return new RedoCommand();
 
         case ExportCommand.COMMAND_WORD:
@@ -111,6 +117,19 @@ public class AddressBookParser {
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+    /**
+     * Ensures that there are no arguments given.
+     *
+     * @param args argument(s) given
+     * @param commandWord commandWord of the checked command
+     * @throws ParseException if the argument is not empty
+     */
+    public void ensureEmptyArguments(String args, String commandWord) throws ParseException {
+        if (!args.isBlank()) {
+            throw new ParseException(String.format(MESSAGE_NO_ARGUMENTS_EXPECTED, commandWord));
         }
     }
 }
