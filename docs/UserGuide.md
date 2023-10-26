@@ -247,7 +247,7 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-### Exit the app: `exit`
+### Exiting the app: `exit`
 
 Exits the app.
 
