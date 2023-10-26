@@ -188,34 +188,6 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
   * Pros: Less memory.
   * Cons: More complications on the logic side: undoing `add` = `delete`, undoing `clear` = `add` back all employees, etc.
 
-
-### Export Data Feature
-
-#### Proposed Implementation
-
-The proposed export mechanism is facilitated by `AddressBook`. Additionally, the operation is exposed in the Model interface which allows users to perform `filter` operation to discard selected portions of the Model interface before exporting.
-
-The primary operations that aid in this mechanism are:
-* `getFilteredPersonList()` -- Used in conjunction with `filter` operation so that the model will display the latest Persons of interest.
-* `generateListPeople()` -- Performs extracting of Person objects from the latest model and obtaining the Person's attributes.
-* `generateFile()` -- Creates a directory for exported CSVs and a File object containing the filename imposed by the user.
-* `PrintWri
-
-#### Design Considerations
-
-**Aspect: How undo & redo executes:**
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-    * Pros: Easy to implement.
-    * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-    * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
 ### Export Data Feature
 
 #### Proposed Implementation
@@ -258,6 +230,45 @@ The following activity diagram summarizes what happens when a user attempts to e
     * Pros: User can perform better categorisation of data according to organisation's needs.
     * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
 
+### Birthday Feature
+
+#### Implementation
+
+The birthday feature extends HR Insight by allowing the user to view birthdays in a given month.
+This operation is exposed in the Command Interface as `Command#BirthdayCommand`.
+
+Given below is an example usage scenario and how the birthday mechanism behaves at each step.
+
+Step 1: The user launches the application for the first time.
+
+Step 2: The user executes `add n/John Doe ... ` to add a new employee.
+
+Step 3: After adding a few employees into the application, he/she wants to view the birthdays in the month of January
+to prepare the birthday celebrations in advance. The `birthday m/1` command will display all employees with birthdays
+in the month of January.
+
+Step 4: The user then realises that today is the first day of a new month and he/she wants to view which employees
+have birthdays in the current month. The `birthday` command without providing the month will display all employees with
+birthdays in the current month.
+
+The following sequence diagram shows how the `birthday` command works:
+
+![SequenceDiagram](images/BirthdayCommand.png)
+
+### Reasoning
+The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader
+range to work with. Furthermore, it is also a common practice for companies to have 1 celebration for all employees'
+birthdays in a month rather than having multiple individual celebrations. Hence, this feature is designed to show
+birthdays by month.
+
+### Aspect: How birthday executes:
+* **Alternative 1 (current choice)** : Allows the user to view birthday in a month
+    * Pros: Allows the user to view birthdays in a broader range.
+    * Cons: User cannot view birthdays that occur across multiple months
+* **Alternative 2**: Allows the user to view birthdays in multiple months
+    * Pros: User will be able to view birthdays across multiple months with only one use of the command.<Br>
+      (e.g. `birthday m/2,3` returns all birthdays in February and March )
+    * Cons: We must ensure that every month given by the user is valid and mention which months have no birthdays.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -629,45 +640,6 @@ The following activity diagram summarizes what happens when a user attempts to e
     * Pros: User can perform better categorisation of data according to organisation's needs.
     * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
 
-### \[Implemented\] Birthday Feature
-
-#### Implementation
-
-The birthday feature extends HR Insight by allowing the user to view birthdays in a given month.
-This operation is exposed in the Command Interface as `Command#BirthdayCommand`.
-
-Given below is an example usage scenario and how the birthday mechanism behaves at each step.
-
-Step 1: The user launches the application for the first time. 
-
-Step 2: The user executes `add n/John Doe ... ` to add a new employee.
-
-Step 3: After adding a few employees into the application, he/she wants to view the birthdays in the month of January 
-to prepare the birthday celebrations in advance. The `birthday m/1` command will display all employees with birthdays
-in the month of January.
-
-Step 4: The user then realises that today is the first day of a new month and he/she wants to view which employees 
-have birthdays in the current month. The `birthday` command without providing the month will display all employees with 
-birthdays in the current month.
-
-The following sequence diagram shows how the `birthday` command works:
-
-![SequenceDiagram](/Users/remuslum/Downloads/CS2103_tP/tp/docs/images/BirthdayCommand.png)
-
-### Reasoning
-The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader 
-range to work with. Furthermore, it is also a common practice for companies to have 1 celebration for all employees' 
-birthdays in a month rather than having multiple individual celebrations. Hence, this feature is designed to show 
-birthdays by month.
-
-### Aspect: How birthday executes:
-* **Alternative 1 (current choice)** : Allows the user to view birthday in a month
-  * Pros: Allows the user to view birthdays in a broader range.
-  * Cons: User cannot view birthdays that occur across multiple months
-* **Alternative 2**: Allows the user to view birthdays in multiple months
-  * Pros: User will be able to view birthdays across multiple months with only one use of the command.<Br>
-     (e.g. `birthday m/2,3` returns all birthdays in February and March )
-  * Cons: We must ensure that every month given by the user is valid and mention which months have no birthdays.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
