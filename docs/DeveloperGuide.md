@@ -655,7 +655,7 @@ Step 2. The user executes `list d/Engineering` command which filters employees b
 
 Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person Objects from the currentModel and extracting their attributes into a List.
 
-Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `PrintWriter()` are called sequentially to allow writing of Person' attributes into the exported CSV file. 
+Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `PrintWriter()` are called sequentially to allow writing of Person' attributes into the exported CSV file.
 
 The following sequence diagram shows how the export operation works:
 
@@ -982,7 +982,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 2a. User didn't provide any filename to store all the data.
     * 2a1. HR Insight shows an error message requesting user to indicate a filename.
-  
+
     Use case ends.
 
 * 2b. User provide excess filenames (> 1) to store the data.
