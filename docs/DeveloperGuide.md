@@ -261,7 +261,7 @@ birthdays in the current month.
 
 The following sequence diagram shows how the `birthday` command works:
 
-![SequenceDiagram](/Users/remuslum/Downloads/CS2103_tP/tp/docs/images/BirthdayCommand.png)
+![SequenceDiagram](images/BirthdayCommand.png)
 
 ### Reasoning
 The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader 
