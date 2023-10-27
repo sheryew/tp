@@ -238,6 +238,33 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### \[Implemented\] Leave Feature
+
+#### Implementation
+
+This feature adds a way to record and view registered leaves for the employees.
+This is implemented by adding a `Leave` class as an attribute to `Person` class.
+Manipulating the leave records can be done using `Command#LeaveCommand` and viewing can be done using `Commmand#ViewLeaveCommand`.
+ViewLeaveCommand can be invoked with or without parameter.
+
+Given below is an example usage scenario and how the birthday mechanism behaves at each step.
+
+Step 1: The user launches the application for the first time.
+
+Step 2: The user executes `view_leave` to see the currently registered leaves of the employees.
+This function works like a filter through the `model`. This is done by having a predicate to test if the person has a leave.
+For the default no parameter `view_leave` function, this will invoke a creation of `HasLeaveAnyMonthPredicate` predicate, which tests if the employees has leave in any of the months. The command goes through the `ViewLeaveCommandParser` class to check if there is any parameters.
+This command will return a list of employees who has leave in any of the months by invoking a `model.updateFilteredPersonsList(predicate)`.
+
+Step 3: The user adds and removes leaves to employees by doing a `leave 2 m/1,-2`
+This command will go through the `LeaveCommandParser` class. The parser will then extract the relevant information like the employee's index and the months to add/remove. This command adds a leave in January and removes a leave in February for the employee on index 2.
+
+Step 4: The user wants to see the employees with leaves in January or February in the Engineering department by doing a `view_leave m/1,2 d/engineering`
+This works similarly to the default `view_leave` but with parameters. The `ViewLeaveCommandParser` will parse the command and will combine the predicates as it parses the arguments.
+In this case, the `ViewLeaveCommandParser` will create `HasLeaveThisMonthPredicate` and `MatchingDepartmentPredicate`.
+For every month specified, the parser will create a `HasLeaveThisMonthPredicate` and do an `or()` operation of the predicate, resulting in a `combinedPredicate` variable. The parser will also create a `MatchingDepartmentPredicate` and do an `and()` to the combinedPredicate().
+This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
+
 ### \[Implemented\] Birthday Feature
 
 #### Implementation
