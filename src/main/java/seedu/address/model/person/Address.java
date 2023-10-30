@@ -62,4 +62,8 @@ public class Address {
         return value.hashCode();
     }
 
+    public int compareTo(Address other) {
+        return this.value.compareTo(other.value);
+    }
+
 }

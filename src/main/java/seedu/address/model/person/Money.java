@@ -74,4 +74,8 @@ public class Money {
         return amount.hashCode();
     }
 
+    public int compareTo(Money other) {
+        return Long.valueOf(this.amount).compareTo(Long.valueOf(other.amount));
+    }
+
 }
