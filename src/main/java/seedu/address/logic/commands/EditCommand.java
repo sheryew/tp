@@ -25,6 +25,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Department;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Leave;
 import seedu.address.model.person.Money;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -109,9 +110,10 @@ public class EditCommand extends Command {
         Money updatedClaimBudget = editPersonDescriptor.getClaimBudget().orElse(personToEdit.getClaimBudget());
         Department updatedDepartment = editPersonDescriptor.getDepartment().orElse(personToEdit.getDepartment());
         Birthday updateDob = editPersonDescriptor.getDob().orElse(personToEdit.getDob());
+        Leave leave = personToEdit.getLeave();
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
-                updatedSalary, updatedClaimBudget, updatedDepartment, updateDob);
+                updatedSalary, updatedClaimBudget, updatedDepartment, updateDob, leave);
     }
 
     @Override
