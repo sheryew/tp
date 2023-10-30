@@ -30,6 +30,7 @@ public class SortCommand extends Command {
 
     private final boolean desc;
     private final Comparator<Person> comparator;
+    private final String param;
 
     /**
      * Constructs a SortCommand.
@@ -38,6 +39,7 @@ public class SortCommand extends Command {
     public SortCommand(String param) {
         this.comparator = new PersonComparator(param);
         this.desc = false;
+        this.param = param;
     }
 
     /**
@@ -48,6 +50,7 @@ public class SortCommand extends Command {
     public SortCommand(String param, boolean desc) {
         this.comparator = new PersonComparator(param);
         this.desc = desc;
+        this.param = param;
     }
 
     @Override
@@ -65,5 +68,20 @@ public class SortCommand extends Command {
         } catch (IllegalArgumentException e) {
             throw new CommandException(ERROR_MESSAGE);
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof SortCommand)) {
+            return false;
+        }
+
+        SortCommand otherCommand = (SortCommand) other;
+        return param.equals(otherCommand.param) && desc == otherCommand.desc;
     }
 }
