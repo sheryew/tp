@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -28,5 +30,13 @@ public class SortCommandTest {
         assertCommandSuccess(new SortCommand("claim"), model, SortCommand.MESSAGE_SUCCESS, model);
         assertCommandSuccess(new SortCommand("dep"), model, SortCommand.MESSAGE_SUCCESS, model);
         assertCommandSuccess(new SortCommand("dob"), model, SortCommand.MESSAGE_SUCCESS, model);
+    }
+
+    @Test
+    public void equals() {
+        assertNotEquals(new SortCommand("name"), null);
+        assertEquals(new SortCommand("name"), new SortCommand("name"));
+        SortCommand command = new SortCommand("name");
+        assertEquals(command, command);
     }
 }
