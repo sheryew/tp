@@ -1,7 +1,5 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BENSON;
@@ -23,10 +21,5 @@ public class SortCommandTest {
         reversed.addPerson(ALICE);
         assertCommandSuccess(new SortCommand("name", true), model, SortCommand.MESSAGE_SUCCESS, reversed);
         assertCommandSuccess(new SortCommand("name"), model, SortCommand.MESSAGE_SUCCESS, model);
-    }
-
-    @Test
-    public void execute_failure() {
-
     }
 }
