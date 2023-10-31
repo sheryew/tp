@@ -26,22 +26,40 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   - `list` : Lists all the details of an organization's employees.
-
-   - `find` : Finds employees whose names contain any of the given keywords.
+   - `help` : Opens a web browser tab explaining the features HR Insight offers.
 
    - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` : <br>
      Adds an employee named `John Doe` to the employee list.
+   
+   - `list` : Lists all the details of an organization's employees.
 
    - `delete 3` : Deletes the 3rd employee shown in the current list.
 
-   - `claim 2 $/-60` : Deducts $60 from the claims of the 2nd employee in the list.
-
-   - `view n/1,2` : View the name of employees with list index of 1 & 2 respectively.
-
+   - `edit 1 p/1234567` : Edits phone attribute for the 1st employee in the list.
+   
+   - `find` : Finds employees whose names contain any of the given keywords.
+   
    - `clear` : Deletes all employees from the database.
+   
+   - `claim 2 $/-60` : Deducts $60 from the claim budget of the 2nd employee in the list.
+   
+   - `leave 1 m/1` : Indicates 1st employee in the list will be taking leave in Jan.
+   
+   - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
+   
+   - `birthday m/3` : Displays employees who are born in Mar. 
 
-   - `exit` : Exits the app.
+  - `view n/1,2` : View respective names of the 1st and 2nd employee in the list.
+
+  - `sort phone` : Sorts employees based on their phone numbers in ascending order.
+
+  - `undo` : Undo the most recent command that modified the employee list.
+
+  - `redo` : Redo the most recent command that was undone.
+
+  - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
+
+  - `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for details of each command.
 
