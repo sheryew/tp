@@ -31,5 +31,4 @@ public class ResetLeavesCommandTest {
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         assertCommandSuccess(new ResetLeavesCommand(), model, ResetLeavesCommand.MESSAGE_SUCCESS, expectedModel);
     }
-
 }
