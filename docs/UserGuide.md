@@ -219,12 +219,25 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 - Maximum of one prefix is allowed. This means user can only view one attribute at a time.
 - INDEX parameters can either be a single digit or digits separated by ",".
 
-- Examples:
+Examples:
 - `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
+
+### Sorting the employee list: `sort`
+
+Sorts the employee list based on the given parameter.
+
+Format: `sort name / phone / email / address / salary / claim / dep / dob [desc]`
+
+- Choose one parameter from `name / phone / email / address / salary / claim / dep / dob` to sort.
+- Put `desc` to sort in descending order.
+
+Examples:
+- `sort name` to sort the employee list based on name in ascending order.
+- `sort salary desc` to sort the employee list based on salary in descending order.
 
 ### Undoing previous command: `undo`
 
-Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `redo` commands.
+Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
@@ -298,6 +311,7 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                 |
 | **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                            |
 | **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                         |
+| **Sort**           | `sort name / phone / email / address / salary / claim / dep / dob [desc]`                                                                                        |
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
