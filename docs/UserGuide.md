@@ -47,6 +47,8 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
    
+   - `reset_leaves` : Sets months in which employees have taken leaves back to zero.
+   
    - `birthday m/3` : Displays employees who are born in Mar. 
 
    - `view n/1,2` : View respective names of the 1st and 2nd employee in the list.
@@ -223,6 +225,11 @@ Examples:
 - `view_leave m/10` displays all employees that are taking leave in October
 - `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
 
+### Resetting all employees' leaves : `reset_leaves`
+
+Sets the months in which employees have taken leaves back to zero.
+
+Format: `reset_leaves`
 
 ### Viewing all birthdays in a given month : `birthday`
 
@@ -339,6 +346,7 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Claim**           | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                 |
 | **Add Leave**       | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                                                                       |
 | **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                 |
+| **Reset Leaves** | `reset_leaves` |
 | **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                            |
 | **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                         |
 | **Sort**           | `sort name / phone / email / address / salary / claim / dep / dob [desc]`                                                                                        |
