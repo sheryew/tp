@@ -32,7 +32,7 @@ public class NameTest {
         // valid name
         assertTrue(Name.isValidName("^"));
         assertTrue(Name.isValidName("peter*"));
-        assertTrue(Name.isValidName("Muhammad s/o Ali"));
+        assertTrue(Name.isValidName("Muhammad S/O Ali"));
         assertTrue(Name.isValidName("X AE A-12"));
         assertTrue(Name.isValidName("Exa Dark Sideræl"));
         assertTrue(Name.isValidName("$helly"));

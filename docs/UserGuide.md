@@ -62,6 +62,17 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
+- Parameters given outside the command format will be ignored.<br>
+   e.g. `list [d/DEPARTMENT]` only accepts `d/` parameter. `list z/all` will be treated the same as `list` since HRInsight will ignore parameters outside the command format.
+
+- We allow all employee names, not limited to alphanumeric names, to accommodate names such as `X AE A-Xii`, `dr. Adam Smith, Ph.D.`, and `$helly`.
+
+- All words in parameters given cannot start with the prefixes in that command.<Br>
+   e.g. `add` command requires `n/ p/ e/ a/ s/ b/ d/ dob/​` prefixes.<br>
+   Therefore, names given in `add` command cannot contain these prefixes because they have been reserved for that command.<br>
+   This constraint applies for all words in all parameters in that command.<Br>
+   To accommodate names with `s/o` or `d/o`, we recommend to use `S/O` or `D/O` instead.
+
 - If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
