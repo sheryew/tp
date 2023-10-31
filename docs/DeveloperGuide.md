@@ -554,6 +554,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Resetting Employees' Leaves**
+
+**MSS**
+
+1. User hopes to reset all employees to have no recorded leaves.
+2. HR Insight will show "-" under the leave attribute for each employee.
+
+    Use case ends.
+
+
 **Use Case: Viewing Employees' Birthdays**
 
 **MSS**
