@@ -180,6 +180,8 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
 
 #### Design Considerations
 
+**Aspect: How Undo/Redo executes:**
+
 * **Alternative 1 (current choice):** Stores the entire address book.
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
@@ -230,7 +232,7 @@ The following activity diagram summarizes what happens when a user attempts to e
     * Pros: User can perform better categorisation of data according to organisation's needs.
     * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
 
-### \[Implemented\] Leave Feature
+### Leave Feature
 
 #### Implementation
 
@@ -257,7 +259,9 @@ In this case, the `ViewLeaveCommandParser` will create `HasLeaveThisMonthPredica
 For every month specified, the parser will create a `HasLeaveThisMonthPredicate` and do an `or()` operation of the predicate, resulting in a `combinedPredicate` variable. The parser will also create a `MatchingDepartmentPredicate` and do an `and()` to the combinedPredicate().
 This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
 
-### \[Implemented\] Birthday Feature
+#### Design Considerations
+
+**Aspect: How Leave executes:**
 
 ### Birthday Feature
 
@@ -284,13 +288,14 @@ The following sequence diagram shows how the `birthday` command works:
 
 ![SequenceDiagram](images/BirthdayCommand.png)
 
-### Reasoning
+### Design Considerations
 The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader
 range to work with. Furthermore, it is also a common practice for companies to have 1 celebration for all employees'
 birthdays in a month rather than having multiple individual celebrations. Hence, this feature is designed to show
 birthdays by month.
 
-### Aspect: How birthday executes:
+**Aspect: How Birthday executes:**
+
 * **Alternative 1 (current choice)** : Allows the user to view birthday in a month
     * Pros: Allows the user to view birthdays in a broader range.
     * Cons: User cannot view birthdays that occur across multiple months
@@ -653,21 +658,6 @@ Step 3. The user executes `export engineering_dept` command which takes the "alt
 Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `PrintWriter()` are called sequentially to allow writing of Person' attributes into the exported CSV file.
 
 The following sequence diagram shows how the export operation works:
-
-
-The following activity diagram summarizes what happens when a user attempts to export the current employees' data:
-
-#### Design considerations:
-
-**Aspect: How exports executes:**
-
-* **Alternative 1 (current choice):** User specifies filename and file is stored in fixed location.
-    * Pros: Easy to implement. Easy for user to find his newly exported file.
-    * Cons: Doesn't provide user a view on whether the filename has already been used. Loss of file is a concern.
-
-* **Alternative 2:** Full flexibility for user to select the exported location of one's files.
-    * Pros: User can perform better categorisation of data according to organisation's needs.
-    * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
 
 --------------------------------------------------------------------------------------------------------------------
 
