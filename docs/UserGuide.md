@@ -49,15 +49,15 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `birthday m/3` : Displays employees who are born in Mar. 
 
-  - `view n/1,2` : View respective names of the 1st and 2nd employee in the list.
+   - `view n/1,2` : View respective names of the 1st and 2nd employee in the list.
 
-  - `sort phone` : Sorts employees based on their phone numbers in ascending order.
+   - `sort phone` : Sorts employees based on their phone numbers in ascending order.
 
-  - `undo` : Undo the most recent command that modified the employee list.
+   - `undo` : Undo the most recent command that modified the employee list.
 
-  - `redo` : Redo the most recent command that was undone.
+   - `redo` : Redo the most recent command that was undone.
 
-  - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
+   - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
   - `exit` : Exits the app.
 
@@ -329,6 +329,7 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 
 | Action              | Format, Examples                                                                                                                                                                                                         |
 |---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**            | `help`                                                                                                                                                                                                                   |
 | **Add**             | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
 | **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                    |
 | **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                      |
@@ -344,5 +345,4 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
-| **Help**            | `help`                                                                                                                                                                                                                   |
 | **Exit**            | `exit`                                                                                                                                                                                                                   |
