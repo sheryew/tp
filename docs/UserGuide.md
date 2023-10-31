@@ -47,7 +47,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
    
-   - `reset_leaves` : Sets months in which employees have taken leaves back to zero.
+   - `reset_leaves` : Resets all employees to have no recorded leaves.
    
    - `birthday m/3` : Displays employees who are born in Mar. 
 
@@ -227,7 +227,7 @@ Examples:
 
 ### Resetting all employees' leaves : `reset_leaves`
 
-Sets the months in which employees have taken leaves back to zero.
+Reset all employees to have no recorded leaves.
 
 Format: `reset_leaves`
 

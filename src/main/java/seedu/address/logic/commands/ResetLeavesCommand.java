@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 /**
- * Resets all employees' leaves to - (AKA 0 leaves).
+ * Resets all employees' leaves to - (AKA No recorded leaves).
  * This command is suitable for resetting of leaves per year.
  */
 public class ResetLeavesCommand extends Command {
@@ -19,7 +19,7 @@ public class ResetLeavesCommand extends Command {
     /**
      * @param model {@code Model} which the command should operate on.
      * @param commandText Not important in this case.
-     * @return CommandResult object with modified Model with each employee having 0 leaves.
+     * @return CommandResult with modified Model with each employee having no recorded leaves.
      */
     @Override
     public CommandResult execute(Model model, String commandText) {

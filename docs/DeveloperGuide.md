@@ -558,7 +558,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User hopes to set the months in which employees have taken leaves back to zero.
+1. User hopes to reset all employees to have no recorded leaves.
 2. HR Insight will show "-" under the leave attribute for each employee.
 
     Use case ends.
