@@ -1,0 +1,46 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":ListCommandParser" as ListCommandParser LOGIC_COLOR
+participant ":ListCommand" as ListCommand LOGIC_COLOR
+participant ":MatchingDepartmentPredicate" as MatchingDepartmentPredicate MODEL_COLOR
+end box
+
+[-> LogicManager : execute(list d/engineering)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(list d/engineering)
+activate AddressBookParser
+
+create ListCommandParser
+AddressBookParser -> ListCommandParser : parse(d/engineering)
+activate ListCommandParser
+
+create MatchingDepartmentPredicate
+ListCommandParser -> MatchingDepartmentPredicate : ListCommand(predicate)
+activate MatchingDepartmentPredicate
+
+create ListCommand
+ListCommandParser -> ListCommand : ListCommand(predicate)
+activate ListCommand
+
+BirthdayCommand --> BirthdayCommandParser
+deactivate BirthdayCommand
+
+BirthdayCommandParser --> AddressBookParser
+deactivate BirthdayCommandParser
+
+AddressBookParser --> LogicManager : b
+deactivate AddressBookParser
+
+LogicManager -> BirthdayCommand : execute()
+activate BirthdayCommand
+
+BirthdayCommand -> LogicManager
+deactivate BirthdayCommand
+
+@enduml
