@@ -53,6 +53,13 @@ public class CommandResultTest {
     }
 
     @Test
+    public void themeChangeCommandsTest() {
+        CommandResult commandResult =  new CommandResult("feedback", false, false, true, "RedTheme.css");
+        assertTrue(commandResult.isChangeTheme());
+        assertEquals(commandResult.getThemeStylesheet(), "RedTheme.css");
+    }
+
+    @Test
     public void toStringMethod() {
         CommandResult commandResult = new CommandResult("feedback");
         String expected = CommandResult.class.getCanonicalName() + "{feedbackToUser="
