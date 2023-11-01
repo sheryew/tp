@@ -19,13 +19,21 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application should change theme. */
+    private final boolean changeTheme;
+
+    private final String themeStylesheet;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit) {
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit,
+                         boolean changeTheme, String themeStylesheet) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.changeTheme = changeTheme;
+        this.themeStylesheet = themeStylesheet;
     }
 
     /**
@@ -33,7 +41,7 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, false, "");
     }
 
     public String getFeedbackToUser() {
@@ -46,6 +54,14 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+
+    public boolean isChangeTheme() {
+        return changeTheme;
+    }
+
+    public String getThemeStylesheet() {
+        return themeStylesheet;
     }
 
     @Override
@@ -78,5 +94,4 @@ public class CommandResult {
                 .add("exit", exit)
                 .toString();
     }
-
 }
