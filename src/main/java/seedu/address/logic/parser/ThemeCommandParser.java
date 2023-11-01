@@ -22,6 +22,8 @@ public class ThemeCommandParser implements Parser<ThemeCommand> {
             return new ThemeCommand("DarkTheme.css");
         case "light":
             return new ThemeCommand("LightTheme.css");
+        case "green":
+            return new ThemeCommand("GreenTheme.css");
         default:
             throw new ParseException(Messages.MESSAGE_INVALID_THEME);
         }
