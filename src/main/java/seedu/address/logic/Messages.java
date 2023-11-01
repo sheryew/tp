@@ -50,6 +50,8 @@ public class Messages {
 
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
 
+    public static final String MESSAGE_INVALID_THEME = "Invalid theme specified.\nValid themes: \"dark\", \"light\"";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
