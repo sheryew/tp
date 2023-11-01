@@ -158,6 +158,7 @@ public class MainWindow extends UiPart<Stage> {
         String themeToAdd = getClass().getResource("/view/" + newTheme).toExternalForm();
         this.getRoot().getScene().getStylesheets().remove(themeToRemove);
         this.getRoot().getScene().getStylesheets().add(themeToAdd);
+        currentTheme = newTheme;
     }
 
     void show() {
