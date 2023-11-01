@@ -1054,6 +1054,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Changing Application's Theme**
+
+**MSS**
+
+1. User requests to change the current theme.
+2. The application theme changes.
+   Use case ends.
+
+**Extensions**
+* 1a. User didn't provide any theme names
+    * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+
+  Use case ends.
+
+* 1b. User provide invalid theme name.
+    * 1b1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+
+  Use case ends.
+
 
 *{More to be added}*
 
