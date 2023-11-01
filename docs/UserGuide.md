@@ -195,6 +195,10 @@ Examples:
 - `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
 - `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
 
+Executing command: `claim 1 $/-500`
+
+![ClaimCommandBeforeAfter](images/claim.png)
+
 ### Adding Employee’s Leave: `leave`
 
 Adds leave months for an employee.
@@ -231,6 +235,10 @@ Reset all employees to have no recorded leaves.
 
 Format: `reset_leaves`
 
+Executing command: `reset_leaves`
+
+![ResetLeavesBeforeAfter](images/reset_leaves.png)
+
 ### Viewing all birthdays in a given month : `birthday`
 
 Views all employees’ birthday in the given month
@@ -257,6 +265,10 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 
 Examples:
 - `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
+
+Executing command: `view p/1,5`
+
+![ViewAttributeBeforeAfter](images/viewAttribute.png)
 
 ### Sorting the employee list: `sort`
 
@@ -296,6 +308,9 @@ Format:  `export [file_name]`
 - Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
+Executing command: `export all_hands`
+
+![ExportCSVBeforeAfter](images/export.png)
 
 ### Exiting the app: `exit`
 
