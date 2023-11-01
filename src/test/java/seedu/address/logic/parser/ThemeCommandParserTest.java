@@ -1,19 +1,20 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ThemeCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 
 class ThemeCommandParserTest {
 
-    Model model = new ModelManager();
+    private Model model = new ModelManager();
 
     private ThemeCommandParser parser = new ThemeCommandParser();
 
@@ -37,5 +38,4 @@ class ThemeCommandParserTest {
         assertParseFailure(parser, "", Messages.MESSAGE_INVALID_THEME);
         assertParseFailure(parser, "  ", Messages.MESSAGE_INVALID_THEME);
     }
-
 }
