@@ -77,4 +77,8 @@ public class Birthday {
         return new Month(localDate.getMonthValue());
     }
 
+    public int compareTo(Birthday other) {
+        return LocalDate.parse(this.dob).compareTo(LocalDate.parse(other.dob));
+    }
+
 }

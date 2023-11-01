@@ -56,4 +56,8 @@ public class Department {
         return department.hashCode();
     }
 
+    public int compareTo(Department other) {
+        return this.department.compareTo(other.department);
+    }
+
 }
