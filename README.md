@@ -4,16 +4,17 @@
 
 * This is **a project that utilises CLI to aid HR admins with their administrative tasks.**.<br>
   Example usages:
-  * As a HR admin, I can perform basic CRUD operations (Create/Read/Update/Delete) for all the employees in my organisation.
-  * As a HR admin, I can list all the employees in the organisation.
-  * As a HR admin, I can better forecast manpower issues by tracking which months have the highest number of leaves.
-  * As a HR admin, I can better plan birthday celebrations by tracking which employees have birthdays for that particular month.
-  * As a HR admin, I can process employee's claims efficiently and accurately.
+  * As an HR admin, I can perform basic CRUD operations (Create/Read/Update/Delete) for all the employees in my organisation.
+  * As an HR admin, I can list all the employees in the organisation.
+  * As an HR admin, I can better forecast manpower issues by tracking which months have the highest number of leaves.
+  * As an HR admin, I can better plan birthday celebrations by tracking which employees have birthdays for that particular month.
+  * As an HR admin, I can process employee's claims efficiently and accurately.
+  * As a user, I can change the application's theme to my liking.
 
-* The project is constructed based an ongoing software project (called _HR Insight_), a desktop application used for managing employee details.
+* The project is constructed based on an ongoing software project (called _HR Insight_), a desktop application used for managing employee details.
   * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
   * It comes with a **reasonable level of user and developer documentation**.
 
-* It is named `HR Insight` because it provides HR employees an extensive insight into an organisation. 
+* It is named `HR Insight` because it provides HR employees with extensive insight into an organisation. 
 * For the detailed documentation of this project, see the **[HR Insight Product Website](https://ay2324s1-cs2103-f13-2.github.io/tp/)**.
 * This project is a **part of the CS2103** course structure.
