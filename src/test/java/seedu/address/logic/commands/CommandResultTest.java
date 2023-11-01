@@ -54,7 +54,7 @@ public class CommandResultTest {
 
     @Test
     public void themeChangeCommandsTest() {
-        CommandResult commandResult =  new CommandResult("feedback", false, false, true, "RedTheme.css");
+        CommandResult commandResult = new CommandResult("feedback", false, false, true, "RedTheme.css");
         assertTrue(commandResult.isChangeTheme());
         assertEquals(commandResult.getThemeStylesheet(), "RedTheme.css");
     }
