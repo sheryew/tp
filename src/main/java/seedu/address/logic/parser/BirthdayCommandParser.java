@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.address.logic.Messages;
@@ -27,17 +29,35 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
         requireNonNull(args);
         if (args.trim().isEmpty()) {
             LocalDate date = LocalDate.now();
-            MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(new Month(date.getMonthValue()));
+            List<Month> monthList = new ArrayList<>();
+            monthList.add(new Month(date.getMonthValue()));
+            MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(monthList);
             return new BirthdayCommand(predicate);
         }
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_MONTH);
         if (!arePrefixesPresent(argMultimap, PREFIX_MONTH)) {
             throw new ParseException(Messages.MESSAGE_INVALID_MONTH_PREFIX);
         } else {
-            int monthValue = ParserUtil.parseMonth(argMultimap.getValue(PREFIX_MONTH).get());
-            MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(new Month(monthValue));
+            List<Month> monthList = parseBirthday(argMultimap.getValue(PREFIX_MONTH).get());
+            MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(monthList);
             return new BirthdayCommand(predicate);
         }
+    }
+
+    /**
+     * Parses a list of months given
+     * @param arg Months as strings
+     * @return a list of Months
+     */
+    public List<Month> parseBirthday(String arg) {
+        arg = arg.trim();
+        List<Month> monthList = new ArrayList<>();
+        String[] args = arg.split(",");
+        for (String s : args) {
+            int month = Integer.parseInt(s);
+            monthList.add(new Month(month));
+        }
+        return monthList;
     }
 
     /**

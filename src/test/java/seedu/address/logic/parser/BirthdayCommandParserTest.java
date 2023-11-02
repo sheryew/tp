@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,15 +19,27 @@ public class BirthdayCommandParserTest {
 
     @Test
     public void parse_validArgs_returnsBirthdayCommand() throws ParseException {
-        BirthdayCommand successfulMatch = new BirthdayCommand(new MatchingBirthdayPredicate(new Month(3)));
+        List<Month> monthList = new ArrayList<>();
+        monthList.add(new Month(3));
+        BirthdayCommand successfulMatch = new BirthdayCommand(new MatchingBirthdayPredicate(monthList));
         assertEquals(parser.parse(" m/3"), successfulMatch);
     }
 
     @Test
+    public void parse_validMultipleArgs_returnsBirthdayCommand() throws ParseException {
+        List<Month> monthList = new ArrayList<>();
+        monthList.add(new Month(3));
+        monthList.add(new Month(4));
+        BirthdayCommand successfulMatch = new BirthdayCommand(new MatchingBirthdayPredicate(monthList));
+        assertEquals(parser.parse(" m/3,4"), successfulMatch);
+    }
+
+    @Test
     public void parse_noArgs_returnsBirthdayCommand() throws ParseException {
-        LocalDate date = LocalDate.now();
+        List<Month> monthList = new ArrayList<>();
+        monthList.add(new Month(LocalDate.now().getMonthValue()));
         BirthdayCommand currentMonthMatch = new BirthdayCommand(
-                new MatchingBirthdayPredicate(new Month(date.getMonthValue())));
+                new MatchingBirthdayPredicate(monthList));
         assertEquals(parser.parse(""), currentMonthMatch);
     }
 

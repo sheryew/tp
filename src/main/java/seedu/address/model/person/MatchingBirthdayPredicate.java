@@ -1,18 +1,19 @@
 package seedu.address.model.person;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
  * Tests that a {@code Person}'s {@code dob} matches the given the month.
  */
 public class MatchingBirthdayPredicate implements Predicate<Person> {
-    private final Month month;
+    private final List<Month> month;
 
-    public MatchingBirthdayPredicate(Month month) {
+    public MatchingBirthdayPredicate(List<Month> month) {
         this.month = month;
     }
 
-    public Month getMonth() {
+    public List<Month> getMonth() {
         return month;
     }
 
@@ -28,11 +29,17 @@ public class MatchingBirthdayPredicate implements Predicate<Person> {
         }
 
         MatchingBirthdayPredicate otherPredicate = (MatchingBirthdayPredicate) other;
-        return month.equals(otherPredicate.getMonth());
+        List<Month> otherList = otherPredicate.getMonth();
+        for (int i = 0; i < this.month.size(); i++) {
+            if (!this.month.get(i).equals(otherList.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean test(Person person) {
-        return this.month.equals(person.getDob().getMonth());
+        return this.month.contains(person.getDob().getMonth());
     }
 }
