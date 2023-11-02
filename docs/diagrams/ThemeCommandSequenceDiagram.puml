@@ -1,0 +1,45 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box UI UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":ThemeCommandParser" as ThemeCommandParser LOGIC_COLOR
+participant ":ThemeCommand" as ThemeCommand LOGIC_COLOR
+end box
+
+activate MainWindow
+MainWindow-> LogicManager : executeCommand(theme light)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(theme light)
+activate AddressBookParser
+
+create ThemeCommandParser
+AddressBookParser -> ThemeCommandParser : parse( light)
+activate ThemeCommandParser
+
+create ThemeCommand
+ThemeCommandParser -> ThemeCommand : ThemeCommand(LightTheme.css)
+activate ThemeCommand
+
+ThemeCommand --> ThemeCommandParser
+deactivate ThemeCommand
+
+ThemeCommandParser --> AddressBookParser : ThemeCommand
+deactivate ThemeCommandParser
+
+AddressBookParser --> LogicManager : ThemeCommand
+deactivate AddressBookParser
+
+LogicManager --> MainWindow : CommandResult
+deactivate LogicManager
+
+MainWindow -> MainWindow : setTheme(LightTheme.css)
+
+@enduml
