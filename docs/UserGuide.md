@@ -45,7 +45,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `leave 1 m/1` : Indicates 1st employee in the list will be taking leave in Jan.
    
-   - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
+   - `view_leave m/2` : Displays employees who have taken leaves in the Feb.
    
    - `reset_leaves` : Resets all employees to have no recorded leaves.
    
@@ -61,9 +61,12 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
+   - `theme light` : Change the application theme to light theme.
+
    - `exit` : Exits the app.
 
 6. You can navigate through your previous commands using <button>&uarr;</button> or <button>&darr;</button> on your keyboard, just like your computer's CLI or terminal.
+
 
 7. Refer to the [Features](#features) below for details of each command.
 
@@ -216,10 +219,10 @@ Examples:
 
 Views all employees who are on leave, with optional filters of month and department.
 
-Format:  `view_leave [INDEX] [m/Month] [d/DEPARTMENT]`
+Format:  `view_leave [m/Month] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
-- The index of the employee, month and department are optional arguments.
+- The month and department are optional arguments.
 - If no one has planned leave dates for the month, **No one is taking leave** output is shown.
 
 Examples:
@@ -298,6 +301,17 @@ Format:  `export [file_name]`
 Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
+### Changing the Application Theme : `theme`
+
+Changes the theme of the application according to the current available options.
+
+Format: `theme THEME_NAME`
+
+Current available themes:
+`dark`, `light`, `red`, `green`, `blue`.
+
+Examples:
+- `theme red` Changes the application theme to the red theme.
 
 ### Exiting the app: `exit`
 
@@ -355,4 +369,5 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
+| **Change Theme**    | `theme THEME_NAME` <br> e.g., `theme light`                                                                                                                          |
 | **Exit**            | `exit`                                                                                                                                                                                                                   |
