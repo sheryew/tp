@@ -61,9 +61,11 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
-  - `exit` : Exits the app.
+   - `theme light` : Change the application theme to light theme.
 
-6. Refer to the [Features](#features) below for details of each command.
+   - `exit` : Exits the app.
+
+7. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -296,6 +298,17 @@ Format:  `export [file_name]`
 - Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
+### Changing the Application Theme : `theme`
+
+Changes the theme of the application according to the current available options.
+
+Format: `theme THEME_NAME`
+
+Current available themes:
+`dark`, `light`, `red`, `green`, `blue`.
+
+Examples:
+- `theme red` Changes the application theme to the red theme.
 
 ### Exiting the app: `exit`
 
@@ -353,4 +366,5 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
+| **Change Theme**    | `theme THEME_NAME` <br> e.g., `theme light`                                                                                                                          |
 | **Exit**            | `exit`                                                                                                                                                                                                                   |
