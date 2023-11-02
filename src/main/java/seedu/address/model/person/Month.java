@@ -1,5 +1,8 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
+
 /**
  * Represents the month of the dob of the person.
  */
@@ -15,6 +18,7 @@ public class Month {
             "Month provided cannot be 0.";
     public static final String MESSAGE_CONSTRAINTS_MONTH_INVALID_CHARACTERS =
             "Month provided cannot be a decimal nor contain alphabets.";
+    public static final String INVALID_MONTH = "Invalid month(s) provided.";
 
     public final int month;
 
@@ -23,6 +27,8 @@ public class Month {
      * @param monthValue the integer representation of the intended month.
      */
     public Month(int monthValue) {
+        requireNonNull(monthValue);
+        checkArgument(monthValue > 0 && monthValue < 13, INVALID_MONTH);
         month = monthValue;
     }
 
@@ -71,7 +77,7 @@ public class Month {
     public static boolean isValidMonth(String monthString) {
         String monthTrimmed = monthString.trim();
         int value = Integer.parseInt(monthTrimmed);
-        return value < 13;
+        return value > 0 && value < 13;
     }
 
     public int getMonthValue() {
