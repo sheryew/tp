@@ -231,18 +231,21 @@ Reset all employees to have no recorded leaves.
 
 Format: `reset_leaves`
 
-### Viewing all birthdays in a given month : `birthday`
+### Viewing all birthdays in the given months : `birthday`
 
-Views all employees’ birthday in the given month
+Views all employees’ birthday in the given months
 
-Format:  `birthday [m/MONTH]`
+Format:  `birthday [m/MONTH(s)]`
 
-- Gives a list of **all employees** who have upcoming birthdays in the **inquired month**
+- Gives a list of **all employees** who have upcoming birthdays in the **inquired month(s)**
 - The month argument is optional. If **no month** is provided, the upcoming birthdays in the current month are listed.
-- If there is no birthday in the month provided or the birthday is past the current date in the same month, return **No upcoming birthdays**
+- If there is no birthday in the month provided or the birthday is past the current date in the same month, 
+return **No employees have birthdays in this month**
 
 Examples:
-- `birthday` followed by `10` displays all employees who have their birthday in the month of October
+- `birthday` displays all employees who have their birthday in the current month
+- `birthday m/10` displays all employees who have their birthday in the month of October
+- `birthday m/1,3,4` displays all employees who have their birthday in the month of Jan, Mar and Apr
 
 
 ### Viewing employee's details: `view`
