@@ -28,6 +28,7 @@ import seedu.address.logic.commands.LeaveCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.ThemeCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.ViewLeaveCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -162,5 +163,10 @@ public class AddressBookParserTest {
     public void ensureEmptyArgument_isNotEmpty() throws Exception {
         assertThrows(ParseException.class, String.format(MESSAGE_NO_ARGUMENTS_EXPECTED, HelpCommand.COMMAND_WORD), ()
                 -> parser.parseCommand(HelpCommand.COMMAND_WORD + " abc ad"));
+    }
+
+    @Test
+    public void parseCommand_theme() throws Exception {
+        assertTrue(parser.parseCommand(ThemeCommand.COMMAND_WORD + " light") instanceof ThemeCommand);
     }
 }

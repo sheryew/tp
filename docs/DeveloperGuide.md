@@ -259,9 +259,33 @@ In this case, the `ViewLeaveCommandParser` will create `HasLeaveThisMonthPredica
 For every month specified, the parser will create a `HasLeaveThisMonthPredicate` and do an `or()` operation of the predicate, resulting in a `combinedPredicate` variable. The parser will also create a `MatchingDepartmentPredicate` and do an `and()` to the combinedPredicate().
 This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
 
+The sequence diagram below shows how the `leave` commands execute:
+<img src="images/LeaveCommandSequenceDiagram.png" width="900" />
+
+The sequence diagram below shows how the `view_leave` commands execute:
+<img src="images/ViewLeaveCommandSequenceDiagram.png" width="900" />
+
 #### Design Considerations
 
 **Aspect: How Leave executes:**
+
+* **Alternative 1 (current choice):** User can add and remove leaves at the same time for one employee.
+    * Pros: User can add and remove multiple leaves faster than doing it one by one.
+    * Cons: Might be confusing to the user at first, the expected format needs to be properly explained.
+
+* **Alternative 2:** Only allows one addition/removal at a time.
+    * Pros: Straightforward and intuitive for the users to understand.
+    * Cons: Takes longer for the user to add or remove multiple leaves for the same employee.
+
+**Aspect: How View Leave executes:**
+
+* **Alternative 1 (current choice):** User can view leaves for multiple months at once.
+    * Pros: The user can view all the employees with leaves in any of the specified months at once when the use case allows.
+    * Cons: Might be confusing to the user at first, the expected format needs to be properly explained. For example, it might be confusing whether the relationship of the months is an "and" or an "or". In this implementation, it is an "or", meaning it will show employees having leave(s) in any of the months instead of all of the months.
+
+* **Alternative 2:** Only allows users to view one leave month at a time.
+    * Pros: Straightforward and intuitive for the users to understand.
+    * Cons: There might be use cases where the user needs to compare and see different months at once.
 
 ### Birthday Feature
 
@@ -303,6 +327,41 @@ birthdays by month.
     * Pros: User will be able to view birthdays across multiple months with only one use of the command.<Br>
       (e.g. `birthday m/2,3` returns all birthdays in February and March )
     * Cons: We must ensure that every month given by the user is valid and mention which months have no birthdays.
+ 
+### Change Theme Feature
+
+#### Implementation
+
+This feature adds a way to change the theme of the application.
+The default theme is the dark theme, and it can be changed at any point of usage by using the command `theme`.
+This is implemented by adding a `Command#ThemeCommand` to take the user input of changing themes. 
+The actual changing of the theme itself is done by changing the stylesheet of the `MainWindow`.
+`MainWindow` keeps track of the current stylesheet and when it receives a theme change request, it will remove the current stylesheet and add the new stylesheet using the `setTheme()` function.
+
+Given below is an example usage scenario and how the birthday mechanism behaves at each step.
+
+Step 1: The user launches the application for the first time.
+
+Step 2: The user executes `theme` wishing to see the available themes.
+This command will return feedback that the theme is invalid, as there are no arguments detected. It will then show the names of the valid themes currently implemented. At the point of time of writing this developer guide, the available themes are `light`, `dark`, `red`, `green` and `blue`.
+
+Step 3: The user changes the theme by calling `theme red`.
+This command will pass through the `ThemeCommandParser` class that will parse the arguments given (`red` in this case). The parse class will then return a `ThemeCommand` containing the name of the stylesheet for the given theme. This will continue to get passed on to `MainWindow` through `CommandResult`. `MainWindow` will then execute the `setTheme()` function, which removes the current stylesheet and adds the new stylesheet to the `MainWindow.fxml` file.
+
+The sequence diagram below shows how the `theme` commands execute:
+<img src="images/ThemeCommandSequenceDiagram.png" width="900" />
+
+#### Design Considerations
+
+**Aspect: How Theme executes:**
+
+* **Alternative 1 (current choice):** Users can specify the theme they want to use.
+    * Pros: Users can have choices of themes they can use.
+    * Cons: More tedious to implement with a need for parsing user commands and translating them to stylesheets.
+
+* **Alternative 2:** Users can only switch between dark and light themes.
+    * Pros: Easier to implement, no need for arguments for the command.
+    * Cons: Limiting users' choices, the function will be harder to extend in the future.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -348,6 +407,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `*`      | user with color preferences                | change the application's theme          | like the user interface more                                    |
 
 *{More to be added}*
 
@@ -629,6 +689,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Changing Application's Theme**
+
+**MSS**
+
+1. User requests to change the current theme.
+2. The application theme changes.
+   Use case ends.
+
+**Extensions**
+* 1a. User didn't provide any theme names
+    * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+
+  Use case ends.
+
+* 1b. User provide invalid theme name.
+    * 1b1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+
+  Use case ends.
 
 *{More to be added}*
 
@@ -981,6 +1059,25 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2b. User provide excess filenames (> 1) to store the data.
     * 2b1. HR Insight shows an error message requesting user to specify only one filename.
+
+  Use case ends.
+
+**Use Case: Changing Application's Theme**
+
+**MSS**
+
+1. User requests to change the current theme.
+2. The application theme changes.
+   Use case ends.
+
+**Extensions**
+* 1a. User didn't provide any theme names
+    * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+
+  Use case ends.
+
+* 1b. User provide invalid theme name.
+    * 1b1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
 
   Use case ends.
 

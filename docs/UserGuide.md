@@ -45,7 +45,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `leave 1 m/1` : Indicates 1st employee in the list will be taking leave in Jan.
    
-   - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
+   - `view_leave m/2` : Displays employees who have taken leaves in the Feb.
    
    - `reset_leaves` : Resets all employees to have no recorded leaves.
    
@@ -61,9 +61,14 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
-  - `exit` : Exits the app.
+   - `theme light` : Change the application theme to light theme.
 
-6. Refer to the [Features](#features) below for details of each command.
+   - `exit` : Exits the app.
+
+6. You can navigate through your previous commands using <button>&uarr;</button> or <button>&darr;</button> on your keyboard, just like your computer's CLI or terminal.
+
+
+7. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -115,6 +120,10 @@ Examples:
 - `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
 - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21`
 
+Executing command: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
+
+![AddEmployeeBeforeAfter](images/AddIndividual.png)
+
 ### Listing all employees : `list`
 
 Lists all the details of an organization’s employees, or list all employees of a specified department.
@@ -125,6 +134,10 @@ Examples:
 
 - `list` Lists all employees in the employee list.
 - `list d/Engineering` Lists all employees in the Engineering department.
+
+Executing command: `list d/Engineering`
+
+![ListEmployeesBeforeAfter](images/ListEmployees.png)
 
 ### Deleting an employee : `delete`
 
@@ -141,6 +154,10 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd person in the employee list.
 - `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+Executing command: `delete 1`
+
+![DelEmployeeBeforeAfter](images/DeleteEmployee.png)
+
 ### Editing an employee's information : `edit`
 
 Edits an existing employee in the employee list by the specified index.
@@ -155,6 +172,10 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM
 Examples:
 
 - `edit 1 p/23423423 e/barry@example.com` Edits the phone number and email address of the 1st person to be `23423423` and `barry@example.com` respectively.
+
+Executing command: `edit 1 p/23423423 e/barry@example.com`
+
+![EditEmployeeBeforeAfter](images/EditEmployee.png)
 
 ### Finding employees by name: `find`
 
@@ -174,11 +195,19 @@ Examples:
 - `find John` returns `john` and `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
+Executing command: `find Bernice`
+
+![FindBeforeAfter](images/FindEmployee.png)
+
 ### Clearing all entries: `clear`
 
 Clear all entries from the employee list.
 
 Format: `clear`
+
+Executing Command: `clear`
+
+![ClearBeforeAfter](images/ClearCommand.png)
 
 ### Managing Employee's Claims: `claim`
 
@@ -195,6 +224,10 @@ Examples:
 - `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
 - `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
 
+Executing command: `claim 1 $/-500`
+
+![ClaimCommandBeforeAfter](images/claim.png)
+
 ### Adding Employee’s Leave: `leave`
 
 Adds leave months for an employee.
@@ -210,14 +243,18 @@ Examples:
 - `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
 - `list` followed by `leave 3 m/11,-12` adds a leave in Nov and removes a leave in Dec for the 3rd employee in the list.
 
+Executing command: `leave 1 m/1,3`
+
+![leaveBeforeAfter](images/AddLeave.png)
+
 ### Viewing all employees' leaves : `view_leave`
 
 Views all employees who are on leave, with optional filters of month and department.
 
-Format:  `view_leave [INDEX] [m/Month] [d/DEPARTMENT]`
+Format:  `view_leave [m/Month] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
-- The index of the employee, month and department are optional arguments.
+- The month and department are optional arguments.
 - If no one has planned leave dates for the month, **No one is taking leave** output is shown.
 
 Examples:
@@ -225,13 +262,21 @@ Examples:
 - `view_leave m/10` displays all employees that are taking leave in October
 - `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
 
+Executing command: `view_leave m/3`
+
+![viewLeaveBeforeAfter](images/ViewLeave.png)
+
 ### Resetting all employees' leaves : `reset_leaves`
 
 Reset all employees to have no recorded leaves.
 
 Format: `reset_leaves`
 
-### Viewing all birthdays in the given months : `birthday`
+Executing command: `reset_leaves`
+
+![ResetLeavesBeforeAfter](images/reset_leaves.png)
+
+### Viewing all birthdays in a given month : `birthday`
 
 Views all employees’ birthday in the given months
 
@@ -247,6 +292,9 @@ Examples:
 - `birthday m/10` displays all employees who have their birthday in the month of October
 - `birthday m/1,3,4` displays all employees who have their birthday in the month of Jan, Mar and Apr
 
+Executing command: `birthday m/1`
+
+![BirthdayBeforeAfter](images/Birthday.png)
 
 ### Viewing employee's details: `view`
 
@@ -261,6 +309,10 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 Examples:
 - `view` followed by `s/1,2` displays employees with list's index of 1 and 2 respective salaries.
 
+Executing command: `view p/1,5`
+
+![ViewAttributeBeforeAfter](images/viewAttribute.png)
+
 ### Sorting the employee list: `sort`
 
 Sorts the employee list based on the given parameter.
@@ -274,17 +326,29 @@ Examples:
 - `sort name` to sort the employee list based on name in ascending order.
 - `sort salary desc` to sort the employee list based on salary in descending order.
 
+Executing command: `sort name desc`
+
+![SortNamesBeforeAfter](images/SortNames.png)
+ 
 ### Undoing previous command: `undo`
 
 Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
+Executing command: `undo`
+
+![UndoBeforeAfter](images/UndoDelete.png)
+
 ### Redoing previous undone command: `redo`
 
 Redo the most recent command that was undone.
 
 Format: `redo`
+
+Executing command: `redo`
+
+![RedoBeforeAfter](images/Redo.png)
 
 ### Exporting employee's details: `export`
 
@@ -295,10 +359,29 @@ Format:  `export [file_name]`
 - ExportCommand provides HR employees a way to download employees' data into CSV format.
 - The exported file_name.csv will be found in the Exported_CSVs folder.
 - A maximum of one file_name has to be provided. File_name can comprise alphanumeric and special characters.
+- To export only a subset of employees, user should perform filtering before exporting.
 
-- Examples:
+Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
+- `list d/Engineering` then `export engineering_team` will only download employees in engineering department.
 
+![ExportCSVBeforeAfter](images/export.png)
+
+### Changing the Application Theme : `theme`
+
+Changes the theme of the application according to the current available options.
+
+Format: `theme THEME_NAME`
+
+Current available themes:
+`dark`, `light`, `red`, `green`, `blue`.
+
+Examples:
+- `theme red` Changes the application theme to the red theme.
+
+Executing command: `theme light`
+
+![changeThemeBeforeAfter](images/ThemeChange.png)
 
 ### Exiting the app: `exit`
 
@@ -356,4 +439,5 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
 | **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
+| **Change Theme**    | `theme THEME_NAME` <br> e.g., `theme light`                                                                                                                          |
 | **Exit**            | `exit`                                                                                                                                                                                                                   |
