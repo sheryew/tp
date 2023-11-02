@@ -65,6 +65,9 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
    - `exit` : Exits the app.
 
+6. You can navigate through your previous commands using <button>&uarr;</button> or <button>&darr;</button> on your keyboard, just like your computer's CLI or terminal.
+
+
 7. Refer to the [Features](#features) below for details of each command.
 
 ---
@@ -295,7 +298,7 @@ Format:  `export [file_name]`
 - The exported file_name.csv will be found in the Exported_CSVs folder.
 - A maximum of one file_name has to be provided. File_name can comprise alphanumeric and special characters.
 
-- Examples:
+Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
 
 ### Changing the Application Theme : `theme`

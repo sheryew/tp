@@ -51,6 +51,9 @@ public class Messages {
 
     public static final String MESSAGE_INVALID_MONTH_PREFIX = "Invalid prefix provided. Did you mean to type 'm/'?";
 
+    public static final String MESSAGE_INVALID_THEME = "Invalid theme specified.\nValid themes: "
+            + "dark, light, red, green, blue";
+
     /**
      * Returns an error message indicating the duplicate prefixes.
      */

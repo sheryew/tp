@@ -1,0 +1,57 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":ViewLeaveCommandParser" as ViewLeaveCommandParser LOGIC_COLOR
+participant ":ViewLeaveCommand" as ViewLeaveCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":HasLeaveAnyMonthPredicate" as HasLeaveAnyMonthPredicate MODEL_COLOR
+participant ":MatchingDepartmentPredicate" as MatchingDepartmentPredicate MODEL_COLOR
+end box
+
+[-> LogicManager : execute(view_leave d/engineering)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(view_leave d/engineering)
+activate AddressBookParser
+
+create ViewLeaveCommandParser
+AddressBookParser -> ViewLeaveCommandParser : parse(d/engineering)
+activate ViewLeaveCommandParser
+
+create HasLeaveAnyMonthPredicate
+ViewLeaveCommandParser -> HasLeaveAnyMonthPredicate : new HasLeaveAnyMonthPredicate()
+activate HasLeaveAnyMonthPredicate
+
+create MatchingDepartmentPredicate
+HasLeaveAnyMonthPredicate -> MatchingDepartmentPredicate : or(new MatchingDepartmentPredicate(Engineering))
+activate MatchingDepartmentPredicate
+
+MatchingDepartmentPredicate --> HasLeaveAnyMonthPredicate : combinedPredicate
+deactivate MatchingDepartmentPredicate
+
+HasLeaveAnyMonthPredicate --> ViewLeaveCommandParser
+deactivate HasLeaveAnyMonthPredicate
+
+create ViewLeaveCommand
+ViewLeaveCommandParser -> ViewLeaveCommand : ViewLeaveCommand(combinedPredicate)
+activate ViewLeaveCommand
+
+ViewLeaveCommand --> ViewLeaveCommandParser
+deactivate ViewLeaveCommand
+
+ViewLeaveCommandParser --> AddressBookParser : ViewLeaveCommand
+deactivate ViewLeaveCommandParser
+
+AddressBookParser --> LogicManager : ViewLeaveCommand
+deactivate AddressBookParser
+
+LogicManager -->[ : CommandResult
+deactivate LogicManager
+
+@enduml
