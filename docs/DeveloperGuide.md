@@ -260,10 +260,10 @@ For every month specified, the parser will create a `HasLeaveThisMonthPredicate`
 This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
 
 The sequence diagram below shows how the `leave` commands execute:
-<img src="images/LeaveCommandSequenceDiagram.png" width="550" />
+<img src="images/LeaveCommandSequenceDiagram.png" width="900" />
 
 The sequence diagram below shows how the `view_leave` commands execute:
-<img src="images/ViewLeaveCommandSequenceDiagram.png" width="550" />
+<img src="images/ViewLeaveCommandSequenceDiagram.png" width="900" />
 
 #### Design Considerations
 
@@ -349,7 +349,7 @@ Step 3: The user changes the theme by calling `theme red`.
 This command will pass through the `ThemeCommandParser` class that will parse the arguments given (`red` in this case). The parse class will then return a `ThemeCommand` containing the name of the stylesheet for the given theme. This will continue to get passed on to `MainWindow` through `CommandResult`. `MainWindow` will then execute the `setTheme()` function, which removes the current stylesheet and adds the new stylesheet to the `MainWindow.fxml` file.
 
 The sequence diagram below shows how the `theme` commands execute:
-<img src="images/ThemeCommandSequenceDiagram.png" width="550" />
+<img src="images/ThemeCommandSequenceDiagram.png" width="900" />
 
 #### Design Considerations
 
