@@ -63,7 +63,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 
   - `exit` : Exits the app.
 
-6. You can navigate through your previous commands using <button>&uarr;</button> or <button>&darr;</button> on your keyboard.
+6. You can navigate through your previous commands using <button>&uarr;</button> or <button>&darr;</button> on your keyboard, just like your computer's CLI or terminal.
 
 7. Refer to the [Features](#features) below for details of each command.
 
