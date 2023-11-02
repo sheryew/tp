@@ -2,6 +2,7 @@ package seedu.address.model.person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,8 @@ public class MonthTest {
     public void execute_monthEqualsSuccess() {
         Month testMonth = new Month(1);
         assertEquals(new Month(Integer.parseInt(VALID_MONTH)), testMonth);
+        assertEquals(testMonth, testMonth);
+        assertNotEquals(testMonth, null);
     }
 
     @Test
