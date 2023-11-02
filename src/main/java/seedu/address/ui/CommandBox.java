@@ -176,7 +176,7 @@ public class CommandBox extends UiPart<Region> {
         }
 
         /**
-         * Gets the previous input
+         * Gets the previous input.
          * @return the previous input
          */
         public String getPreviousInput() {
@@ -186,7 +186,7 @@ public class CommandBox extends UiPart<Region> {
         }
 
         /**
-         * Gets the next input
+         * Gets the next input.
          * @return the next input
          */
         public String getNextInput() {
