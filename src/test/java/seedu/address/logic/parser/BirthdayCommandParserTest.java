@@ -46,5 +46,6 @@ public class BirthdayCommandParserTest {
     @Test
     public void parse_invalidArgs_exceptionThrown() throws ParseException {
         assertThrows(ParseException.class, () -> parser.parse(" r/2"));
+        assertThrows(ParseException.class, () -> parser.parse(" m/a"));
     }
 }
