@@ -25,17 +25,17 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        <Label fx:id="name" text="\$first" styleClass="cell_big_label" wrapText="true"/>
       </HBox>
       <FlowPane fx:id="tags" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="salary" styleClass="cell_small_label" text="\$salary" />
-      <Label fx:id="claimBudget" styleClass="cell_small_label" text="\$claimBudget" />
-      <Label fx:id="department" styleClass="cell_small_label" text="\$department" />
-      <Label fx:id="dob" styleClass="cell_small_label" text="\$dob" />
-      <Label fx:id="leave" styleClass="cell_small_label" text="\$leave" />
+      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" wrapText="true"/>
+      <Label fx:id="address" styleClass="cell_small_label" text="\$address" wrapText="true"/>
+      <Label fx:id="email" styleClass="cell_small_label" text="\$email" wrapText="true"/>
+      <Label fx:id="salary" styleClass="cell_small_label" text="\$salary" wrapText="true"/>
+      <Label fx:id="claimBudget" styleClass="cell_small_label" text="\$claimBudget" wrapText="true"/>
+      <Label fx:id="department" styleClass="cell_small_label" text="\$department" wrapText="true"/>
+      <Label fx:id="dob" styleClass="cell_small_label" text="\$dob" wrapText="true"/>
+      <Label fx:id="leave" styleClass="cell_small_label" text="\$leave" wrapText="true"/>
     </VBox>
   </GridPane>
 </HBox>
