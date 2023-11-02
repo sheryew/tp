@@ -14,7 +14,6 @@ import seedu.address.model.person.Person;
  */
 public class ViewLeaveCommand extends Command {
 
-
     public static final String COMMAND_WORD = "view_leave";
 
     public static final String MESSAGE = Messages.MESSAGE_VIEW_LEAVE_SUCCESS;
