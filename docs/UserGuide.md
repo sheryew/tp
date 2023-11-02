@@ -45,7 +45,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
    
    - `leave 1 m/1` : Indicates 1st employee in the list will be taking leave in Jan.
    
-   - `view_leave 1 m/2` : Displays employees who have taken leaves in the Feb.
+   - `view_leave m/2` : Displays employees who have taken leaves in the Feb.
    
    - `reset_leaves` : Resets all employees to have no recorded leaves.
    
@@ -216,10 +216,10 @@ Examples:
 
 Views all employees who are on leave, with optional filters of month and department.
 
-Format:  `view_leave [INDEX] [m/Month] [d/DEPARTMENT]`
+Format:  `view_leave [m/Month] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
-- The index of the employee, month and department are optional arguments.
+- The month and department are optional arguments.
 - If no one has planned leave dates for the month, **No one is taking leave** output is shown.
 
 Examples:
