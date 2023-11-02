@@ -120,6 +120,10 @@ Examples:
 - `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
 - `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21`
 
+Executing command: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
+
+![AddEmployeeBeforeAfter](images/AddIndividual.png)
+
 ### Listing all employees : `list`
 
 Lists all the details of an organization’s employees, or list all employees of a specified department.
@@ -130,6 +134,10 @@ Examples:
 
 - `list` Lists all employees in the employee list.
 - `list d/Engineering` Lists all employees in the Engineering department.
+
+Executing command: `list d/Engineering`
+
+![ListEmployeesBeforeAfter](images/ListEmployees.png)
 
 ### Deleting an employee : `delete`
 
@@ -146,6 +154,10 @@ Examples:
 - `list` followed by `delete 2` deletes the 2nd person in the employee list.
 - `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+Executing command: `delete 1`
+
+![DelEmployeeBeforeAfter](images/DeleteEmployee.png)
+
 ### Editing an employee's information : `edit`
 
 Edits an existing employee in the employee list by the specified index.
@@ -160,6 +172,10 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM
 Examples:
 
 - `edit 1 p/23423423 e/barry@example.com` Edits the phone number and email address of the 1st person to be `23423423` and `barry@example.com` respectively.
+
+Executing command: `edit 1 p/23423423 e/barry@example.com`
+
+![EditEmployeeBeforeAfter](images/EditEmployee.png)
 
 ### Finding employees by name: `find`
 
@@ -179,11 +195,19 @@ Examples:
 - `find John` returns `john` and `John Doe`
 - `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
+Executing command: `find Bernice`
+
+![FindBeforeAfter](images/FindEmployee.png)
+
 ### Clearing all entries: `clear`
 
 Clear all entries from the employee list.
 
 Format: `clear`
+
+Executing Command: `clear`
+
+![ClearBeforeAfter](images/ClearCommand.png)
 
 ### Managing Employee's Claims: `claim`
 
@@ -219,6 +243,10 @@ Examples:
 - `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
 - `list` followed by `leave 3 m/11,-12` adds a leave in Nov and removes a leave in Dec for the 3rd employee in the list.
 
+Executing command: `leave 1 m/1,3`
+
+![leaveBeforeAfter](images/AddLeave.png)
+
 ### Viewing all employees' leaves : `view_leave`
 
 Views all employees who are on leave, with optional filters of month and department.
@@ -233,6 +261,10 @@ Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year
 - `view_leave m/10` displays all employees that are taking leave in October
 - `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
+
+Executing command: `view_leave m/3`
+
+![viewLeaveBeforeAfter](images/ViewLeave.png)
 
 ### Resetting all employees' leaves : `reset_leaves`
 
@@ -257,6 +289,9 @@ Format:  `birthday [m/MONTH]`
 Examples:
 - `birthday` followed by `10` displays all employees who have their birthday in the month of October
 
+Executing command: `birthday m/1`
+
+![BirthdayBeforeAfter](images/Birthday.png)
 
 ### Viewing employee's details: `view`
 
@@ -288,17 +323,29 @@ Examples:
 - `sort name` to sort the employee list based on name in ascending order.
 - `sort salary desc` to sort the employee list based on salary in descending order.
 
+Executing command: `sort name desc`
+
+![SortNamesBeforeAfter](images/SortNames.png)
+ 
 ### Undoing previous command: `undo`
 
 Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
+Executing command: `undo`
+
+![UndoBeforeAfter](images/UndoDelete.png)
+
 ### Redoing previous undone command: `redo`
 
 Redo the most recent command that was undone.
 
 Format: `redo`
+
+Executing command: `redo`
+
+![RedoBeforeAfter](images/Redo.png)
 
 ### Exporting employee's details: `export`
 
@@ -309,9 +356,11 @@ Format:  `export [file_name]`
 - ExportCommand provides HR employees a way to download employees' data into CSV format.
 - The exported file_name.csv will be found in the Exported_CSVs folder.
 - A maximum of one file_name has to be provided. File_name can comprise alphanumeric and special characters.
+- To export only a subset of employees, user should perform filtering before exporting.
 
 Examples:
 - `list` followed by `export all_data` will download all employees' attributes into a csv file.
+- `list d/Engineering` then `export engineering_team` will only download employees in engineering department.
 
 ![ExportCSVBeforeAfter](images/export.png)
 
@@ -326,6 +375,10 @@ Current available themes:
 
 Examples:
 - `theme red` Changes the application theme to the red theme.
+
+Executing command: `theme light`
+
+![changeThemeBeforeAfter](images/ThemeChange.png)
 
 ### Exiting the app: `exit`
 
