@@ -1,0 +1,38 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":LeaveCommandParser" as LeaveCommandParser LOGIC_COLOR
+participant ":LeaveCommand" as LeaveCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute(leave 1 m/3)
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand(leave 1 m/3)
+activate AddressBookParser
+
+create LeaveCommandParser
+AddressBookParser -> LeaveCommandParser : parse( 1 m/3)
+activate LeaveCommandParser
+
+create LeaveCommand
+LeaveCommandParser -> LeaveCommand : LeaveCommand(index, month)
+activate LeaveCommand
+
+LeaveCommand --> LeaveCommandParser
+deactivate LeaveCommand
+
+LeaveCommandParser --> AddressBookParser : LeaveCommand
+deactivate LeaveCommandParser
+
+AddressBookParser --> LogicManager : LeaveCommand
+deactivate AddressBookParser
+
+LogicManager -->[ : CommandResult
+deactivate LogicManager
+
+@enduml
