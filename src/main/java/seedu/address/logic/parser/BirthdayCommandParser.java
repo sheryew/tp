@@ -49,13 +49,17 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
      * @param arg Months as strings
      * @return a list of Months
      */
-    public List<Month> parseBirthday(String arg) {
+    public List<Month> parseBirthday(String arg) throws ParseException {
         arg = arg.trim();
         List<Month> monthList = new ArrayList<>();
         String[] args = arg.split(",");
         for (String s : args) {
-            int month = Integer.parseInt(s);
-            monthList.add(new Month(month));
+            try {
+                int month = Integer.parseInt(s);
+                monthList.add(new Month(month));
+            } catch (Exception e) {
+                throw new ParseException(Month.INVALID_MONTH);
+            }
         }
         return monthList;
     }
