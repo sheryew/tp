@@ -1,5 +1,6 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
@@ -26,6 +27,7 @@ public class Month {
      * @param monthValue the integer representation of the intended month.
      */
     public Month(int monthValue) {
+        requireNonNull(monthValue);
         checkArgument(monthValue > 0 && monthValue < 13, INVALID_MONTH);
         month = monthValue;
     }
