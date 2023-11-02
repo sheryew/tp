@@ -259,6 +259,12 @@ In this case, the `ViewLeaveCommandParser` will create `HasLeaveThisMonthPredica
 For every month specified, the parser will create a `HasLeaveThisMonthPredicate` and do an `or()` operation of the predicate, resulting in a `combinedPredicate` variable. The parser will also create a `MatchingDepartmentPredicate` and do an `and()` to the combinedPredicate().
 This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
 
+The sequence diagram below shows how the `leave` commands execute:
+<img src="images/LeaveCommandSequenceDiagram.png" width="550" />
+
+The sequence diagram below shows how the `view_leave` commands execute:
+<img src="images/ViewLeaveCommandSequenceDiagram.png" width="550" />
+
 #### Design Considerations
 
 **Aspect: How Leave executes:**
@@ -342,6 +348,8 @@ This command will return feedback that the theme is invalid, as there are no arg
 Step 3: The user changes the theme by calling `theme red`.
 This command will pass through the `ThemeCommandParser` class that will parse the arguments given (`red` in this case). The parse class will then return a `ThemeCommand` containing the name of the stylesheet for the given theme. This will continue to get passed on to `MainWindow` through `CommandResult`. `MainWindow` will then execute the `setTheme()` function, which removes the current stylesheet and adds the new stylesheet to the `MainWindow.fxml` file.
 
+The sequence diagram below shows how the `theme` commands execute:
+<img src="images/ThemeCommandSequenceDiagram.png" width="550" />
 
 #### Design Considerations
 
