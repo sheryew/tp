@@ -35,6 +35,12 @@ public class PersonTest {
         editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
+        editedAlice = new PersonBuilder(ALICE).withDob("1000-01-01").build();
+        assertFalse(ALICE.isSamePerson(editedAlice));
+
+        editedAlice = new PersonBuilder(ALICE).withPhone("911").withEmail("ecila@gmail.com").build();
+        assertFalse(ALICE.isSamePerson(editedAlice));
+
         // name differs in case, all other attributes same -> returns false
         Person editedBob = new PersonBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
         assertFalse(BOB.isSamePerson(editedBob));
