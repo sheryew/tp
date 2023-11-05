@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-HR Insight is a **desktop app for HR people, optimized for use via a Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+HR Insight is a **desktop app for HR people, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 - Table of Contents
 {:toc}
@@ -87,8 +87,8 @@ HR Insight is a **desktop app for HR people, optimized for use via a Line Interf
 - Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-- Parameters given outside the command format will be ignored.<br>
-   e.g. `list [d/DEPARTMENT]` only accepts `d/` parameter. `list z/all` will be treated the same as `list` since HRInsight will ignore parameters outside the command format.
+- Parameters given outside the command format will throw an error or affect other parameters.<br>
+   e.g. `list [d/DEPARTMENT]` only accepts `d/` parameter. `list z/all` will throw an error. 
 
 - We allow all employee names, not limited to alphanumeric names, to accommodate names such as `X AE A-Xii`, `dr. Adam Smith, Ph.D.`, and `$helly`.
 
@@ -345,6 +345,8 @@ Executing command: `undo`
 Redo the most recent command that was undone.
 
 Format: `redo`
+
+You cannot redo your most recent undone command if, after your last `undo`, you execute another command(s) that modifies the employee list.
 
 Executing command: `redo`
 
