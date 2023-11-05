@@ -209,7 +209,7 @@ Executing Command: `clear`
 
 ![ClearBeforeAfter](images/ClearCommand.png)
 
-### Managing Employee's Claims: `claim`
+### Managing employee's claims: `claim`
 
 Performs adjustments to employee's claims.
 
@@ -228,7 +228,7 @@ Executing command: `claim 1 $/-500`
 
 ![ClaimCommandBeforeAfter](images/claim.png)
 
-### Adding Employee’s Leave: `leave`
+### Adding employee’s Leave: `leave`
 
 Adds leave months for an employee.
 
@@ -404,6 +404,10 @@ HR Insight data are saved automatically as a JSON file `[JAR file location]/data
 **Caution:**
 If your changes to the data file makes its format invalid, HR Insight will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </box>
+
+### More detailed leave records [Coming soon]
+
+Currently, HR Insight only records employees' leave months. In v2.0, we will record the exact dates of employees' leaves.
 
 ---
 
