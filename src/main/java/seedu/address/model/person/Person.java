@@ -109,16 +109,14 @@ public class Person {
     }
 
     /**
-     * Returns true if both persons have the same name.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both persons are the same.
      */
     public boolean isSamePerson(Person otherPerson) {
         if (otherPerson == this) {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName());
+        return this.equals(otherPerson);
     }
 
     /**
@@ -138,9 +136,9 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address);
+                && dob.equals(otherPerson.dob)
+                && address.equals(otherPerson.address)
+                && (phone.equals(otherPerson.phone) || email.equals(otherPerson.email));
     }
 
     @Override
