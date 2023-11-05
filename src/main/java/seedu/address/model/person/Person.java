@@ -116,7 +116,7 @@ public class Person {
             return true;
         }
 
-        return this.equals(otherPerson);
+        return otherPerson != null && this.equals(otherPerson);
     }
 
     /**
