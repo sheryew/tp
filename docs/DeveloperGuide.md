@@ -2,8 +2,61 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
+
+## Table of Contents
+
+* [Acknowledgements](#acknowledgements)
+* [About this Developer Guide](#about-this-developer-guide)
+* [Setting up, getting started](#setting-up-getting-started)
+* [Design](#design)
+  * [Architecture](#architecture)
+  * [UI component](#ui-component)
+  * [Logic component](#logic-component)
+  * [Model component](#model-component)
+  * [Storage component](#storage-component)
+  * [Common Classes](#common-classes)
+* [Implementation](#implementation)
+  * [Undo/Redo feature](#undoredo-feature)
+    * [Proposed Implementation](#proposed-implementation)
+    * [Design Considerations](#design-considerations)
+  * [Export Feature](#export-data-feature)
+    * [Proposed Implementation](#proposed-implementation-1)
+    * [Design Considerations](#design-considerations-1)
+  * [Leave Feature](#leave-feature)
+    * [Proposed Implementation](#implementation)
+    * [Design Consideration](#design-considerations-2)
+  * [Birthday Feature](#birthday-feature)
+    * [Proposed Implementation](#implementation-2)
+    * [Design Considerations](#design-considerations-3)
+  * [Change Theme Feature](#change-theme-feature)
+    * [Proposed Implementation](#implementation-3)
+    * [Design Considerations](#design-considerations-4)
+  * [Documentation, logging, testing, configuration, dev-ops](#documentation-logging-testing-configuration-dev-ops)
+  * [Appendix A: Requirements](#appendix-a-requirements)
+    * [Product Scope](#product-scope)
+    * [User Stories](#user-stories)
+    * [Use Cases](#use-cases)
+    * [Non-Functional Requirements](#non-functional-requirements)
+    * [Glossary](#glossary)
+  * [Appendix B: Instructions for manual testing](#appendix-b-instructions-for-manual-testing)
+    * [Launch and shutdown](#launch-and-shutdown)
+    * [Adding employee](#adding-an-employee)
+    * [Listing employees](#listing-an-employee)
+    * [Deleting employee](#delete-an-employee)
+    * [Editing employee](#edit-an-employee)
+    * [Finding employee](#find-an-employee)
+    * [Clear](#clear)
+    * [Claim](#claim)
+    * [Adding of leave](#adding-of-leave)
+    * [Viewing of leave](#viewing-of-leave)
+    * [Resetting of leave](#resetting-of-leaves)
+    * [Viewing of employees' birthdays](#viewing-of-employees-birthday)
+    * [Viewing of employee's attribute](#viewing-of-employees-details)
+    * [Sorting the employee list](#sorting-the-employee-list)
+    * [Undo](#undo)
+    * [Redo](#redo)
+    * [Exporting employees' details](#exporting-employees-details)
+    * [Changing the application theme](#changing-the-application-theme)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -554,7 +607,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User requests to list all employees.
 2.  HR Insight shows a list of employees.
-3.  User requests to add or deduct an amount from an employee's claim by specifying the employee's index.
+3.  User requests to allocate or deduct an amount from the employee's claim budget by specifying the employee's index.
 4.  HR Insight displays the updated claim of the specified employee.
 
     Use case ends.
@@ -626,14 +679,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. HR Insight shows the leave dates of the specified employee.
 
   Use case ends.
+
 * 1b. User provides a specific month.
     * 1b1. HR Insight shows the leave dates of all employees occurring in the specified month.
 
   Use case ends
+
 * 1c. User provides a specific department.
     * 1c1. HR Insight shows the leave dates of all employees in the specified department.
 
   Use case ends.
+
 * 1d. User provides an invalid index/month/department.
     * 1d1. HR Insight shows an error message.
 
@@ -656,6 +712,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to view the birthdays of all employees.
 2. HR Insight shows the birthdays of all employees.
+
    Use case ends.
 
 **Extensions**
@@ -663,6 +720,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. HR Insight shows all birthdays in the specified month.
 
   Use case ends.
+
 * 1b. User provides an invalid month.
     * 1b1. HR Insight shows an error message.
 
@@ -675,10 +733,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to view specific attribute of employee(s).
 2. HR Insight shows the specific attribute of the employee(s).
+
    Use case ends.
 
 **Extensions**
-* 1a. User provides a false attribute (Prefix).
+* 1a. User provides a false attribute parameter (AKA wrong prefix).
     * 1a1. HR Insight shows an error message.
     * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
 
@@ -704,6 +763,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. User requests to download Employee(s)' data into CSV format.
 2. User provides the filename in which the data will be stored as.
 3. HR Insight will download the file into Exported_CSVs folder.
+
    Use case ends.
 
 **Extensions**
@@ -724,10 +784,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1. User requests to change the current theme.
 2. The application theme changes.
+
    Use case ends.
 
 **Extensions**
-* 1a. User didn't provide any theme names
+* 1a. User didn't provide any theme names.
     * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
 
   Use case ends.
