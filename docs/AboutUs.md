@@ -25,7 +25,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/nixonwidjaja.md)]
 
 - Role: Developer
-- Responsibilities: Data
+- Responsibilities: Data Model and Logic
 
 ### Remus Lum
 
