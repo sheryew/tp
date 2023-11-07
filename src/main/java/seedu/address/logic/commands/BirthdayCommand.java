@@ -15,7 +15,7 @@ public class BirthdayCommand extends Command {
             + ": Gives a list of all employees who have birthdays in the given month.\n"
             + "Parameters (Optional): "
             + PREFIX_MONTH + "MONTH";
-    public static final String MESSAGE_SUCCESS = Messages.MESSAGE_LIST_SUCCESS;
+    public static final String MESSAGE_SUCCESS = Messages.MESSAGE_LIST_SUCCESS + " in the month of ";
     public static final String MESSAGE_FAILURE = Messages.MESSAGE_BIRTHDAY_FAILURE;
     private final MatchingBirthdayPredicate predicate;
 
@@ -38,7 +38,9 @@ public class BirthdayCommand extends Command {
         if (model.getFilteredPersonList().isEmpty()) {
             return new CommandResult(MESSAGE_FAILURE);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, model.getFilteredPersonList().size()));
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, model.getFilteredPersonList().size())
+                + predicate.toString());
     }
 
     @Override

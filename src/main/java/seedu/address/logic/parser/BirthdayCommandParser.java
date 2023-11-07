@@ -38,6 +38,7 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_MONTH)) {
             throw new ParseException(Messages.MESSAGE_INVALID_MONTH_PREFIX);
         } else {
+            argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MONTH);
             List<Month> monthList = parseBirthday(argMultimap.getValue(PREFIX_MONTH).get());
             MatchingBirthdayPredicate predicate = new MatchingBirthdayPredicate(monthList);
             return new BirthdayCommand(predicate);
@@ -46,20 +47,16 @@ public class BirthdayCommandParser implements Parser<BirthdayCommand> {
 
     /**
      * Parses a list of months given
-     * @param arg Months as strings
+     * @param args Months as strings
      * @return a list of Months
      */
-    public List<Month> parseBirthday(String arg) throws ParseException {
-        arg = arg.trim();
+    private List<Month> parseBirthday(String args) throws ParseException {
+        args = args.trim();
         List<Month> monthList = new ArrayList<>();
-        String[] args = arg.split(",");
-        for (String s : args) {
-            try {
-                int month = Integer.parseInt(s);
-                monthList.add(new Month(month));
-            } catch (Exception e) {
-                throw new ParseException(Month.INVALID_MONTH);
-            }
+        String[] months = args.split(",");
+        for (String month : months) {
+            int monthValue = ParserUtil.parseMonth(month);
+            monthList.add(new Month(monthValue));
         }
         return monthList;
     }
