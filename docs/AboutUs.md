@@ -15,7 +15,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/sheryew.md)]
 
 - Role: Team Lead
-- Responsibilities: UI
+- Responsibilities: Data Model and Logic
 
 ### Nixon Widjaja
 

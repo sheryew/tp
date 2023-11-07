@@ -5,52 +5,53 @@ title: Sher Yew's Project Portfolio Page
 
 ### Project: HR Insight
 
-HR Insight is a desktop app for HR people, optimized for use via a Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
-
-### IMPORTANT NOTICE
-
-This is a work in project. Everything below is merely a placeholder!
+HR Insight is a desktop app for HR people, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 
-- **New Feature**: Added the ability to undo/redo previous commands.
+- **New Feature**: Added the ability to manage claims of employees.
 
-  - What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  - Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  - Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  - Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+  - What it does: Allows users to keep track of remaining claim budget for each employee. Dynamic allocation/subtraction of claims for each employee, allowing latest claim budget to be displayed.
+  - Justification: This feature reduces the effort required for administrative claim processing, since excessive claims will be rejected automatically by the system and mathematical errors are avoided completely.
+  - Highlights: This feature is challenging since parsing checks are required to determine if user wants to allocate/subtract those funds and thereafter, having to produce different success commands.
+  - PR [#63] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/63 
 
-- **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+- **New Feature**: Added the ability to view specific attribute for employee(s).
 
-- **Code contributed**: [RepoSense link]()
+  - What it does: Allows users to view specific attribute for employee(s). Provides faster access to attributes for employee(s) instead of manual scraping the entire list for just one attribute. (PR)
+  - Justification: This feature is beneficial if user just wants to view one attribute for a large number of employees. Reduces time required for manual scraping of just that attribute for the whole list.
+  - Highlights: This feature is challenging as I incorporated multiple index parsing and the effort to ensure every index is captured and checked for validity is time-consuming.
+  - PR [#70]  https://github.com/AY2324S1-CS2103-F13-2/tp/pull/70
+
+- **New Feature**: Added the ability to export Employees' attributes into a CSV file.
+
+  - What it does: Allows users to export all employees' attributes into a CSV file. Additionally, users are able to export a subset of employees by filtering on criteria like department.
+  - Justification: This feature is beneficial as having a CSV file comprising of employees' attributes allow users to incorporate this data into third-party vendors. Allows our application to be used in harmony with others.
+  - Highlights: Learnt Java and its specific utility classes like PrintWriter and streams to make this feature functional.
+  - PR [#88] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/88
+
+- **New Feature**: Added the ability to reset all employees' leaves.
+
+  - What it does: Allows users to reset existing leaves for all employees.
+  - Justification: This feature is beneficial whenever a new calendar year strikes, since employees leaves are resetted to zero. We do not want previous year leaves to affect existing year leaves.
+  - PR [#117] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/117
+
+- **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=sheryew&breakdown=true)
 
 - **Project management**:
 
-  - Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-
-- **Enhancements to existing features**:
-
-  - Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  - Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  - Managed releases `v1.2` - `v1.3rc` (3 releases) on GitHub
+  - Conducted weekly meetings and jotted down meeting minutes on the project page.
 
 - **Documentation**:
 
   - User Guide:
-    - Added documentation for the features `delete` and `find` [\#72]()
-    - Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    - Added documentation for the features `claim`, `view_attribute`, `export` and `reset_leaves`.
+    - Added UI images (Before & After) for each feature. (PR [#119] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/119)
   - Developer Guide:
-    - Added implementation details of the `delete` feature.
+    - Added implementation details for `claim`, `view_attribute`, `export` and `reset_leaves`.
+    - Added UML diagrams for `export`.
 
 - **Community**:
 
-  - PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  - Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  - Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  - Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-- **Tools**:
-
-  - Integrated a third party library (Natty) to the project ([\#42]())
-  - Integrated a new Github plugin (CircleCI) to the team repo
-
-- _{you can add/remove categories in the list above}_
+  - PRs reviewed.
