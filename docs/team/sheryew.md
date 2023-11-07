@@ -54,4 +54,4 @@ Given below are my contributions to the project.
 
 - **Community**:
 
-  - PRs reviewed.
+  - PRs reviewed. (PR [#130] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/130), (PR [#85] https://github.com/AY2324S1-CS2103-F13-2/tp/pull/85), (PR [#30], https://github.com/AY2324S1-CS2103-F13-2/tp/pull/30)
