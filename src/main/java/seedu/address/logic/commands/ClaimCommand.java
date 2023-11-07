@@ -24,6 +24,7 @@ public class ClaimCommand extends Command {
                     + "Example: claim 1 $/+500";
     public static final String AMOUNT_EMPTY = "Kindly state the amount that the employee hopes to process!";
     public static final String CLAIM_SUCCESS = "Claim has been successfully processed!\n";
+    public static final String ALLOCATE_SUCCESS = "Allocation has been successfully processed!\n";
 
     private final Index index;
     private final Boolean isSubtract;
@@ -68,8 +69,9 @@ public class ClaimCommand extends Command {
         model.addCommandText(commandText);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        return new CommandResult(String.format("%s Remaining claim %s has: %s",
-                CLAIM_SUCCESS, editedPerson.getName(), claimBudget));
+        String claimCommandPairing = isSubtract ? CLAIM_SUCCESS : ALLOCATE_SUCCESS;
+        return new CommandResult(String.format("%sRemaining claim budget %s has: %s",
+                claimCommandPairing, editedPerson.getName(), claimBudget));
     }
 
     /**
@@ -103,7 +105,7 @@ public class ClaimCommand extends Command {
     public Person postClaimPerson(Person personToEdit, Money claimBudget) {
         return new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), personToEdit.getSalary(), claimBudget,
-                    personToEdit.getDepartment(), personToEdit.getDob());
+                    personToEdit.getDepartment(), personToEdit.getDob(), personToEdit.getLeave());
     }
 
     @Override
