@@ -13,6 +13,15 @@ title: Developer Guide
 
 --------------------------------------------------------------------------------------------------------------------
 
+## **About this Developer Guide**
+
+This guides aims to:
+1. Provide developers with a brief overview of the design architecture of our product.
+2. Explain some design considerations in the development of the application.
+3. Provide interested developers with documentation to continue development of our product.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -190,6 +199,8 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
   * Pros: Less memory.
   * Cons: More complications on the logic side: undoing `add` = `delete`, undoing `clear` = `add` back all employees, etc.
 
+
+
 ### Export Data Feature
 
 #### Proposed Implementation
@@ -231,6 +242,9 @@ The following activity diagram summarizes what happens when a user attempts to e
 * **Alternative 2:** Full flexibility for user to select the exported location of one's files.
     * Pros: User can perform better categorisation of data according to organisation's needs.
     * Cons: Harder to implement since program needs to know which locations are out-of-bounds. Example: src files.
+
+
+
 
 ### Leave Feature
 
@@ -287,6 +301,9 @@ The sequence diagram below shows how the `view_leave` commands execute:
     * Pros: Straightforward and intuitive for the users to understand.
     * Cons: There might be use cases where the user needs to compare and see different months at once.
 
+
+
+
 ### Birthday Feature
 
 #### Implementation
@@ -328,6 +345,9 @@ birthdays by month.
       (e.g. `birthday m/2,3` returns all birthdays in February and March )
     * Cons: We must ensure that every month given by the user is valid and mention which months have no birthdays.
  
+
+
+
 ### Change Theme Feature
 
 #### Implementation
@@ -375,7 +395,7 @@ The sequence diagram below shows how the `theme` commands execute:
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix A: Requirements**
 
 ### Product scope
 
@@ -388,7 +408,6 @@ The sequence diagram below shows how the `theme` commands execute:
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: Provide a platform for Startup HR workers without a solid employee data management system.
-
 
 ### User stories
 
@@ -440,6 +459,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+
 **Use case: Edit an Employee**
 
 **MSS**
@@ -477,6 +497,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 2.
 
+
 **Use case: Delete an Employee**
 
 **MSS**
@@ -502,6 +523,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from step 2.
 
+
 **Use case: List Employees**
 
 **MSS**
@@ -524,6 +546,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. HR Insight shows an error message.
 
       Use case resumes from step 3.
+
 
 **Use case: Managing Employee's Claim**
 
@@ -562,6 +585,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+
 **Use case: Adding Employee's Leaves**
 
 **MSS**
@@ -586,6 +610,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. HR Insight shows an error message.
 
   Use case ends.
+
 
 **Use Case: Viewing Employees' Leaves**
 
@@ -613,6 +638,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1d1. HR Insight shows an error message.
 
   Use case ends.
+
 
 **Use Case: Resetting Employees' Leaves**
 
@@ -642,378 +668,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-**Use Case: Viewing Employee(s)' Attribute**
-
-**MSS**
-
-1. User requests to view specific attribute of employee(s).
-2. HR Insight shows the specific attribute of the employee(s).
-   Use case ends.
-
-**Extensions**
-* 1a. User provides a false attribute (Prefix).
-    * 1a1. HR Insight shows an error message.
-    * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
-
-  Use case ends.
-
-* 1b. User didn't provide any attribute that one wants to view.
-    * 1b1. HR Insight shows an error message.
-    * 1b2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
-
-  Use case ends.
-
-* 1c. User provides more than 1 prefix/attribute that one wants to view.
-    * 1c1. HR Insight shows an error message informing user of the one attribute limit.
-    * 1c2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
-
-  Use case ends.
-
-**Use Case: Exporting Employee(s)' data**
-
-**MSS**
-
-1. User requests to download Employee(s)' data into CSV format.
-2. User provides the filename in which the data will be stored as.
-3. HR Insight will download the file into Exported_CSVs folder.
-   Use case ends.
-
-**Extensions**
-* 2a. User didn't provide any filename to store all the data.
-    * 2a1. HR Insight shows an error message requesting user to indicate a filename.
-
-  Use case ends.
-
-* 2b. User provide excess filenames (> 1) to store the data.
-    * 2b1. HR Insight shows an error message requesting user to specify only one filename.
-
-  Use case ends.
-
-**Use Case: Changing Application's Theme**
-
-**MSS**
-
-1. User requests to change the current theme.
-2. The application theme changes.
-   Use case ends.
-
-**Extensions**
-* 1a. User didn't provide any theme names
-    * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
-
-  Use case ends.
-
-* 1b. User provide invalid theme name.
-    * 1b1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
-
-  Use case ends.
-
-*{More to be added}*
-
-### Non-Functional Requirements
-
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  HR people with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  Should respond quickly to user input with minimal latency.
-5.  Should not crash under normal usage conditions.
-6.  Should have mechanisms to recover gracefully from unexpected errors or crashes.
-7.  Should have comprehensive user guide and documentation for developers.
-
-*{More to be added}*
-
-### Glossary
-
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Private contact detail**: A contact detail that is not meant to be shared with others
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Instructions for manual testing**
-
-Given below are instructions to test the app manually.
-
-ter()`-- Performs writing of Person's attributes into the created File Object in `generateFile()`.
-
-Given below is an example usage scenario and how the export mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The initial address book state will display all the employees.
-
-Step 2. The user executes `list d/Engineering` command which filters employees belonging to the Engineering department. This command also executes `getFilteredPersonList()` that alters the Model by containing only the filtered Person list.
-
-Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person Objects from the currentModel and extracting their attributes into a List.
-
-Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `PrintWriter()` are called sequentially to allow writing of Person' attributes into the exported CSV file.
-
-The following sequence diagram shows how the export operation works:
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Documentation, logging, testing, configuration, dev-ops**
-
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
-
---------------------------------------------------------------------------------------------------------------------
-
-## **Appendix: Requirements**
-
-### Product scope
-
-**Target user profile**:
-
-* for HR people to manage employee data in the company, including employees' claims and leaves
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
-
-**Value proposition**: Provide a platform for Startup HR workers without a solid employee data management system.
-
-
-### User stories
-
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
-
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | HR employee                                  | add all employee's information       | manage all employee's information.                |
-| `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
-| `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
-| `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
-| `* * *`  | HR employee                                      | process employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
-| `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
-| `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
-| `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
-| `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
-
-### Use cases
-
-(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR people`, unless specified otherwise)
-
-**Use case: Add an Employee**
-
-**MSS**
-
-1.  User requests to add an employee with specified information.
-2.  HR Insight adds an employee with the given information.
-3.  HR Insight indicates that the new employee has been added.
-4.  HR Insight shows a list of employees including the new employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. At least one of the required information is empty or invalid.
-
-    * 2a1. HR Insight shows an error message.
-
-      Use case ends.
-
-* 3a. The employee already exists.
-
-    * 3a1. HR Insight indicates that the employee already exists.
-
-      Use case ends.
-
-**Use case: Edit an Employee**
-
-**MSS**
-
-1.  User requests to list employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to edit an employee in the list specified by its index, with the employee's new information.
-4.  HR Insight edits the employee.
-5.  HR Insight indicates that the employee has been edited.
-6.  HR Insight shows a list of employees, with the employee's information now edited.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 2.
-
-* 3b. User does not specify any new information for the employee.
-
-   * 3b1. HR Insight shows an error message that at least one field to edit must be provided.
-
-     Use case resumes from step 2.
-
-* 3c. At least one of the field given by the user is empty or invalid.
-
-   * 3c1. HR Insight shows an error message.
-
-     Use case resumes from step 2.
-
-**Use case: Delete an Employee**
-
-**MSS**
-
-1.  User requests to list employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to delete an employee in the list specified by its index.
-4.  HR Insight deletes the employee.
-5.  HR Insight indicates that the employee has been deleted.
-6.  HR Insight shows a list of employees excluding the deleted employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 2.
-
-**Use case: List Employees**
-
-**MSS**
-
-1.  User requests to list all employees.
-2.  HR Insight shows all employees of an organisation.
-3.  User requests to filter employees by a specified department.
-4.  HR Insight shows all employees of the specified department.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The employee's list is empty.
-
-  Use case ends.
-
-* 3a. The given department is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 3.
-
-**Use case: Managing Employee's Claim**
-
-**MSS**
-
-1.  User requests to list all employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to add or deduct an amount from an employee's claim by specifying the employee's index.
-4.  HR Insight displays the updated claim of the specified employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 3a. User didn't provide an index and/or claim amount.
-
-   * 3a1. HR Insight shows an error message.
-
-  Use case ends.
-
-* 3b. User provides a wrong index (Either negative or more than current headcount).
-
-    * 3b1. HR Insight shows an error message.
-
-  Use case ends.
-
-* 3c. User didn't provide +/- when stating the claim amount.
-
-   * 3c1. HR Insight shows an error message.
-
-  Use case ends.
-
-* 3d. User provides a claim amount that is greater than the employee's current entitlement fund balance (Only Applicable for -).
-
-   * 3d1. HR Insight shows an error message.
-
-  Use case ends.
-
-**Use case: Adding Employee's Leaves**
-
-**MSS**
-
-1.  User requests to list all employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to add a leave of a specified month for an employee.
-4.  HR Insight records the leave of the employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 3a. User provides a wrong index (Either negative or more than current headcount).
-
-    * 3a1. HR Insight shows an error message.
-
-  Use case ends.
-
-* 3b. User provides a wrong month (Either negative or more than 12).
-
-   * 3b1. HR Insight shows an error message.
-
-  Use case ends.
-
-**Use Case: Viewing Employees' Leaves**
-
-**MSS**
-
-1. User requests to view the leave dates of all employees.
-2. HR Insight shows the leave dates of all employees.
-
-   Use case ends.
-
-**Extensions**
-* 1a. User provides the index of a specific employee.
-  * 1a1. HR Insight shows the leave dates of the specified employee.
-
-  Use case ends.
-* 1b. User provides a specific month.
-  * 1b1. HR Insight shows the leave dates of all employees occurring in the specified month.
-
-  Use case ends
-* 1c. User provides a specific department.
-  * 1c1. HR Insight shows the leave dates of all employees in the specified department.
-
-  Use case ends.
-* 1d. User provides an invalid index/month/department.
-  * 1d1. HR Insight shows an error message.
-
-  Use case ends.
-
-**Use Case: Viewing Employees' Birthdays**
-
-**MSS**
-
-1. User requests to view the birthdays of all employees.
-2. HR Insight shows the birthdays of all employees.
-   Use case ends.
-
-**Extensions**
-* 1a. User provides a specific month.
-  * 1a1. HR Insight shows all birthdays in the specified month.
-
-  Use case ends.
-* 1b. User provides an invalid month.
-  * 1b1. HR Insight shows an error message.
-
-  Use case ends.
 
 **Use Case: Viewing Employee(s)' Attribute**
 
@@ -1042,6 +696,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+
 **Use Case: Exporting Employee(s)' data**
 
 **MSS**
@@ -1055,12 +710,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. User didn't provide any filename to store all the data.
     * 2a1. HR Insight shows an error message requesting user to indicate a filename.
 
-    Use case ends.
+  Use case ends.
 
 * 2b. User provide excess filenames (> 1) to store the data.
     * 2b1. HR Insight shows an error message requesting user to specify only one filename.
 
   Use case ends.
+
 
 **Use Case: Changing Application's Theme**
 
@@ -1082,7 +738,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
-*{More to be added}*
 
 ### Non-Functional Requirements
 
@@ -1094,7 +749,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6.  Should have mechanisms to recover gracefully from unexpected errors or crashes.
 7.  Should have comprehensive user guide and documentation for developers.
 
-*{More to be added}*
+
 
 ### Glossary
 
@@ -1103,9 +758,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix B: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
+Prerequisites: List all employees using the list command. The list is non-empty.
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
@@ -1117,39 +773,147 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
-
-1. Saving window preferences
+2. Saving window preferences 
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   2. Re-launch the app by double-clicking the jar file.<br>
+   Expected: The most recent window size and location is retained.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+### Adding an employee
 
-1. _{ more test cases …​ }_
+1. Positive Test case: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
+   Expected: An employee added with name `adam`, phone `12345678`, email `adam@gmail.com`, address `Singapore`, salary `10000`, claim budget: `5000`, department: `Engineering` and DOB being `1 Jan 2000`.
 
-### Deleting a person
+2. Negative Test case: `add n/Adam`
+   Expected: Error message since other attributes like `phone`, `email`, `address`, `salary`, `claim_budget`, `department` and `DOB` are not provided.
 
-1. Deleting a person while all persons are being shown
+### Listing an employee
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Positive Test Case: `list`
+   Expected: Listed all employees (7)
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+2. Positive Test Case: `list d/Engineering`
+   Expected: Listed filtered employees (3)
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+### Delete an employee
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+1. Positive Test Case: `delete 1`
+   Expected: First employee is deleted from the list.
 
-1. _{ more test cases …​ }_
+2. Negative Test Case: `delete`
+   Expected: Error message since index is provided.
 
-### Saving data
+### Edit an employee
 
-1. Dealing with missing/corrupted data files
+1. Positive Test Case: `edit 1 p/23423423 e/barry@example.com`
+   Expected: Edited the first employee with a new phone number of `23423423` and new email of `barry@example.com`.
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+2. Negative Test Case: `edit`
+   Expected: Error message since user didn't provide any field that he/she hopes to edit.
 
-1. _{ more test cases …​ }_
+### Find an employee
+
+1. Positive Test Case: `find Alex`
+   Expected: Employees with the name of `Alex` will be displayed.
+
+2. Negative Test Case: `find`
+   Expected: Error message since keyword is not provided.
+
+### Clear
+
+1. Positive Test Case: `clear`
+   Expected: There will no longer be any employee's data left in the application.
+
+### Claim
+
+Prerequisites: The first employee has a claim budget of over > $500.
+
+1. Positive Test Case: `claim 1 $/-500`
+   Expected: The first employee will have his/her `claim budget` successfully deducted and will display the new remaining amount.
+
+2. Negative Test Case: `claim 1 $/500`
+   Expected: Error message since '+/-' was not provided before the amount, resulting in confusion on whether it is claim/allocation of funds. 
+
+### Adding of leave
+
+1. Positive Test Case: `leave 1 m/3`
+   Expected: First employee in the list will have the month `March` in his/her leave attribute.
+
+2. Negative Test CaseL `leave 1`
+   Expected: Error message since the `MONTHS` parameter was not provided.
+
+### Viewing of leave
+
+1. Positive Test Case: `view_leave m/10 d/IT`
+   Expected: Employees who belong to the IT department and have taken leave in the month of October will be displayed.
+
+2. Positive Test Case: `view_leave`
+   Expected: Employees who have taken leave in the current month (Month in which you are accessing HR Insight) will be displayed.
+
+### Resetting of Leaves
+
+1. Positive Test Case: `reset_leaves`
+   Expected: All employees will no longer have any recorded leaves.
+
+### Viewing of employees' birthday
+
+1. Positive Test Case: `birthday m/10`
+   Expected: Employees who have birthday in the month of October will be displayed.
+
+2. Negative Test Case: `birthday m/69`
+   Expected: Error message since 69 is not a valid month.
+
+### Viewing of employee's details
+
+1. Positive Test Case: `view p/1,3,5`
+   Expected: Phone numbers of the first, third and fifth employee in the list will be displayed.
+
+2. Negative Test Case: `view`
+   Expected: Error message since attribute parameter was not provided.
+
+### Sorting the employee list
+
+1. Positive Test Case: `sort name`
+   Expected: Employees in the list will have their names sorted ascending.
+
+2. Negative Test Case: `sort`
+   Expected: Error message since parameter is not provided.
+
+### Undo
+
+1. Undo a command when there is a command that modified the employee list previously. (Example: `Delete 1`)
+   1. Positive Test Case: `undo`
+      Expected: Restore the employee's details that was previously deleted, which in this case was employee 1.
+
+2. Undo a command when there is no command that modified the internship book previously.
+   1. Negative Test Case: `undo`
+      Expected: Error message since no command was executed prior.
+
+### Redo
+
+1. Redo a command when there is a command to redo.
+   Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `Delete 1` then `undo`)
+   1. Positive Test Case: `redo`
+      Expected: Delete the first employee in the list again.
+
+2. Redo a command when there is no command to redo.
+    1. Negative Test Case: `redo`
+       Expected: Error message since no command available to redo.
+
+### Exporting employee's details
+
+1. Positive Test Case: `export all_hands`
+   Expected: A CSV file with name `all_hands` will be produced in the `Exported_CSVs` folder with attributes for all employees.
+
+2. Negative Test Case: `export`
+   Expected: Error message since no `file_name` parameter is provided.
+
+### Changing the Application Theme
+
+1. Positive Test Case: `theme light`
+   Expected: GUI to change from black background color to white background color. The text is also expected to change from white to black.
+
+2. Negative Test Case: `theme pink`
+   Expected: Error message since pink is not part of the correct `THEME_NAME` parameter. 
