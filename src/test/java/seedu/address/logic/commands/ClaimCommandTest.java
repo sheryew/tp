@@ -39,7 +39,7 @@ public class ClaimCommandTest {
         ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, true, 1);
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(personToClaim, expectedPersonAfterClaim);
-        String expectedMessage = String.format("%s Remaining claim %s has: %s",
+        String expectedMessage = String.format("%sRemaining claim budget %s has: %s",
                 CLAIM_SUCCESS, expectedPersonAfterClaim.getName(), claimBudget);
         assertCommandSuccess(claimCommand, model, expectedMessage, expectedModel);
     }
@@ -78,7 +78,7 @@ public class ClaimCommandTest {
         Money newClaimBudget = new Money(String.valueOf(originalBudget + 1));
         Person expectedPerson = new Person(targetPerson.getName(), targetPerson.getPhone(), targetPerson.getEmail(),
                 targetPerson.getAddress(), targetPerson.getSalary(), newClaimBudget, targetPerson.getDepartment(),
-                    targetPerson.getDob());
+                    targetPerson.getDob(), targetPerson.getLeave());
         ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, true, 0);
         Person newPerson = claimCommand.postClaimPerson(targetPerson, newClaimBudget);
         assertEquals(newPerson.toString(), expectedPerson.toString());

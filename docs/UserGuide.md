@@ -218,11 +218,13 @@ Format: `claim INDEX $/CLAIM_AMOUNT`
 - The `INDEX` refers to the index number shown in the displayed employee list.
 - The index **must be a positive integer** 1,2,3, ...
 - The `CLAIM_AMOUNT` should consist of either + or - which symbolizes adding/deducting respectively followed by the amount.
+  - If the `CLAIM_AMOUNT` is positive, it symbolizes allocation of more funds to the user's claim budget.
+  - If the `CLAIM_AMOUNT` is negative, it symbolizes deduction of funds from the user's claim budget.
 
 Examples:
 
-- `list` followed by `claim 1 $/-500` deducts $50 from the claims of the 1st employee in the list.
-- `list` followed by `claim 2 $/+60` adds $60 to the claims of the 2nd employee in the list.
+- `list` followed by `claim 1 $/-500` deducts $50 from employee 1's claim budget.
+- `list` followed by `claim 2 $/+60` allocates additional $60 to employee 2's claim budget.
 
 Executing command: `claim 1 $/-500`
 
@@ -358,7 +360,7 @@ Format:  `export [file_name]`
 
 - ExportCommand provides HR employees a way to download employees' data into CSV format.
 - The exported file_name.csv will be found in the Exported_CSVs folder.
-- A maximum of one file_name has to be provided. File_name can comprise alphanumeric and special characters.
+- You must provide a file_name. File_name can comprise alphanumeric and special characters.
 - To export only a subset of employees, user should perform filtering before exporting.
 
 Examples:
