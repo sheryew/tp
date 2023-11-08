@@ -4,6 +4,8 @@ title: User Guide
 ---
 
 HR Insight is a **desktop app for HR people, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+The _purpose_ of this application is to provide **HR employees** a _central database_ to better manage their employees' details and **improve the
+efficiency** of their workflow. 
 
 - Table of Contents
 {:toc}
@@ -103,7 +105,7 @@ HR Insight is a **desktop app for HR people, optimized for use via a Command Lin
 
 ### Viewing help : `help`
 
-Automatically opens a new tab in your default brower to this User Guide page.
+Automatically opens a new tab in your default browser to this User Guide page.
 
 If HRInsight is unable to redirect you to the page, it will show a dialog box containing URL to this page.
 
@@ -285,9 +287,8 @@ Views all employees’ birthday in the given months
 Format:  `birthday [m/MONTH(s)]`
 
 - Gives a list of **all employees** who have upcoming birthdays in the **inquired month(s)**
-- The month argument is optional. If **no month** is provided, the upcoming birthdays in the current month are listed.
-- If there is no birthday in the month provided or the birthday is past the current date in the same month, 
-return **No employees have birthdays in this month**
+- The month argument is optional. If **no month** is provided, the birthdays in the **current month** are listed.
+- If there is no birthday in the month provided, return **No employees have birthdays in this month**
 
 Examples:
 - `birthday` displays all employees who have their birthday in the current month
