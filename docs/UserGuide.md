@@ -137,7 +137,9 @@ Examples:
 
 Executing command: `list d/Engineering`
 
-![ListEmployeesBeforeAfter](images/ListEmployees.png)
+![ListEmployeesBeforeAfter](images/ListEmployeesBefore.png)
+
+![ListEmployeesBeforeAfter](images/ListEmployeesAfter.png)
 
 ### Deleting an employee : `delete`
 
@@ -156,7 +158,9 @@ Examples:
 
 Executing command: `delete 1`
 
-![DelEmployeeBeforeAfter](images/DeleteEmployee.png)
+![DelEmployeeBeforeAfter](images/DeleteEmployeeBefore.png)
+
+![DelEmployeeBeforeAfter](images/DeleteEmployeeAfter.png)
 
 ### Editing an employee's information : `edit`
 
@@ -175,7 +179,9 @@ Examples:
 
 Executing command: `edit 1 p/23423423 e/barry@example.com`
 
-![EditEmployeeBeforeAfter](images/EditEmployee.png)
+![EditEmployeeBeforeAfter](images/EditEmployeeBefore.png)
+
+![EditEmployeeBeforeAfter](images/EditEmployeeAfter.png)
 
 ### Finding employees by name: `find`
 
@@ -197,7 +203,9 @@ Examples:
 
 Executing command: `find Bernice`
 
-![FindBeforeAfter](images/FindEmployee.png)
+![FindBeforeAfter](images/FindEmployeeBefore.png)
+
+![FindBeforeAfter](images/FindEmployeeAfter.png)
 
 ### Clearing all entries: `clear`
 
@@ -228,7 +236,9 @@ Examples:
 
 Executing command: `claim 1 $/-500`
 
-![ClaimCommandBeforeAfter](images/claim.png)
+![ClaimCommandBeforeAfter](images/ClaimBefore.png)
+
+![ClaimCommandBeforeAfter](images/ClaimAfter.png)
 
 ### Adding employee’s Leave: `leave`
 
@@ -247,7 +257,9 @@ Examples:
 
 Executing command: `leave 1 m/1,3`
 
-![leaveBeforeAfter](images/AddLeave.png)
+![leaveBeforeAfter](images/LeaveEmployeeBefore.png)
+
+![leaveBeforeAfter](images/LeaveEmployeeAfter.png)
 
 ### Viewing all employees' leaves : `view_leave`
 
@@ -266,7 +278,9 @@ Examples:
 
 Executing command: `view_leave m/3`
 
-![viewLeaveBeforeAfter](images/ViewLeave.png)
+![viewLeaveBeforeAfter](images/ViewLeaveBefore.png)
+
+![viewLeaveBeforeAfter](images/ViewLeaveAfter.png)
 
 ### Resetting all employees' leaves : `reset_leaves`
 
@@ -276,7 +290,9 @@ Format: `reset_leaves`
 
 Executing command: `reset_leaves`
 
-![ResetLeavesBeforeAfter](images/reset_leaves.png)
+![ResetLeavesBeforeAfter](images/ResetLeaveBefore.png)
+
+![ResetLeavesBeforeAfter](images/ResetLeaveAfter.png)
 
 ### Viewing all birthdays in a given month : `birthday`
 
@@ -296,7 +312,9 @@ Examples:
 
 Executing command: `birthday m/1`
 
-![BirthdayBeforeAfter](images/Birthday.png)
+![BirthdayBeforeAfter](images/BirthdayBefore.png)
+
+![BirthdayBeforeAfter](images/BirthdayAfter.png)
 
 ### Viewing employee's details: `view`
 
