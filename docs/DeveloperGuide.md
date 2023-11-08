@@ -192,7 +192,7 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
 
 ### Export Data Feature
 
-#### Proposed Implementation
+#### Implementation
 
 The proposed export mechanism is facilitated by `AddressBook`. Additionally, the operation is exposed in the Model interface which allows users to perform `filter` operation to discard selected portions of the Model interface before exporting.
 
@@ -312,7 +312,7 @@ The following sequence diagram shows how the `birthday` command works:
 
 ![SequenceDiagram](images/BirthdayCommand.png)
 
-### Design Considerations
+#### Design Considerations
 The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader
 range to work with. Furthermore, it is also a common practice for companies to have 1 celebration for all employees'
 birthdays in a month rather than having multiple individual celebrations. Hence, this feature is designed to show
@@ -1153,3 +1153,9 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+## **Appendix: Planned Enhancements**
+
+### More detailed leave records [Coming soon]
+
+Currently, HR Insight only records employees’ leave months. In v2.0, we will record the exact dates of employees’ leaves to provide more detailed leave records.

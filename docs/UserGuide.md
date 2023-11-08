@@ -409,7 +409,7 @@ If your changes to the data file makes its format invalid, HR Insight will disca
 
 ### More detailed leave records [Coming soon]
 
-Currently, HR Insight only records employees' leave months. In v2.0, we will record the exact dates of employees' leaves.
+Currently, HR Insight only records employees' leave months. In v2.0, we will record the exact dates of employees' leaves to provide more detailed leave records.
 
 ---
 
