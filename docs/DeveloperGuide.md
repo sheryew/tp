@@ -416,22 +416,25 @@ The sequence diagram below shows how the `theme` commands execute:
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+| Priority | As a(n) …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | HR employee                                  | add an employee's information       | manage all employee's information.                |
-| `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
-| `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
-| `* * *`  | HR employee                                  | list all employees    | can keep track of the company/department's headcount.          |
-| `* * *`  | HR employee                                      | manage employee's claim budget            | can either subtract or add to an employee's entitlement fund.                                                                        |
-| `* * *`  | HR employee                                      | have an overview on each employee's leaves         | can identify which employee needs to start clearing their annual leave days.  |
-| `* * *`  | HR employee                                      | update an employee's leaves         | keep track of the months that have the lowest manpower.                                                                        |
-| `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
+| `* * *`  | HR employee                                  | add an employee's information       |                 |
+| `* * *`  | HR employee                                  | update an employee's information       | have the latest information of the employee                |
+| `* * *`  | HR employee                                  | delete an employee's information       |                |
+| `* * *`  | HR employee                                  | list all employees    | see all employees' details in the company          |
+| `* * *`  | HR employee                  | add or subtract an employee's claim budget            | manage the employee's claims and allowance                     |
+| `* * *`  | HR employee                                      | have an overview on each employee's leaves         | track each employee's leaves  |
+| `* * *`  | HR employee                                      | update an employee's leaves         |                                                                    |
+| `* * *`  | HR employee                                      | reset all employees' leaves         | efficiently adjust their leaves at the start of a new year                                  |
+| `* *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand    |
 | `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
 | `* *`  | HR employee                                       | undo and redo my previous commands          | easily recover from input mistakes I made |
-| `*`      | HR employee | sort employees based on their details, e.g., name, salary, DOB, etc.           | infer some useful information from the employees data                                                 |
-| `*`      | HR employee with color preferences                | change the application's theme          | like the user interface more                                    |
+| `*`      | HR employee | sort employees based on their details, e.g., name, salary, DOB, etc.           | infer some useful information from the employees data         |
+| `*`      | HR employee               | export the employee list into a csv file          | send the file to my manager or other stakeholders for review                 |
+| `*`      | HR employee with color preferences                | change the application's theme          | adjust the user interface according to my preference                 |
+| `*`      | advanced HR employee                | navigate through my previous commands using up/down keys          | more efficiently input commands that are similar to my previous inputs just like normal computer CLI or terminal |
+| `*`      | new HR employee               | see a help message with command summary and link to the user guide          | learn how to use HR Insight                 |
 
-*{More to be added}*
 
 ### Use cases
 
