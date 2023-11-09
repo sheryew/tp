@@ -912,11 +912,11 @@ Prerequisites: The first employee has a claim budget of over > $500.
 
 1. Redo a command when there is a command to redo.
    Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `delete 1` then `undo`)
-   1. Positive Test Case: `redo`<br>
+   - Positive Test Case: `redo`<br>
       Expected: Delete the first employee in the list again.
 
 2. Redo a command when there is no command to redo. You cannot redo your most recent undone command if, after your last `undo`, you execute another command(s) that modifies the employee list.
-    1. Negative Test Case: `redo`<br>
+    - Negative Test Case: `redo`<br>
        Expected: Error message since no command available to redo.
 
 ### Exporting employee's details
