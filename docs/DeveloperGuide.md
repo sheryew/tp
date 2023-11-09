@@ -11,7 +11,7 @@ title: Developer Guide
 ## **Acknowledgements**
 
 - This project is adapted from [AddressBook 3 (AB3)](https://github.com/se-edu/addressbook-level3)
-- Libraries used: [JavaFX](https://openjfx.io/) and [JUnit5](https://github.com/junit-team/junit5)
+- Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), and [JUnit5](https://github.com/junit-team/junit5)
 - HR Insight logo is obtained from [Vecteezy](https://www.vecteezy.com/vector-art/4702848-abstract-letter-hr-logo-isolated-on-white-background)
 
 --------------------------------------------------------------------------------------------------------------------
