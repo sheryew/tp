@@ -404,13 +404,13 @@ The sequence diagram below shows how the `theme` commands execute:
 
 **Target user profile**:
 
-* for HR people to manage employee data in the company, including employees' claims and leaves
+* for HR people to manage employees data in the company, including employees' claims and leaves
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provide a platform for Startup HR workers without a solid employee data management system.
+**Value proposition**: Provide HR employees a centralized employee management system to better manage employees’ details and improve the efficiency of their workflow.
 
 ### User stories
 
@@ -418,26 +418,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | HR employee                                  | add all employee's information       | manage all employee's information.                |
+| `* * *`  | HR employee                                  | add an employee's information       | manage all employee's information.                |
 | `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
 | `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
-| `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
-| `* * *`  | HR employee                                      | process employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
-| `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
-| `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
+| `* * *`  | HR employee                                  | list all employees    | can keep track of the company/department's headcount.          |
+| `* * *`  | HR employee                                      | manage employee's claim budget            | can either subtract or add to an employee's entitlement fund.                                                                        |
+| `* * *`  | HR employee                                      | have an overview on each employee's leaves         | can identify which employee needs to start clearing their annual leave days.  |
+| `* * *`  | HR employee                                      | update an employee's leaves         | keep track of the months that have the lowest manpower.                                                                        |
 | `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
 | `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-| `*`      | user with color preferences                | change the application's theme          | like the user interface more                                    |
+| `* *`  | HR employee                                       | undo and redo my previous commands          | easily recover from input mistakes I made |
+| `*`      | HR employee | sort employees based on their details, e.g., name, salary, DOB, etc.           | infer some useful information from the employees data                                                 |
+| `*`      | HR employee with color preferences                | change the application's theme          | like the user interface more                                    |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR people`, unless specified otherwise)
+(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR employee`, unless specified otherwise)
 
-**Use case: Add an Employee**
+**Use case: Adding an Employee**
 
 **MSS**
 
@@ -462,8 +462,56 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case: Listing Employees**
 
-**Use case: Edit an Employee**
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows all employees of an organisation.
+3.  User requests to filter employees by a specified department.
+4.  HR Insight shows all employees of the specified department.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The employee's list is empty.
+
+  Use case ends.
+
+* 3a. The given department is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 3.
+
+**Use case: Deleting an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to delete an employee in the list specified by its index.
+4.  HR Insight deletes the employee.
+5.  HR Insight indicates that the employee has been deleted.
+6.  HR Insight shows a list of employees excluding the deleted employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
+
+      
+**Use case: Editing an Employee**
 
 **MSS**
 
@@ -499,57 +547,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3c1. HR Insight shows an error message.
 
       Use case resumes from step 2.
-
-
-**Use case: Delete an Employee**
-
-**MSS**
-
-1.  User requests to list employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to delete an employee in the list specified by its index.
-4.  HR Insight deletes the employee.
-5.  HR Insight indicates that the employee has been deleted.
-6.  HR Insight shows a list of employees excluding the deleted employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 2.
-
-
-**Use case: List Employees**
-
-**MSS**
-
-1.  User requests to list all employees.
-2.  HR Insight shows all employees of an organisation.
-3.  User requests to filter employees by a specified department.
-4.  HR Insight shows all employees of the specified department.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The employee's list is empty.
-
-  Use case ends.
-
-* 3a. The given department is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 3.
-
 
 **Use case: Managing Employee's Claim**
 
@@ -589,14 +586,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
-**Use case: Adding Employee's Leaves**
+**Use case: Updating Employee's Leaves**
 
 **MSS**
 
 1.  User requests to list all employees.
 2.  HR Insight shows a list of employees.
-3.  User requests to add a leave of a specified month for an employee.
-4.  HR Insight records the leave of the employee.
+3.  User requests to update an employee's leaves.
+4.  HR Insight records the updated leaves of the employee.
 
     Use case ends.
 
@@ -608,7 +605,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3b. User provides a wrong month (Either negative or more than 12).
+* 3b. User provides a invalid month (Either negative or more than 12).
 
     * 3b1. HR Insight shows an error message.
 
@@ -705,6 +702,58 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Sorting the employee list**
+
+**MSS**
+
+1. User requests to sort the employee list based on some parameter.
+2. System sorts the employee list based on the parameter given.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. User does not provide any parameter.
+    * 1a1. HR Insight shows an error message of invalid command format.
+
+  Use case ends.
+
+* 1b. User provides an invalid parameter.
+    * 1b1. HR Insight shows an error message of the parameter to sort is invalid.
+
+  Use case ends.
+
+**Use Case: Undoing previous commands**
+
+**MSS**
+
+1. User requests to undo the previous command.
+2. System updates the employee list to the previous state.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. There is no command to undo.
+    * 1a1. HR Insight shows an error message that there is no command to undo.
+
+  Use case ends.
+
+**Use Case: Redoing previous undone commands**
+
+**MSS**
+
+1. User requests to redo the previous undone command.
+2. System updates the employee list to the state before it was undone.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. There is no previous undone command to redo.
+    * 1a1. HR Insight shows an error message that there is no command to redo.
+
+  Use case ends.
 
 **Use Case: Exporting Employee(s)' data**
 
