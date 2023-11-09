@@ -31,10 +31,9 @@ public class LeaveCommand extends Command {
 
     public static final String MESSAGE_AMBIGUOUS = "Please check your MONTHS. Ambiguous leave(s) assignment.\n";
     public static final String MESSAGE_EMPTY = "MONTHS cannot be empty.\n";
-    public static final String MESSAGE_INVALID_MONTH = "Please check your MONTHS. Invalid month provided.\n";
+    public static final String MESSAGE_INVALID_MONTH = "Please check your MONTHS. Invalid month(s) provided.\n";
     public static final String MESSAGE_LEAVE_SUCCESS = "Leave(s) successfully updated for employee: %1$s.\n"
             + "Current leave(s): %2$s";
-    public static final String MESSAGE_NOT_A_NUMBER = "Please check your MONTHS. Some is not a number.\n";
     public static final String MESSAGE_NOT_EDITED = "The employee's leave(s) does not change from previous state: %1$s";
     public static final String MESSAGE_SPACES_DETECTED = "Spaces detected in your MONTHS.\n";
 

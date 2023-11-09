@@ -73,7 +73,7 @@ public class LeaveCommandParser implements Parser<LeaveCommand> {
                     months.setCharAt(month - 1, '+');
                 }
             } catch (NumberFormatException e) {
-                throw new ParseException(LeaveCommand.MESSAGE_NOT_A_NUMBER + LeaveCommand.MESSAGE_USAGE);
+                throw new ParseException(LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
             }
         }
         return months.toString();
