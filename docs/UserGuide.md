@@ -65,9 +65,9 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 
    - `sort phone` : Sorts employees based on their phone numbers in ascending order.
 
-   - `undo` : Undo the most recent command that modified the employee list.
+   - `undo` : Undo the most recent commands that modified the employee list.
 
-   - `redo` : Redo the most recent command that was undone.
+   - `redo` : Redo the most recent commands that was undone.
 
    - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
@@ -359,9 +359,9 @@ Executing command: `sort name desc`
 
 ![SortNamesBeforeAfter](images/SortNames.png)
  
-### Undoing previous command: `undo`
+### Undoing previous commands: `undo`
 
-Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
+Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
@@ -369,9 +369,9 @@ Executing command: `undo`
 
 ![UndoBeforeAfter](images/UndoDelete.png)
 
-### Redoing previous undone command: `redo`
+### Redoing previous undone commands: `redo`
 
-Redo the most recent command that was undone.
+Redo the most recent commands that was undone.
 
 Format: `redo`
 
