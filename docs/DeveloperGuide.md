@@ -10,13 +10,15 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+- This project is adapted from [AddressBook 3 (AB3)](https://github.com/se-edu/addressbook-level3)
+- Libraries used: [JavaFX](https://openjfx.io/) and [JUnit5](https://github.com/junit-team/junit5)
+- HR Insight logo is obtained from [Vecteezy](https://www.vecteezy.com/vector-art/4702848-abstract-letter-hr-logo-isolated-on-white-background)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **About this Developer Guide**
 
-This guides aims to:
+This guide aims to:
 1. Provide developers with a brief overview of the design architecture of our product.
 2. Explain some design considerations in the development of the application.
 3. Provide interested developers with documentation to continue development of our product.
@@ -166,7 +168,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Undo/redo feature
 
-#### Proposed Implementation
+#### Implementation
 
 The implementation involves creating an `AddressBookList` class which extends from `ArrayList<AddressBook>` to store the history of `AddressBook`.
 `AddressBookList` also stores an integer `index` as a pointer to the current `AddressBook` and an `ArrayList<String>` of commands input by the user called `pastCommands`.
@@ -792,139 +794,145 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding an employee
 
-1. Positive Test case: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
+1. Positive Test case: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`<Br>
    Expected: An employee added with name `adam`, phone `12345678`, email `adam@gmail.com`, address `Singapore`, salary `10000`, claim budget: `5000`, department: `Engineering` and DOB being `1 Jan 2000`.
 
-2. Negative Test case: `add n/Adam`
+2. Negative Test case: `add n/Adam`<br>
    Expected: Error message since other attributes like `phone`, `email`, `address`, `salary`, `claim_budget`, `department` and `DOB` are not provided.
 
 ### Listing an employee
 
-1. Positive Test Case: `list`
+1. Positive Test Case: `list`<br>
    Expected: Listed all employees (7)
 
-2. Positive Test Case: `list d/Engineering`
+2. Positive Test Case: `list d/Engineering`<Br>
    Expected: Listed filtered employees (3)
 
-### Delete an employee
+### Deleting an employee
 
-1. Positive Test Case: `delete 1`
+1. Positive Test Case: `delete 1`<br>
    Expected: First employee is deleted from the list.
 
-2. Negative Test Case: `delete`
+2. Negative Test Case: `delete`<br>
    Expected: Error message since index is provided.
 
-### Edit an employee
+### Editing an employee
 
-1. Positive Test Case: `edit 1 p/23423423 e/barry@example.com`
+1. Positive Test Case: `edit 1 p/23423423 e/barry@example.com`<br>
    Expected: Edited the first employee with a new phone number of `23423423` and new email of `barry@example.com`.
 
-2. Negative Test Case: `edit`
+2. Negative Test Case: `edit`<br>
    Expected: Error message since user didn't provide any field that he/she hopes to edit.
 
-### Find an employee
+### Finding an employee
 
-1. Positive Test Case: `find Alex`
+1. Positive Test Case: `find Alex`<br>
    Expected: Employees with the name of `Alex` will be displayed.
 
-2. Negative Test Case: `find`
+2. Negative Test Case: `find`<br>
    Expected: Error message since keyword is not provided.
 
-### Clear
+### Clearing the employee list
 
-1. Positive Test Case: `clear`
+1. Positive Test Case: `clear`<br>
    Expected: There will no longer be any employee's data left in the application.
 
-### Claim
+2. Negative Test Case: `clear asdf`<br>
+   Expected: Error message of `clear` command should not have any arguments. 
+
+### Updating an employee's claim budget
 
 Prerequisites: The first employee has a claim budget of over > $500.
 
-1. Positive Test Case: `claim 1 $/-500`
+1. Positive Test Case: `claim 1 $/-500`<Br>
    Expected: The first employee will have his/her `claim budget` successfully deducted and will display the new remaining amount.
 
-2. Negative Test Case: `claim 1 $/500`
+2. Negative Test Case: `claim 1 $/500`<br>
    Expected: Error message since '+/-' was not provided before the amount, resulting in confusion on whether it is claim/allocation of funds. 
 
-### Adding of leave
+### Adding an employee's leaves
 
-1. Positive Test Case: `leave 1 m/3`
+1. Positive Test Case: `leave 1 m/3`<br>
    Expected: First employee in the list will have the month `March` in his/her leave attribute.
 
-2. Negative Test CaseL `leave 1`
+2. Negative Test Case: `leave 1`<br>
    Expected: Error message since the `MONTHS` parameter was not provided.
 
-### Viewing of leave
+### Viewing an employee's leaves
 
-1. Positive Test Case: `view_leave m/10 d/IT`
+1. Positive Test Case: `view_leave m/10 d/IT`<br>
    Expected: Employees who belong to the IT department and have taken leave in the month of October will be displayed.
 
-2. Positive Test Case: `view_leave`
+2. Positive Test Case: `view_leave`<br>
    Expected: Employees who have taken leave in the current month (Month in which you are accessing HR Insight) will be displayed.
 
-### Resetting of Leaves
+### Resetting all employees' leaves
 
-1. Positive Test Case: `reset_leaves`
+1. Positive Test Case: `reset_leaves`<br>
    Expected: All employees will no longer have any recorded leaves.
+
+2. Negative Test Case: `reset_leaves asdf`<Br>
+   Expected: Error message of `reset_leaves` command should not have any arguments.
 
 ### Viewing of employees' birthday
 
-1. Positive Test Case: `birthday m/10`
+1. Positive Test Case: `birthday m/10`<br>
    Expected: Employees who have birthday in the month of October will be displayed.
 
-2. Negative Test Case: `birthday m/69`
+2. Negative Test Case: `birthday m/69`<br>
    Expected: Error message since 69 is not a valid month.
 
 ### Viewing of employee's details
 
-1. Positive Test Case: `view p/1,3,5`
+1. Positive Test Case: `view p/1,3,5`<br>
    Expected: Phone numbers of the first, third and fifth employee in the list will be displayed.
 
-2. Negative Test Case: `view`
+2. Negative Test Case: `view`<br>
    Expected: Error message since attribute parameter was not provided.
 
 ### Sorting the employee list
 
-1. Positive Test Case: `sort name`
+1. Positive Test Case: `sort name`<br>
    Expected: Employees in the list will have their names sorted ascending.
 
-2. Negative Test Case: `sort`
+2. Negative Test Case: `sort`<br>
    Expected: Error message since parameter is not provided.
 
-### Undo
+### Undoing previous commands
 
-1. Undo a command when there is a command that modified the employee list previously. (Example: `Delete 1`)
-   1. Positive Test Case: `undo`
+1. Undo a command when there is a command that modified the employee list previously. (Example: `delete 1`)
+   - Positive Test Case: `undo`<br>
       Expected: Restore the employee's details that was previously deleted, which in this case was employee 1.
 
 2. Undo a command when there is no command that modified the internship book previously.
-   1. Negative Test Case: `undo`
+   - Negative Test Case: `undo`<br>
       Expected: Error message since no command was executed prior.
 
-### Redo
+### Redoing previous undone commands
 
 1. Redo a command when there is a command to redo.
-   Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `Delete 1` then `undo`)
-   1. Positive Test Case: `redo`
+   Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `delete 1` then `undo`)
+   1. Positive Test Case: `redo`<br>
       Expected: Delete the first employee in the list again.
 
-2. Redo a command when there is no command to redo.
-    1. Negative Test Case: `redo`
+2. Redo a command when there is no command to redo. You cannot redo your most recent undone command if, after your last `undo`, you execute another command(s) that modifies the employee list.
+    1. Negative Test Case: `redo`<br>
        Expected: Error message since no command available to redo.
 
 ### Exporting employee's details
 
-1. Positive Test Case: `export all_hands`
+1. Positive Test Case: `export all_hands`<Br>
    Expected: A CSV file with name `all_hands` will be produced in the `Exported_CSVs` folder with attributes for all employees.
 
-2. Negative Test Case: `export`
+2. Negative Test Case: `export`<br>
    Expected: Error message since no `file_name` parameter is provided.
 
 ### Changing the Application Theme
 
-1. Positive Test Case: `theme light`
+1. Positive Test Case: `theme light`<br>
    Expected: GUI to change from black background color to white background color. The text is also expected to change from white to black.
 
-2. Negative Test Case: `theme pink`
+2. Negative Test Case: `theme pink`<br>
    Expected: Error message since pink is not part of the correct `THEME_NAME` parameter. 
 
 ## **Appendix C: Planned Enhancements**
