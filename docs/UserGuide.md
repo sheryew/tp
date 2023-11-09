@@ -8,9 +8,11 @@ The _purpose_ of this application is to provide **HR employees** a _central data
 efficiency** of their workflow. 
 
 HR Insight proves to be a particularly valuable tool for professionals specializing in the domains of _Employee Benefits_, _Employee Engagement_ and _Administration_.
+
 - _Employee Benefits_ in terms of keeping count of leaves and claims.
 - _Employee Engagement_ in terms of tracking employee's birthday.
 - _Administration_ in terms of keeping record of employee's details.
+
 
 - Table of Contents
 {:toc}
