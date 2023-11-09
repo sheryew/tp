@@ -47,7 +47,7 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 
    - `edit 1 p/1234567` : Edits phone attribute for the 1st employee in the list.
    
-   - `find` : Finds employees whose names contain any of the given keywords.
+   - `find` : Finds employees whose names match any of the given keywords.
    
    - `clear` : Deletes all employees from the database.
    
@@ -195,7 +195,7 @@ Executing command: `edit 1 p/23423423 e/barry@example.com`
 
 ### Finding employees by name: `find`
 
-Finds employees whose names contain any of the given keywords.
+Finds employees whose names match any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
