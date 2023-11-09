@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 HR Insight is a **desktop app for HR people, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-The _purpose_ of this app is to provide **HR employees** a _centralized employee management system_ to better manage their employees' details and **improve the
+The _purpose_ of this app is to provide **HR employees** a _centralized employee management system_ to better manage all employees' details and **improve the
 efficiency** of their workflow. 
 
 HR Insight proves to be a particularly valuable tool for professionals specializing in the domains of _Employee Benefits_, _Employee Engagement_ and _Administration_.
