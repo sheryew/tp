@@ -410,7 +410,7 @@ The sequence diagram below shows how the `theme` commands execute:
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provide HR employees a centralized employee management system to better manage employees’ details and improve the efficiency of their workflow.
+**Value proposition**: Provide HR employees a centralized employee management system to better manage all employees’ details and improve the efficiency of their workflow.
 
 ### User stories
 
