@@ -4,15 +4,16 @@ title: User Guide
 ---
 
 HR Insight is a **desktop app for HR people, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-The _purpose_ of this application is to provide **HR employees** a _central database_ to better manage their employees' details and **improve the
+The _purpose_ of this app is to provide **HR employees** a _centralized employee management system_ to better manage all employees' details and **improve the
 efficiency** of their workflow. 
 
 HR Insight proves to be a particularly valuable tool for professionals specializing in the domains of _Employee Benefits_, _Employee Engagement_ and _Administration_.
 
-- _Employee Benefits_ in terms of keeping count of leaves and claims.
-- _Employee Engagement_ in terms of tracking employee's birthday.
-- _Administration_ in terms of keeping record of employee's details.
+- _Employee Benefits_ in terms of keeping count of employees' leaves and claims.
+- _Employee Engagement_ in terms of tracking employees' birthday.
+- _Administration_ in terms of keeping record of employees' details.
 
+---
 
 - Table of Contents
 {:toc}
@@ -46,7 +47,7 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 
    - `edit 1 p/1234567` : Edits phone attribute for the 1st employee in the list.
    
-   - `find` : Finds employees whose names contain any of the given keywords.
+   - `find` : Finds employees whose names match any of the given keywords.
    
    - `clear` : Deletes all employees from the database.
    
@@ -64,9 +65,9 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 
    - `sort phone` : Sorts employees based on their phone numbers in ascending order.
 
-   - `undo` : Undo the most recent command that modified the employee list.
+   - `undo` : Undo the most recent commands that modified the employee list.
 
-   - `redo` : Redo the most recent command that was undone.
+   - `redo` : Redo the most recent commands that was undone.
 
    - `export all_employee` : Exports employees' data into csv with filename of all_employee.csv.
 
@@ -194,7 +195,7 @@ Executing command: `edit 1 p/23423423 e/barry@example.com`
 
 ### Finding employees by name: `find`
 
-Finds employees whose names contain any of the given keywords.
+Finds employees whose names match any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -358,9 +359,9 @@ Executing command: `sort name desc`
 
 ![SortNamesBeforeAfter](images/SortNames.png)
  
-### Undoing previous command: `undo`
+### Undoing previous commands: `undo`
 
-Undo the most recent command that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
+Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
@@ -368,9 +369,9 @@ Executing command: `undo`
 
 ![UndoBeforeAfter](images/UndoDelete.png)
 
-### Redoing previous undone command: `redo`
+### Redoing previous undone commands: `redo`
 
-Redo the most recent command that was undone.
+Redo the most recent commands that was undone.
 
 Format: `redo`
 

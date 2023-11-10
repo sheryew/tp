@@ -10,13 +10,15 @@ title: Developer Guide
 
 ## **Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+- This project is adapted from [AddressBook 3 (AB3)](https://github.com/se-edu/addressbook-level3)
+- Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), and [JUnit5](https://github.com/junit-team/junit5)
+- HR Insight logo is obtained from [Vecteezy](https://www.vecteezy.com/vector-art/4702848-abstract-letter-hr-logo-isolated-on-white-background)
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **About this Developer Guide**
 
-This guides aims to:
+This guide aims to:
 1. Provide developers with a brief overview of the design architecture of our product.
 2. Explain some design considerations in the development of the application.
 3. Provide interested developers with documentation to continue development of our product.
@@ -136,11 +138,6 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
 
 
 ### Storage component
@@ -166,7 +163,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Undo/redo feature
 
-#### Proposed Implementation
+#### Implementation
 
 The implementation involves creating an `AddressBookList` class which extends from `ArrayList<AddressBook>` to store the history of `AddressBook`.
 `AddressBookList` also stores an integer `index` as a pointer to the current `AddressBook` and an `ArrayList<String>` of commands input by the user called `pastCommands`.
@@ -402,40 +399,43 @@ The sequence diagram below shows how the `theme` commands execute:
 
 **Target user profile**:
 
-* for HR people to manage employee data in the company, including employees' claims and leaves
+* for HR people to manage employees data in the company, including employees' claims and leaves
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provide a platform for Startup HR workers without a solid employee data management system.
+**Value proposition**: Provide HR employees a centralized employee management system to better manage all employees’ details and improve the efficiency of their workflow.
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+| Priority | As a(n) …​                                    | I want to …​                     | So that I can…​                                                        |
 | -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | HR employee                                  | add all employee's information       | manage all employee's information.                |
-| `* * *`  | HR employee                                  | update an employee's information       | have the latest information on the employee.                |
-| `* * *`  | HR employee                                  | delete an employee's information       | do not waste storage on retired/resigned employees.               |
-| `* * *`  | HR employee                                  | list all my employees    | can keep track of the company/department's headcount.          |
-| `* * *`  | HR employee                                      | process employee's outstanding claims            | can either subtract or add to an employee's entitlement fund.                                                                        |
-| `* * *`  | HR employee                                      | have an overview on the annual leave of each employee         | can identify which employee needs to start clearing their annual leave days.                                                                        |
-| `* * *`  | HR employee                                      | add an employee's planned leave dates         | keep track of the months that have the lowest manpower.                                                                        |
-| `* * *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand.                                                                        |
+| `* * *`  | HR employee                                  | add an employee's information       |                 |
+| `* * *`  | HR employee                                  | update an employee's information       | have the latest information of the employee                |
+| `* * *`  | HR employee                                  | delete an employee's information       |                |
+| `* * *`  | HR employee                                  | list all employees    | see all employees' details in the company          |
+| `* * *`  | HR employee                  | add or subtract an employee's claim budget            | manage the employee's claims and allowance                     |
+| `* * *`  | HR employee                                      | have an overview on each employee's leaves         | track each employee's leaves  |
+| `* * *`  | HR employee                                      | update an employee's leaves         |                                                                    |
+| `* * *`  | HR employee                                      | reset all employees' leaves         | efficiently adjust their leaves at the start of a new year                                  |
+| `* *`  | HR employee                                      | view all employees who have birthdays in a given month         | can plan the celebrations beforehand    |
 | `* *`  | HR employee                                       | find an employee by name          | locate details of an employee without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-| `*`      | user with color preferences                | change the application's theme          | like the user interface more                                    |
+| `* *`  | HR employee                                       | undo and redo my previous commands          | easily recover from input mistakes I made |
+| `*`      | HR employee | sort employees based on their details, e.g., name, salary, DOB, etc.           | infer some useful information from the employees data         |
+| `*`      | HR employee               | export the employee list into a csv file          | send the file to my manager or other stakeholders for review                 |
+| `*`      | HR employee with color preferences                | change the application's theme          | adjust the user interface according to my preference                 |
+| `*`      | advanced HR employee                | navigate through my previous commands using up/down keys          | more efficiently input commands that are similar to my previous inputs just like normal computer CLI or terminal |
+| `*`      | new HR employee               | see a help message with command summary and link to the user guide          | learn how to use HR Insight                 |
 
-*{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR people`, unless specified otherwise)
+(For all use cases below, the **System** is the `HR Insight` and the **Actor** is the `user / HR employee`, unless specified otherwise)
 
-**Use case: Add an Employee**
+**Use case: Adding an Employee**
 
 **MSS**
 
@@ -460,8 +460,56 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
+**Use case: Listing Employees**
 
-**Use case: Edit an Employee**
+**MSS**
+
+1.  User requests to list all employees.
+2.  HR Insight shows all employees of an organisation.
+3.  User requests to filter employees by a specified department.
+4.  HR Insight shows all employees of the specified department.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The employee's list is empty.
+
+  Use case ends.
+
+* 3a. The given department is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 3.
+
+**Use case: Deleting an Employee**
+
+**MSS**
+
+1.  User requests to list employees.
+2.  HR Insight shows a list of employees.
+3.  User requests to delete an employee in the list specified by its index.
+4.  HR Insight deletes the employee.
+5.  HR Insight indicates that the employee has been deleted.
+6.  HR Insight shows a list of employees excluding the deleted employee.
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. HR Insight shows an error message.
+
+      Use case resumes from step 2.
+
+      
+**Use case: Editing an Employee**
 
 **MSS**
 
@@ -497,57 +545,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3c1. HR Insight shows an error message.
 
       Use case resumes from step 2.
-
-
-**Use case: Delete an Employee**
-
-**MSS**
-
-1.  User requests to list employees.
-2.  HR Insight shows a list of employees.
-3.  User requests to delete an employee in the list specified by its index.
-4.  HR Insight deletes the employee.
-5.  HR Insight indicates that the employee has been deleted.
-6.  HR Insight shows a list of employees excluding the deleted employee.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 2.
-
-
-**Use case: List Employees**
-
-**MSS**
-
-1.  User requests to list all employees.
-2.  HR Insight shows all employees of an organisation.
-3.  User requests to filter employees by a specified department.
-4.  HR Insight shows all employees of the specified department.
-
-    Use case ends.
-
-**Extensions**
-
-* 2a. The employee's list is empty.
-
-  Use case ends.
-
-* 3a. The given department is invalid.
-
-    * 3a1. HR Insight shows an error message.
-
-      Use case resumes from step 3.
-
 
 **Use case: Managing Employee's Claim**
 
@@ -587,14 +584,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   Use case ends.
 
 
-**Use case: Adding Employee's Leaves**
+**Use case: Updating Employee's Leaves**
 
 **MSS**
 
 1.  User requests to list all employees.
 2.  HR Insight shows a list of employees.
-3.  User requests to add a leave of a specified month for an employee.
-4.  HR Insight records the leave of the employee.
+3.  User requests to update an employee's leaves.
+4.  HR Insight records the updated leaves of the employee.
 
     Use case ends.
 
@@ -606,7 +603,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3b. User provides a wrong month (Either negative or more than 12).
+* 3b. User provides a invalid month (Either negative or more than 12).
 
     * 3b1. HR Insight shows an error message.
 
@@ -703,6 +700,58 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use Case: Sorting the employee list**
+
+**MSS**
+
+1. User requests to sort the employee list based on some parameter.
+2. System sorts the employee list based on the parameter given.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. User does not provide any parameter.
+    * 1a1. HR Insight shows an error message of invalid command format.
+
+  Use case ends.
+
+* 1b. User provides an invalid parameter.
+    * 1b1. HR Insight shows an error message of the parameter to sort is invalid.
+
+  Use case ends.
+
+**Use Case: Undoing previous commands**
+
+**MSS**
+
+1. User requests to undo the previous command.
+2. System updates the employee list to the previous state.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. There is no command to undo.
+    * 1a1. HR Insight shows an error message that there is no command to undo.
+
+  Use case ends.
+
+**Use Case: Redoing previous undone commands**
+
+**MSS**
+
+1. User requests to redo the previous undone command.
+2. System updates the employee list to the state before it was undone.
+3. System displays the success message.
+
+   Use case ends.
+
+**Extensions**
+* 1a. There is no previous undone command to redo.
+    * 1a1. HR Insight shows an error message that there is no command to redo.
+
+  Use case ends.
 
 **Use Case: Exporting Employee(s)' data**
 
@@ -792,139 +841,145 @@ testers are expected to do more *exploratory* testing.
 
 ### Adding an employee
 
-1. Positive Test case: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`
+1. Positive Test case: `add n/Adam p/12345678 e/adam@gmail.com a/Singapore s/10000 b/5000 d/Engineering dob/2000-01-01`<Br>
    Expected: An employee added with name `adam`, phone `12345678`, email `adam@gmail.com`, address `Singapore`, salary `10000`, claim budget: `5000`, department: `Engineering` and DOB being `1 Jan 2000`.
 
-2. Negative Test case: `add n/Adam`
+2. Negative Test case: `add n/Adam`<br>
    Expected: Error message since other attributes like `phone`, `email`, `address`, `salary`, `claim_budget`, `department` and `DOB` are not provided.
 
 ### Listing an employee
 
-1. Positive Test Case: `list`
+1. Positive Test Case: `list`<br>
    Expected: Listed all employees (7)
 
-2. Positive Test Case: `list d/Engineering`
+2. Positive Test Case: `list d/Engineering`<Br>
    Expected: Listed filtered employees (3)
 
-### Delete an employee
+### Deleting an employee
 
-1. Positive Test Case: `delete 1`
+1. Positive Test Case: `delete 1`<br>
    Expected: First employee is deleted from the list.
 
-2. Negative Test Case: `delete`
+2. Negative Test Case: `delete`<br>
    Expected: Error message since index is provided.
 
-### Edit an employee
+### Editing an employee
 
-1. Positive Test Case: `edit 1 p/23423423 e/barry@example.com`
+1. Positive Test Case: `edit 1 p/23423423 e/barry@example.com`<br>
    Expected: Edited the first employee with a new phone number of `23423423` and new email of `barry@example.com`.
 
-2. Negative Test Case: `edit`
+2. Negative Test Case: `edit`<br>
    Expected: Error message since user didn't provide any field that he/she hopes to edit.
 
-### Find an employee
+### Finding an employee
 
-1. Positive Test Case: `find Alex`
+1. Positive Test Case: `find Alex`<br>
    Expected: Employees with the name of `Alex` will be displayed.
 
-2. Negative Test Case: `find`
+2. Negative Test Case: `find`<br>
    Expected: Error message since keyword is not provided.
 
-### Clear
+### Clearing the employee list
 
-1. Positive Test Case: `clear`
+1. Positive Test Case: `clear`<br>
    Expected: There will no longer be any employee's data left in the application.
 
-### Claim
+2. Negative Test Case: `clear asdf`<br>
+   Expected: Error message of `clear` command should not have any arguments. 
+
+### Updating an employee's claim budget
 
 Prerequisites: The first employee has a claim budget of over > $500.
 
-1. Positive Test Case: `claim 1 $/-500`
+1. Positive Test Case: `claim 1 $/-500`<Br>
    Expected: The first employee will have his/her `claim budget` successfully deducted and will display the new remaining amount.
 
-2. Negative Test Case: `claim 1 $/500`
+2. Negative Test Case: `claim 1 $/500`<br>
    Expected: Error message since '+/-' was not provided before the amount, resulting in confusion on whether it is claim/allocation of funds. 
 
-### Adding of leave
+### Adding an employee's leaves
 
-1. Positive Test Case: `leave 1 m/3`
+1. Positive Test Case: `leave 1 m/3`<br>
    Expected: First employee in the list will have the month `March` in his/her leave attribute.
 
-2. Negative Test CaseL `leave 1`
+2. Negative Test Case: `leave 1`<br>
    Expected: Error message since the `MONTHS` parameter was not provided.
 
-### Viewing of leave
+### Viewing an employee's leaves
 
-1. Positive Test Case: `view_leave m/10 d/IT`
+1. Positive Test Case: `view_leave m/10 d/IT`<br>
    Expected: Employees who belong to the IT department and have taken leave in the month of October will be displayed.
 
-2. Positive Test Case: `view_leave`
+2. Positive Test Case: `view_leave`<br>
    Expected: Employees who have taken leave in the current month (Month in which you are accessing HR Insight) will be displayed.
 
-### Resetting of Leaves
+### Resetting all employees' leaves
 
-1. Positive Test Case: `reset_leaves`
+1. Positive Test Case: `reset_leaves`<br>
    Expected: All employees will no longer have any recorded leaves.
+
+2. Negative Test Case: `reset_leaves asdf`<Br>
+   Expected: Error message of `reset_leaves` command should not have any arguments.
 
 ### Viewing of employees' birthday
 
-1. Positive Test Case: `birthday m/10`
+1. Positive Test Case: `birthday m/10`<br>
    Expected: Employees who have birthday in the month of October will be displayed.
 
-2. Negative Test Case: `birthday m/69`
+2. Negative Test Case: `birthday m/69`<br>
    Expected: Error message since 69 is not a valid month.
 
 ### Viewing of employee's details
 
-1. Positive Test Case: `view p/1,3,5`
+1. Positive Test Case: `view p/1,3,5`<br>
    Expected: Phone numbers of the first, third and fifth employee in the list will be displayed.
 
-2. Negative Test Case: `view`
+2. Negative Test Case: `view`<br>
    Expected: Error message since attribute parameter was not provided.
 
 ### Sorting the employee list
 
-1. Positive Test Case: `sort name`
+1. Positive Test Case: `sort name`<br>
    Expected: Employees in the list will have their names sorted ascending.
 
-2. Negative Test Case: `sort`
+2. Negative Test Case: `sort`<br>
    Expected: Error message since parameter is not provided.
 
-### Undo
+### Undoing previous commands
 
-1. Undo a command when there is a command that modified the employee list previously. (Example: `Delete 1`)
-   1. Positive Test Case: `undo`
+1. Undo a command when there is a command that modified the employee list previously. (Example: `delete 1`)
+   - Positive Test Case: `undo`<br>
       Expected: Restore the employee's details that was previously deleted, which in this case was employee 1.
 
 2. Undo a command when there is no command that modified the internship book previously.
-   1. Negative Test Case: `undo`
+   - Negative Test Case: `undo`<br>
       Expected: Error message since no command was executed prior.
 
-### Redo
+### Redoing previous undone commands
 
 1. Redo a command when there is a command to redo.
-   Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `Delete 1` then `undo`)
-   1. Positive Test Case: `redo`
+   Prerequisites: Executes any command that modifies the employee list, followed by undo command. (Example: `delete 1` then `undo`)
+   - Positive Test Case: `redo`<br>
       Expected: Delete the first employee in the list again.
 
-2. Redo a command when there is no command to redo.
-    1. Negative Test Case: `redo`
+2. Redo a command when there is no command to redo. You cannot redo your most recent undone command if, after your last `undo`, you execute another command(s) that modifies the employee list.
+    - Negative Test Case: `redo`<br>
        Expected: Error message since no command available to redo.
 
 ### Exporting employee's details
 
-1. Positive Test Case: `export all_hands`
+1. Positive Test Case: `export all_hands`<Br>
    Expected: A CSV file with name `all_hands` will be produced in the `Exported_CSVs` folder with attributes for all employees.
 
-2. Negative Test Case: `export`
+2. Negative Test Case: `export`<br>
    Expected: Error message since no `file_name` parameter is provided.
 
 ### Changing the Application Theme
 
-1. Positive Test Case: `theme light`
+1. Positive Test Case: `theme light`<br>
    Expected: GUI to change from black background color to white background color. The text is also expected to change from white to black.
 
-2. Negative Test Case: `theme pink`
+2. Negative Test Case: `theme pink`<br>
    Expected: Error message since pink is not part of the correct `THEME_NAME` parameter. 
 
 ## **Appendix C: Planned Enhancements**
