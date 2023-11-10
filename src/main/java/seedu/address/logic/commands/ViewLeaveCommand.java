@@ -31,6 +31,9 @@ public class ViewLeaveCommand extends Command {
     public CommandResult execute(Model model, String commandText) throws CommandException {
         requireNonNull(model);
         model.updateFilteredPersonList(combinedPredicate);
+        if (model.getFilteredPersonList().size() == 0) {
+            return new CommandResult(Messages.MESSAGE_VIEW_LEAVE_NO_EMPLOYEES);
+        }
         return new CommandResult(String.format(MESSAGE, model.getFilteredPersonList().size()));
     }
 
