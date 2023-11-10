@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEPARTMENT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 
 import seedu.address.logic.Messages;
@@ -43,8 +44,12 @@ public class ViewLeaveCommandParser implements Parser<ViewLeaveCommand> {
         if (argMultimap.getValue(PREFIX_MONTH).isPresent()) {
             argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MONTH);
             try {
-                String[] months = argMultimap.getValue(PREFIX_MONTH).get().split(",");
-                int len = argMultimap.getValue(PREFIX_MONTH).get().split(" ").length;
+                String monthArgs = argMultimap.getValue(PREFIX_MONTH).get();
+                if (monthArgs.isEmpty()) {
+                    throw new ParseException(Messages.MESSAGE_EMPTY_MONTH_LEAVE_FILTER);
+                }
+                String[] months = monthArgs.split(",");
+                int len = monthArgs.split(" ").length;
                 if (len > 1) {
                     throw new ParseException(Messages.MESSAGE_MONTHS_SPACES_DETECTED
                             + Messages.MESSAGE_VIEW_LIST_COMMAND_FORMAT);
