@@ -176,16 +176,19 @@ Executing command: `delete 1`
 
 Edits an existing employee in the employee list by the specified index.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]`
 
 - Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list.
   The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
+- Some prefixes allow for additional descriptors to accommodate a variety of input data that fits within the context of the field provided they conform to the input requirements:
+  - For `[n/NAME]`, specific descriptors (S/O, D/O, etc.) are allowed. Ensure that the full input between the prefix and the next space or prefix is intended as part of the name.
 
 Examples:
 
 - `edit 1 p/23423423 e/barry@example.com` Edits the phone number and email address of the 1st person to be `23423423` and `barry@example.com` respectively.
+- `edit 1 n/thomas S/O anthony` Edits the name of the 1st person to be `thomas S/O anthony`.
 
 Executing command: `edit 1 p/23423423 e/barry@example.com`
 
@@ -455,24 +458,24 @@ Currently, HR Insight only records employees' leave months. In v2.0, we will rec
 
 ## Command summary
 
-| Action              | Format, Examples                                                                                                                                                                                                         |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Help**            | `help`                                                                                                                                                                                                                   |
+| Action              | Format, Examples                                                                                                                                                                                                        |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**            | `help`                                                                                                                                                                                                                  |
 | **Add**             | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS s/SALARY b/CLAIM_BUDGET d/DEPARTMENT dob/BIRTH_DATE (YYYY-MM-DD)​` <br> e.g., `add n/John Doe p/87654321 e/john.doe@gmail.com a/Tokyo s/5000 b/2000 d/Sales dob/1992-07-21` |
-| **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                    |
-| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                      |
-| **Edit**            | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
-| **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                               |
-| **Clear**           | `clear`                                                                                                                                                                                                                  |
-| **Claim**           | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                 |
-| **Add Leave**       | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                                                                       |
-| **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                 |
+| **List**            | `list [d/DEPARTMENT]`                                                                                                                                                                                                   |
+| **Delete**          | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                     |
+| **Edit**            | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]` <br> e.g., `edit 1 p/23423423 e/barry@example.com`                                        |
+| **Find**            | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                                                              |
+| **Clear**           | `clear`                                                                                                                                                                                                                 |
+| **Claim**           | `claim INDEX $/CLAIM_AMOUNT` <br> e.g., `claim 1 $/-500`                                                                                                                                                                |
+| **Add Leave**       | `leave INDEX m/MONTHS` <br> e.g., `leave 1 m/3,-4`                                                                                                                                                                      |
+| **View Leave**      | `view_leave INDEX m/Month d/DEPARTMENT` <br> e.g.,`view_leave m/10 d/IT`                                                                                                                                                |
 | **Reset Leaves** | `reset_leaves` |
-| **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                            |
-| **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                         |
+| **View Birthdays**  | `birthday [m/MONTH]` <br> e.g., `birthday 10`                                                                                                                                                                           |
+| **View Attributes** | `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]` <br> e.g., `view s/1,2`                                                                                                        |
 | **Sort**           | `sort name / phone / email / address / salary / claim / dep / dob [desc]`                                                                                        |
 | **Undo**           | `undo`                                                                                                                                                           |
 | **Redo**           | `redo`                                                                                                                                                              |
-| **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                                |
+| **Export Data**     | `export [file_name]` <br> e.g., `export engineering_dept`                                                                                                                                                               |
 | **Change Theme**    | `theme THEME_NAME` <br> e.g., `theme light`                                                                                                                          |
-| **Exit**            | `exit`                                                                                                                                                                                                                   |
+| **Exit**            | `exit`                                                                                                                                                                                                                  |
