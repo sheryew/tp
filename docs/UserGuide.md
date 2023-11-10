@@ -176,16 +176,19 @@ Executing command: `delete 1`
 
 Edits an existing employee in the employee list by the specified index.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [b/CLAIM_BUDGET] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [d/DEPARTMENT] [dob/BIRTH_DATE (YYYY-MM-DD)]`
 
 - Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list.
   The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
+- Some prefixes allow for additional descriptors to accommodate a variety of input data that fits within the context of the field provided they conform to the input requirements:
+  - For `[n/NAME]`, specific descriptors (S/O, D/O, etc.) are allowed. Ensure that the full input between the prefix and the next space or prefix is intended as part of the name.
 
 Examples:
 
 - `edit 1 p/23423423 e/barry@example.com` Edits the phone number and email address of the 1st person to be `23423423` and `barry@example.com` respectively.
+- `edit 1 n/thomas S/O anthony` Edits the name of the 1st person to be `thomas S/O anthony`.
 
 Executing command: `edit 1 p/23423423 e/barry@example.com`
 

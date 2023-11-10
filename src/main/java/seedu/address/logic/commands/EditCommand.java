@@ -47,7 +47,6 @@ public class EditCommand extends Command {
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_SALARY + "SALARY] "
-            + "[" + PREFIX_CLAIM_BUDGET + "CLAIM BUDGET] "
             + "[" + PREFIX_DEPARTMENT + "DEPARTMENT] "
             + "[" + PREFIX_DOB + "BIRTHDATE (YYYY-MM-DD)]\n"
             + "Example: " + COMMAND_WORD + " 1 "
