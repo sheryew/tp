@@ -45,6 +45,9 @@ public class Messages {
     public static final String MESSAGE_FILTER_SUCCESS = "Listed filtered employees (%1$d)";
     public static final String MESSAGE_BIRTHDAY_FAILURE = "No employees have birthdays in this month.";
     public static final String MESSAGE_VIEW_LEAVE_SUCCESS = "Employees with specified leave(s) listed (%1$d)";
+
+    public static final String MESSAGE_VIEW_LEAVE_NO_EMPLOYEES = "Currently, no employees in the specified department"
+            + " is taking leave in the specified month(s).";
     public static final String WRONG_EXPORT_FILE_NAME_FAILURE = "Kindly provide one filename for this set of data.\n"
             + "Example: export engineering_dept";
     public static final String MESSAGE_NO_ARGUMENTS_EXPECTED = "\"%s\" command should not have any arguments";
