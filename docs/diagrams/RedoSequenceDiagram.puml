@@ -1,0 +1,64 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant "r:RedoCommand" as RedoCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":AddressBookList" as AddressBookList MODEL_COLOR
+participant ":AddressBook" as AddressBook MODEL_COLOR
+end box
+[-> LogicManager : execute("redo")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("redo")
+activate AddressBookParser
+
+AddressBookParser -> AddressBookParser : ensureEmptyArguments(args)
+
+create RedoCommand
+AddressBookParser -> RedoCommand
+activate RedoCommand
+
+RedoCommand --> AddressBookParser
+deactivate RedoCommand
+
+AddressBookParser --> LogicManager : r
+deactivate AddressBookParser
+
+LogicManager -> RedoCommand : execute()
+activate RedoCommand
+
+RedoCommand -> Model : redo()
+activate Model
+
+Model -> AddressBookList : redo()
+activate AddressBookList
+
+AddressBookList --> Model : addressBook
+
+Model -> AddressBook : resetData(addressBook)
+AddressBook --> Model :
+deactivate AddressBook
+
+Model -> AddressBookList : redoPastCommand()
+
+AddressBookList --> Model : pastCommand
+deactivate AddressBookList
+
+Model --> RedoCommand : pastCommand
+deactivate Model
+
+RedoCommand --> LogicManager : result
+deactivate RedoCommand
+RedoCommand -[hidden]-> LogicManager : result
+destroy RedoCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

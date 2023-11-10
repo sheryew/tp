@@ -186,6 +186,8 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
 
 ![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
 
+![RedoSequenceDiagram](images/RedoSequenceDiagram.png)
+
 #### Design Considerations
 
 **Aspect: How Undo/Redo executes:**
