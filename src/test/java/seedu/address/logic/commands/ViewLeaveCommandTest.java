@@ -55,4 +55,13 @@ class ViewLeaveCommandTest {
                 String.format(Messages.MESSAGE_VIEW_LEAVE_SUCCESS,
                         expectedModel.getFilteredPersonList().size()), expectedModel);
     }
+
+    @Test
+    void execute_successNoLeaveInMonths() {
+        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        Predicate<Person> testPredicate = new HasLeaveAnyMonthPredicate().negate();
+        expectedModel.updateFilteredPersonList(testPredicate);
+        assertCommandSuccess(new ViewLeaveCommand(testPredicate), model,
+                Messages.MESSAGE_VIEW_LEAVE_NO_EMPLOYEES, expectedModel);
+    }
 }
