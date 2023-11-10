@@ -51,8 +51,6 @@ public class PersonUtil {
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));
         descriptor.getSalary().ifPresent(salary -> sb.append(PREFIX_SALARY).append(salary.amount).append(" "));
-        descriptor.getClaimBudget().ifPresent(budget -> sb.append(PREFIX_CLAIM_BUDGET)
-                .append(budget.amount).append(" "));
         descriptor.getDepartment().ifPresent(dep -> sb.append(PREFIX_DEPARTMENT).append(dep.department).append(" "));
         descriptor.getDob().ifPresent(dob -> sb.append(PREFIX_DOB).append(dob.dob).append(" "));
         return sb.toString();
