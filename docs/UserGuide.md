@@ -276,7 +276,7 @@ Format:  `view_leave [m/Month] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
 - The month and department are optional arguments.
-- If no one has planned leave dates for the month, **No one is taking leave** output is shown.
+- If no one in the specified department has planned leave dates for the month, an output indicating **no employees is taking leave** is shown.
 
 Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year
