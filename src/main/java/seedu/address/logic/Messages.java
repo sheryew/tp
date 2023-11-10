@@ -21,7 +21,7 @@ public class Messages {
     public static final String MESSAGE_OVER_CLAIM = "Claim is REJECTED as the amount is greater than "
             + "the funds the Employee currently has!";
     public static final String MESSAGE_EMPTY_DEPARTMENT_FILTER = "Department name cannot be empty!";
-    public static final String MESSAGE_EMPTY_MONTH_LEAVE_FILTER = "Month(s) cannot be empty!";
+    public static final String MESSAGE_EMPTY_MONTH_LEAVE_FILTER = "MONTHS cannot be empty!";
 
     public static final String MESSAGE_LIST_COMMAND_FORMAT = "list: "
             + "Lists all the details of an organization’s employees, "

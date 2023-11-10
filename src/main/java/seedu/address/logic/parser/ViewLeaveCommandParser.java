@@ -51,9 +51,14 @@ public class ViewLeaveCommandParser implements Parser<ViewLeaveCommand> {
                 }
                 Predicate<Person> combinedMonthsPredicate = new HasLeaveAnyMonthPredicate().negate();
                 for (String month: months) {
-                    if (Integer.parseInt(month) < 1 || Integer.parseInt(month) > 12) {
+                    try {
+                        if (Integer.parseInt(month) < 1 || Integer.parseInt(month) > 12) {
+                            throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
+                        }
+                    } catch (NumberFormatException e) {
                         throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
                     }
+
                     combinedMonthsPredicate = combinedMonthsPredicate.or(new HasLeaveThisMonthPredicate(month));
                 }
                 combinedPredicate = combinedPredicate.and(combinedMonthsPredicate);
