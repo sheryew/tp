@@ -34,9 +34,8 @@ public class Messages {
             + "Lists all employees with planned leave, optionally within "
             + "specified department or months.\n"
             + "Parameters: [d/DEPARTMENT] [m/MONTH(S)] (optional)\n"
-            + "Format: MONTHS must be integers separated by commas without spaces. "
+            + "Format: MONTHS must be POSITIVE integers separated by commas without spaces. "
             + "1: Jan, 2: Feb, ..., 12: Dec.\n"
-            + "Positive MONTHS add leaves on the specified months and negative MONTHS remove them.\n"
             + "Example: view_list d/Engineering m/1,5";
 
     public static final String MESSAGE_MONTHS_SPACES_DETECTED = "Spaces detected in your MONTHS.\n";
