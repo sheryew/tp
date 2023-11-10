@@ -19,7 +19,10 @@ Class Address
 Class Email
 Class Name
 Class Phone
-Class Tag
+Class Money
+Class Birthday
+Class Department
+Class Leave
 
 Class I #FFFFFF
 }
