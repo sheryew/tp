@@ -42,34 +42,29 @@ public class ViewLeaveCommandParser implements Parser<ViewLeaveCommand> {
         }
         if (argMultimap.getValue(PREFIX_MONTH).isPresent()) {
             argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MONTH);
-            try {
-                String monthArgs = argMultimap.getValue(PREFIX_MONTH).get();
-                if (monthArgs.isEmpty()) {
-                    throw new ParseException(Messages.MESSAGE_EMPTY_MONTH_LEAVE_FILTER);
-                }
-                String[] months = monthArgs.split(",");
-                int len = monthArgs.split(" ").length;
-                if (len > 1) {
-                    throw new ParseException(Messages.MESSAGE_MONTHS_SPACES_DETECTED
-                            + Messages.MESSAGE_VIEW_LIST_COMMAND_FORMAT);
-                }
-                Predicate<Person> combinedMonthsPredicate = new HasLeaveAnyMonthPredicate().negate();
-                for (String month: months) {
-                    try {
-                        if (Integer.parseInt(month) < 1 || Integer.parseInt(month) > 12) {
-                            throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
-                        }
-                    } catch (NumberFormatException e) {
-                        throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
-                    }
-
-                    combinedMonthsPredicate = combinedMonthsPredicate.or(new HasLeaveThisMonthPredicate(month));
-                }
-                combinedPredicate = combinedPredicate.and(combinedMonthsPredicate);
-            } catch (IllegalArgumentException e) {
+            String monthArgs = argMultimap.getValue(PREFIX_MONTH).get();
+            if (monthArgs.isEmpty()) {
                 throw new ParseException(Messages.MESSAGE_EMPTY_MONTH_LEAVE_FILTER);
             }
+            String[] months = monthArgs.split(",");
+            int len = monthArgs.split(" ").length;
+            if (len > 1) {
+                throw new ParseException(Messages.MESSAGE_MONTHS_SPACES_DETECTED
+                        + Messages.MESSAGE_VIEW_LIST_COMMAND_FORMAT);
+            }
+            Predicate<Person> combinedMonthsPredicate = new HasLeaveAnyMonthPredicate().negate();
+            for (String month: months) {
+                try {
+                    if (Integer.parseInt(month) < 1 || Integer.parseInt(month) > 12) {
+                        throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
+                    }
+                } catch (NumberFormatException e) {
+                    throw new ParseException(Messages.MESSAGE_INVALID_MONTH);
+                }
 
+                combinedMonthsPredicate = combinedMonthsPredicate.or(new HasLeaveThisMonthPredicate(month));
+            }
+            combinedPredicate = combinedPredicate.and(combinedMonthsPredicate);
         }
         if (argMultimap.getValue(PREFIX_DEPARTMENT).isPresent()) {
             try {
