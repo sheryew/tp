@@ -11,6 +11,7 @@ Class "<<interface>>\nModel" as Model
 Class AddressBook
 Class ModelManager
 Class UserPrefs
+Class AddressBookList
 
 Class UniquePersonList
 Class Person
@@ -34,6 +35,8 @@ Model .left.> ReadOnlyAddressBook
 ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
+ModelManager -down-> "1" AddressBookList
+AddressBookList -up-> "*" AddressBook
 
 AddressBook *--> "1" UniquePersonList
 UniquePersonList --> "~* all" Person
@@ -41,7 +44,10 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
-Person *--> "*" Tag
+Person *--> Money
+Person *--> Birthday
+Person *--> Department
+Person *--> Leave
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I

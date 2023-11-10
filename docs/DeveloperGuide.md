@@ -184,6 +184,9 @@ If the current `index` is at `AddressBookList.size() - 1`, `AddressBookList` wil
 `AddressBookList` sits in `ModelManager` class where it will be modifed whenever `ModelManager#addPerson()`, `ModelManager#deletePerson()`, and `ModelManager#setPerson()`
 are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will call `AddressBookList#undo()` and `ModelManager#redo()` will call `AddressBookList#redo()`.
 
+![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+
+![RedoSequenceDiagram](images/RedoSequenceDiagram.png)
 
 #### Design Considerations
 
@@ -196,8 +199,6 @@ are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will 
 * **Alternative 2:** Stores only the changes between address book versions. For example, only store the employee being added when the user adds an employee.
   * Pros: Less memory.
   * Cons: More complications on the logic side: undoing `add` = `delete`, undoing `clear` = `add` back all employees, etc.
-
-
 
 ### Export Data Feature
 
