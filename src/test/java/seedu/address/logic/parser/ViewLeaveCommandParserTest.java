@@ -69,5 +69,6 @@ class ViewLeaveCommandParserTest {
         assertParseFailure(parser, " m/15", Messages.MESSAGE_INVALID_MONTH);
         assertParseFailure(parser, " d/", Messages.MESSAGE_EMPTY_DEPARTMENT_FILTER);
         assertParseFailure(parser, " m/", Messages.MESSAGE_EMPTY_MONTH_LEAVE_FILTER);
+        assertParseFailure(parser, " m/1.5", Messages.MESSAGE_INVALID_MONTH);
     }
 }
