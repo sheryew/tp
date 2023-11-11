@@ -37,8 +37,8 @@ public class BirthdayCommandTest {
         MatchingBirthdayPredicate matchingBirthdayPredicate = new MatchingBirthdayPredicate(monthList);
         expectedFilteredModel.updateFilteredPersonList(matchingBirthdayPredicate);
         assertCommandSuccess(new BirthdayCommand(matchingBirthdayPredicate), model,
-                String.format(MESSAGE_SUCCESS, expectedFilteredModel.getFilteredPersonList().size()),
-                        expectedFilteredModel);
+                String.format(MESSAGE_SUCCESS, expectedFilteredModel.getFilteredPersonList().size())
+                        + "Feb", expectedFilteredModel);
     }
 
     @Test

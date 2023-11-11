@@ -35,6 +35,16 @@ public class BirthdayCommandParserTest {
     }
 
     @Test
+    public void parse_invalidMultipleArgs_exceptionThrown() {
+        assertThrows(ParseException.class, () -> parser.parse(" m/1,-1"));
+    }
+
+    @Test
+    public void duplicatePrefix_exceptionThrown() {
+        assertThrows(ParseException.class, () -> parser.parse(" m/1 m/2"));
+    }
+
+    @Test
     public void parse_noArgs_returnsBirthdayCommand() throws ParseException {
         List<Month> monthList = new ArrayList<>();
         monthList.add(new Month(LocalDate.now().getMonthValue()));

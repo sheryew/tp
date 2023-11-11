@@ -75,4 +75,10 @@ public class MonthTest {
     public void execute_validMonth() {
         assertTrue(Month.isValidMonth(VALID_MONTH));
     }
+
+    @Test
+    public void execute_getMonthName() {
+        Month testMonth = new Month(1);
+        assertEquals(testMonth.getMonthName(), "Jan");
+    }
 }

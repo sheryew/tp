@@ -73,4 +73,14 @@ public class MatchingBirthdayPredicateTest {
         MatchingBirthdayPredicate predicate2 = new MatchingBirthdayPredicate(monthList2);
         assertNotEquals(predicate1, predicate2);
     }
+
+    @Test
+    public void stringRep_success() {
+        List<Month> monthList1 = new ArrayList<>();
+        monthList1.add(new Month(2));
+        monthList1.add(new Month(3));
+        MatchingBirthdayPredicate predicate1 = new MatchingBirthdayPredicate(monthList1);
+
+        assertEquals(predicate1.toString(), "Feb,Mar");
+    }
 }

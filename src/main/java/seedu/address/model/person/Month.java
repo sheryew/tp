@@ -1,6 +1,5 @@
 package seedu.address.model.person;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
@@ -21,15 +20,19 @@ public class Month {
     public static final String INVALID_MONTH = "Invalid month(s) provided.";
 
     public final int month;
+    public final String monthName;
+    public final String[] monthNames = {
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     /**
      * Constructs an {@code Month}
      * @param monthValue the integer representation of the intended month.
      */
     public Month(int monthValue) {
-        requireNonNull(monthValue);
         checkArgument(monthValue > 0 && monthValue < 13, INVALID_MONTH);
         month = monthValue;
+        monthName = monthNames[monthValue - 1];
     }
 
     /**
@@ -82,6 +85,10 @@ public class Month {
 
     public int getMonthValue() {
         return month;
+    }
+
+    public String getMonthName() {
+        return monthName;
     }
 
     @Override

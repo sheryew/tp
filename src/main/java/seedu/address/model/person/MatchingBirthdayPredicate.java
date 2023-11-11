@@ -42,4 +42,17 @@ public class MatchingBirthdayPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         return this.month.contains(person.getDob().getMonth());
     }
+
+    @Override
+    public String toString() {
+        StringBuilder message = new StringBuilder();
+        for (int i = 0; i < month.size(); i++) {
+            if (i == month.size() - 1) {
+                message.append(month.get(i).getMonthName());
+            } else {
+                message.append(month.get(i).getMonthName()).append(",");
+            }
+        }
+        return message.toString();
+    }
 }
