@@ -14,18 +14,20 @@ public class Email {
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
     private static final String LOCAL_PART_REGEX = "^" + ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"
                 + ALPHANUMERIC_NO_UNDERSCORE + ")*";
-    public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + "([a-zA-Z]+\\.)+[a-zA-Z]{2,6}$";
+    private static final String DOMAIN_REGEX = ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"
+                + ALPHANUMERIC_NO_UNDERSCORE + ")*";
+    public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@(" + DOMAIN_REGEX + "\\.)+[a-zA-Z]{2,6}$";
 
-    public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
-            + "and adhere to the following constraints:\n"
-            + "1. The local-part should only contain alphanumeric characters and these special characters, excluding "
-            + "the parentheses, (" + SPECIAL_CHARACTERS + "). The local-part may not start or end with any special "
-            + "characters.\n"
-            + "2. This is followed by a '@' and then a domain name. The domain name is made up of domain labels "
+    public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format "
+            + "local-part@domain.top-level-domain and adhere to the following constraints:\n"
+            + "1. The local-part and domain should only contain alphanumeric characters and these special characters, "
+            + "excluding the parentheses, (" + SPECIAL_CHARACTERS + ").\n"
+            + "2. The local-part may not start or end with any special characters. Each special character cannot "
+            + "be next to each other.\n"
+            + "3. The local-part is followed by a '@' and a domain name. The domain name is made up of domain labels "
             + "separated by periods.\n"
-            + "The domain name must:\n"
-            + "    - end with a domain label that is between 2 to 6 characters (e.g. .com, .edu)\n"
-            + "    - have each domain label start and end with characters only\n";
+            + "4. Each domain label start and end with alphanumeric characters only.\n"
+            + "5. The top-level-domain should only contain 2 to 6 alphabet characters (e.g., .com, .edu).\n";
 
 
     public final String value;
