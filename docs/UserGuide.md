@@ -14,14 +14,10 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 - _Employee Benefits_ in terms of keeping count of employees' leaves and claims.
 - _Employee Engagement_ in terms of tracking employees' birthday.
 - _Administration_ in terms of keeping record of employees' details.
+
 ---
 ## Table of Contents
-- [Quick Start](#quick-start)
-- [Features](#features)
-- [FAQ](#faq)
-- [Known issues](#known-issues)
-- [Command summary](#command-summary)
----
+{:toc}
 
 ## Quick start
 

@@ -2,13 +2,8 @@
 layout: page
 title: Developer Guide
 ---
-## Table of Contents
-- [Acknowledgements](#acknowledgements)
-- [About Guide](#about-this-developer-guide)
-- [Setting Up](#setting-up-getting-started)
-- [Design](#design)
-- [Use Cases](#appendix-a-requirements)
-- [Manual Testing](#appendix-b-instructions-for-manual-testing)
+* Table of Contents
+{:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
