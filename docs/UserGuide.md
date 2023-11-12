@@ -21,6 +21,7 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
   {:toc}
 
 ---
+
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
