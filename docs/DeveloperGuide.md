@@ -2,9 +2,13 @@
 layout: page
 title: Developer Guide
 ---
-
-* Table of Contents
-{:toc}
+## Table of Contents
+- [Acknowledgements](#acknowledgements)
+- [About Guide](#about-this-developer-guide)
+- [Setting Up](#setting-up-getting-started)
+- [Design](#design)
+- [Use Cases](#appendix-a-requirements)
+- [Manual Testing](#appendix-b-instructions-for-manual-testing)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -307,8 +311,8 @@ The sequence diagram below shows how the `view_leave` commands execute:
 
 #### Implementation
 
-The birthday feature extends HR Insight by allowing the user to view birthdays in a given month.
-This operation is exposed in the Command Interface as `Command#BirthdayCommand`.
+The birthday feature extends HR Insight by allowing the user to view birthdays in a given month. This is implemented by extracting the `Month` Class from the 'Birthday' class.
+This operation is exposed in the Command Interface as `Command#BirthdayCommand`. BirthdayCommand can be invoked with or without a parameter.
 
 Given below is an example usage scenario and how the birthday mechanism behaves at each step.
 
@@ -319,6 +323,9 @@ Step 2: The user executes `add n/John Doe ... ` to add a new employee.
 Step 3: After adding a few employees into the application, he/she wants to view the birthdays in the month of January
 to prepare the birthday celebrations in advance. The `birthday m/1` command will display all employees with birthdays
 in the month of January.
+
+Step 4: The user now wants to view all birthdays that fall in the first quarter which includes Jan, Feb and Mar. The 
+`birthday m/1,2,3` command will display all employees with birthdays in the first quarter. 
 
 Step 4: The user then realises that today is the first day of a new month and he/she wants to view which employees
 have birthdays in the current month. The `birthday` command without providing the month will display all employees with
@@ -344,8 +351,6 @@ birthdays by month.
       (e.g. `birthday m/2,3` returns all birthdays in February and March )
     * Cons: We must ensure that every month given by the user is valid and mention which months have no birthdays.
  
-
-
 
 ### Change Theme Feature
 
@@ -662,8 +667,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. User provides a specific month.
-    * 1a1. HR Insight shows all birthdays in the specified month.
+* 1a. User provides a specific month/a list of months.
+    * 1a1. HR Insight shows all birthdays in the specified month/s.
 
   Use case ends.
 
@@ -683,7 +688,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. User provides a false attribute parameter (AKA wrong prefix).
+* 1a. User provides a false attribute parameter (a.k.a. wrong prefix).
     * 1a1. HR Insight shows an error message.
     * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
 
@@ -749,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. There is no previous undone command to redo.
+* 1a. There is no previous undo command to redo.
     * 1a1. HR Insight shows an error message that there is no command to redo.
 
   Use case ends.
@@ -927,7 +932,10 @@ Prerequisites: The first employee has a claim budget of over > $500.
 1. Positive Test Case: `birthday m/10`<br>
    Expected: Employees who have birthday in the month of October will be displayed.
 
-2. Negative Test Case: `birthday m/69`<br>
+2. Negative Test Case: `birthday m/2,3`<br>
+   Expected: Employees who have birthday in the month of Feb and Mar will be displayed.
+
+3. Negative Test Case: `birthday m/69`<br>
    Expected: Error message since 69 is not a valid month.
 
 ### Viewing of employee's details
