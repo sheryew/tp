@@ -3,6 +3,8 @@ layout: page
 title: User Guide
 ---
 
+## Overview
+
 HR Insight is a **desktop app for HR people, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 The _purpose_ of this app is to provide **HR employees** a _centralized employee management system_ to better manage all employees' details and **improve the
 efficiency** of their workflow. 
@@ -12,12 +14,13 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 - _Employee Benefits_ in terms of keeping count of employees' leaves and claims.
 - _Employee Engagement_ in terms of tracking employees' birthday.
 - _Administration_ in terms of keeping record of employees' details.
-
 ---
-
-- Table of Contents
-{:toc}
-
+## Table of Contents
+- [Quick Start](#quick-start)
+- [Features](#features)
+- [FAQ](#faq)
+- [Known issues](#known-issues)
+- [Command summary](#command-summary)
 ---
 
 ## Quick start
@@ -183,7 +186,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [d/DEPAR
 
 - Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list.
   The index **must be a positive integer** 1, 2, 3, …​
-- At least one of the optional fields must be provided.
+- At least **1** of the optional fields must be provided.
 - Existing values will be updated to the input values.
 - Some prefixes allow for additional descriptors to accommodate a variety of input data that fits within the context of the field provided they conform to the input requirements:
   - For `[n/NAME]`, specific descriptors (S/O, D/O, etc.) are allowed. Ensure that the full input between the prefix and the next space or prefix is intended as part of the name.
@@ -194,7 +197,7 @@ Examples:
 - `edit 1 n/thomas S/O anthony a/Serangoon` Edits the name and address of the 1st person to be `thomas S/O anthony` and `Serangoon` respectively.
 - `edit 2 s/1000 d/Sales dob/2000-01-01` Edits the salary, department and DOB of the 2nd person to be `$1000`, `Sales` and `1 January 2000` respectively.
 
-Executing command: `edit 1 p/23423423 e/barry@example.com`
+Executing command: `edit 1 p/23423423 e/barry@gmail.com`
 
 ![EditEmployeeBeforeAfter](images/EditEmployeeBefore.png)
 
@@ -243,9 +246,9 @@ Format: `claim INDEX $/CLAIM_AMOUNT`
 
 - The `INDEX` refers to the index number shown in the displayed employee list.
 - The index **must be a positive integer** 1,2,3, ...
-- The `CLAIM_AMOUNT` should consist of either + or - which symbolizes adding/deducting respectively followed by the amount.
-  - If the `CLAIM_AMOUNT` is positive, it symbolizes allocation of more funds to the user's claim budget.
-  - If the `CLAIM_AMOUNT` is negative, it symbolizes deduction of funds from the user's claim budget.
+- The `CLAIM_AMOUNT` should consist of either + or - which symbolizes adding/deducting respectively followed by the **amount.**
+  - If the `CLAIM_AMOUNT` is _positive_, it symbolizes **allocation of more** funds to the user's claim budget.
+  - If the `CLAIM_AMOUNT` is _negative_, it symbolizes **deduction of funds** from the user's claim budget.
 
 Examples:
 
@@ -292,8 +295,8 @@ Format:  `view_leave [m/Month] [d/DEPARTMENT]`
 - If no one in the specified department has planned leave dates for the month, an output indicating **no employees is taking leave** is shown.
 
 Examples:
-- `view_leave` displays all employees who have planned leave dates in the current year
-- `view_leave m/10` displays all employees that are taking leave in October
+- `view_leave` displays all employees who have planned leave dates in the current year.
+- `view_leave m/10` displays all employees that are taking leave in October.
 - `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
 
 Executing command: `view_leave m/3`
@@ -316,18 +319,19 @@ Executing command: `reset_leaves`
 
 ### Viewing all birthdays in a given month : `birthday`
 
-Views all employees’ birthday in the given months
+Views all employees’ birthday in the given months.
 
 Format:  `birthday [m/MONTH(s)]`
 
-- Gives a list of **all employees** who have upcoming birthdays in the **inquired month(s)**
+- Gives a list of **all employees** who have upcoming birthdays in the **inquired month(s)**.
 - The month argument is optional. If **no month** is provided, the birthdays in the **current month** are listed.
-- If there is no birthday in the month provided, return **No employees have birthdays in this month**
+- If there is no birthday in the month provided, return **No employees have birthdays in this month**.
+- Months are separated using ",", e.g. to inquire the employees who have birthdays in Mar and Apr, the input is `birthday m/3,4`.
 
 Examples:
-- `birthday` displays all employees who have their birthday in the current month
-- `birthday m/10` displays all employees who have their birthday in the month of October
-- `birthday m/1,3,4` displays all employees who have their birthday in the month of Jan, Mar and Apr
+- `birthday` displays all employees who have their birthday in the current month.
+- `birthday m/10` displays all employees who have their birthday in the month of October.
+- `birthday m/1,3,4` displays all employees who have their birthday in the month of Jan, Mar and Apr.
 
 Executing command: `birthday m/1`
 
@@ -342,7 +346,7 @@ Views employee(s)'s personal attribute.
 Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/INDEX] [dob/INDEX]`
 
 - ViewCommand provides overview of employee(s)'s attributes.
-- Maximum of one prefix is allowed. This means user can only view one attribute at a time.
+- Maximum of one prefix is allowed. This means the user can only view one attribute at a time.
 - INDEX parameters can either be a single digit or digits separated by ",".
 
 Examples:
