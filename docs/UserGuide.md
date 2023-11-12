@@ -16,9 +16,8 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 - _Administration_ in terms of keeping record of employees' details.
 
 ---
-
-- Table of Contents
-  {:toc}
+* Table of Contents
+{:toc}
 
 ---
 
