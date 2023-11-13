@@ -47,7 +47,7 @@ Given below are my contributions to the project.
 
   - User Guide:
     - Added documentation for the features `claim`, `view_attribute`, `export` and `reset_leaves`.
-    - Added UI images (Before & After) for each feature. (PR ([#119]https://github.com/AY2324S1-CS2103-F13-2/tp/pull/119))
+    - Added UI images (Before & After) for each feature. (PR [#119](https://github.com/AY2324S1-CS2103-F13-2/tp/pull/119))
   - Developer Guide:
     - Added implementation details for `claim`, `view_attribute`, `export` and `reset_leaves`.
     - Added UML diagrams for `export`.
