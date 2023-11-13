@@ -377,7 +377,7 @@ Executing command: `sort name desc`
  
 ### Undoing previous commands: `undo`
 
-Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
+Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `reset_leaves`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
