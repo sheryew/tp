@@ -14,6 +14,7 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.ClaimCommand;
 
 public class ClaimCommandParserTest {
@@ -33,6 +34,12 @@ public class ClaimCommandParserTest {
     public void parse_withEmptyIndex_returnsFailure() {
         String userInput = CLAIM_DELIMITER + CLAIM_ADDITION + CLAIM_AMOUNT_STR;
         assertParseFailure(parser, userInput, CLAIM_EMPTY_INDEX);
+    }
+
+    @Test
+    public void parse_claimTooLarge_returnsFailure() {
+        String userInput = "1 $/+100000000000000000000000000000000";
+        assertParseFailure(parser, userInput, Messages.TOO_LARGE_A_NUMBER);
     }
 
     @Test

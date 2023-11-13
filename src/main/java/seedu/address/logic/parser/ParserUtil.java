@@ -8,6 +8,7 @@ import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
+import seedu.address.logic.Messages;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Birthday;
@@ -157,6 +158,9 @@ public class ParserUtil {
     public static Claim parseClaim(String claimAmount) throws ParseException {
         requireNonNull(claimAmount);
         String trimmed = claimAmount.trim();
+        if (trimmed.length() > 14) {
+            throw new ParseException(Messages.TOO_LARGE_A_NUMBER);
+        }
         if (!Claim.comtainsSymbol(trimmed)) {
             throw new ParseException(Claim.NO_SYMBOLS_ERROR);
         } else if (!Claim.isCorrectAmountType(trimmed)) {
