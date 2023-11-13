@@ -286,18 +286,21 @@ Executing command: `leave 1 m/1,3`
 
 Views all employees who are on leave, with optional filters of month and department.
 
-Format:  `view_leave [m/Month] [d/DEPARTMENT]`
+Format:  `view_leave [m/MONTHS] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
-- The month and department are optional arguments.
-- If no one in the specified department has planned leave dates for the month, an output indicating **no employees is taking leave** is shown.
+- The `MONTHS` and `DEPARTMENT` are optional arguments.
+- Multiple `MONTHS` can be specified, in which employees who have planned leaves in any of the specified months will be shown ("either or" relationship).
+- When specifying multiple `MONTHS`, the months should be separated with commas with no spaces.
+- If no one in the specified department has planned leave dates for the given month(s), an output indicating **no employees is taking leave** is shown.
 
 Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year.
-- `view_leave m/10` displays all employees that are taking leave in October.
-- `view_leave m/10 d/IT` displays all employees in the IT department that are taking leave in October.
+- `view_leave m/10` displays all employees who are taking leave in October.
+- `view_leave m/1,2` displays all employees who are taking leave in January or February.
+- `view_leave m/10 d/IT` displays all employees in the IT department who are taking leave in October.
 
-Executing command: `view_leave m/3`
+Executing command: `view_leave m/1,3`
 
 ![viewLeaveBeforeAfter](images/ViewLeaveBefore.png)
 
@@ -345,6 +348,7 @@ Format:  `view [n/INDEX] [a/INDEX] [e/INDEX] [p/INDEX] [s/INDEX] [b/INDEX] [d/IN
 
 - ViewCommand provides overview of employee(s)'s attributes.
 - Maximum of one prefix is allowed. This means the user can only view one attribute at a time.
+- INDEX refers to the index number shown in the displayed employee list.
 - INDEX parameters can either be a single digit or digits separated by ",".
 
 Examples:
