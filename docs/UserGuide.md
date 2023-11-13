@@ -31,7 +31,7 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar HRInsight.jar` command to run the application.<br>
 
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -90,20 +90,20 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 **:information_source: Notes about the command format:**<br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. In `add n/NAME`, `NAME` is a parameter that can be used as `add n/John Doe`.
 
 - Items in square brackets are optional.<br>
   e.g `list [d/DEPARTMENT]` can be used as `list` or as `list d/Engineering`.
 
 - Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. If the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 - Parameters given outside the command format will throw an error or affect other parameters.<br>
    e.g. `list [d/DEPARTMENT]` only accepts `d/` parameter. `list z/all` will throw an error. 
 
-- We allow all employee names, not limited to alphanumeric names, to accommodate names such as `X AE A-Xii`, `dr. Adam Smith, Ph.D.`, and `$helly`.
+- We allow all employee names, not limited to alphanumeric names, to accommodate names such as `X AE A-Xii`, `Dr. Adam Smith, Ph.D.`, and `$helly`.
 
-- All words in parameters given cannot start with the prefixes in that command.<Br>
+- All words in the parameters given cannot start with the prefixes in that command.<Br>
    e.g. `add` command requires `n/ p/ e/ a/ s/ b/ d/ dob/​` prefixes.<br>
    Therefore, names given in `add` command cannot contain these prefixes because they have been reserved for that command.<br>
    This constraint applies for all words in all parameters in that command.<Br>
@@ -162,7 +162,7 @@ Format: `delete INDEX`
 
 - Deletes the employee at the specified `INDEX`.
 - The index refers to the index number shown in the displayed employee list.
-- The index **must be a positive integer** 1, 2, 3, …​
+- The index **must be a positive integer**: 1, 2, 3, …​
 
 Examples:
 
@@ -184,9 +184,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SALARY] [d/DEPAR
 
 - Edits the employee at the specified `INDEX`. The index refers to the index number shown in the displayed employee list.
   The index **must be a positive integer** 1, 2, 3, …​
-- At least **1** of the optional fields must be provided.
+- At least **one** of the optional fields must be provided.
 - Existing values will be updated to the input values.
-- Some prefixes allow for additional descriptors to accommodate a variety of input data that fits within the context of the field provided they conform to the input requirements:
+- Some prefixes allow for additional descriptors to accommodate a variety of input data that fits within the context of the field, provided they conform to the input requirements.
   - For `[n/NAME]`, specific descriptors (S/O, D/O, etc.) are allowed. Ensure that the full input between the prefix and the next space or prefix is intended as part of the name.
 
 Examples:
@@ -207,12 +207,12 @@ Finds employees whose names match any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-- The search is case-insensitive. e.g `hans` will match `Hans`
-- The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+- The search is case-insensitive, e.g `hans` will match `Hans`.
+- The order of the keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
 - Only the name is searched.
-- Only full words will be matched e.g. `Han` will not match `Hans`
-- Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- Only full words will be matched, e.g. `Han` will not match `Hans`.
+- Persons matching at least one keyword will be returned (i.e., `OR` search).
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 Examples:
 
@@ -449,7 +449,7 @@ HR Insight data are saved automatically as a JSON file `[JAR file location]/data
 <box type="warning" seamless>
 
 **Caution:**
-If your changes to the data file makes its format invalid, HR Insight will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
+If your changes to the data file make its format invalid, HR Insight will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.
 </box>
 
 ### More detailed leave records [Coming soon]
@@ -460,14 +460,14 @@ Currently, HR Insight only records employees' leave months. In v2.0, we will rec
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HR Insight home folder.
+**Q**: How do I transfer my data to another computer?<br>
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HR Insight home folder.
 
 ---
 
 ## Known issues
 
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
+1. **When using multiple screens**, if you move the application to a secondary screen and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 
 ---
 
