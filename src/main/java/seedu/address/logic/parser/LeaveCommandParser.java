@@ -49,7 +49,7 @@ public class LeaveCommandParser implements Parser<LeaveCommand> {
         StringBuilder months = new StringBuilder(Leave.NO_LEAVE);
         String[] args = arg.split(",");
         for (int i = 0; i < args.length; i++) {
-            if (args[i].length() > 3) {
+            if (args[i].length() <= 0 || args[i].length() > 3) {
                 throw new ParseException(LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
             }
             try {
