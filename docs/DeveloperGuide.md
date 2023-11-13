@@ -83,9 +83,9 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/se-
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class, which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts is defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -168,19 +168,19 @@ The implementation involves creating an `AddressBookList` class which extends fr
 `AddressBookList` also stores an integer `index` as a pointer to the current `AddressBook` and an `ArrayList<String>` of commands input by the user called `pastCommands`.
 
 Whenever `AddressBook` is changed, it will store its copy and append it to the `AddressBookList`, increment `index` by 1, and append the command
-which modifies the `AddressBook` to `pastCommands`.
+that modifies the `AddressBook` to `pastCommands`.
 
 When `AddressBookList#undo()` is called, the current `AddressBook` changes to `AddressBookList.get(index - 1)` and `index` is decremented by 1.
 If the current `index` is at 0, `AddressBookList` will throw an error stating there is no command to undo.
 
-If after undoing some command the user decides to modify the `AddressBook` with new commands, `AddressBookList` will overwrite all `AddressBook` after that particular state.
-For example, currently `AddressBookList` has 10 `AddressBook` in it and the current state is at `AddressBookList.get(5)`. Then, the user adds an employee. All `AddressBook` 
-at index 6 to 9 will be deleted and `AddressBookList.get(6)` will now contain the new `AddressBook` that has the new employee in it.
+If, after undoing some command, the user decides to modify the `AddressBook` with new commands, `AddressBookList` will overwrite all `AddressBook` after that particular state.
+For example, currently `AddressBookList` has 10 `AddressBook` in it, and the current state is at `AddressBookList.get(5)`. Then, the user adds an employee. All `AddressBook` 
+at index 6 to 9 will be deleted, and `AddressBookList.get(6)` will now contain the new `AddressBook` that has the new employee in it.
 
 When `AddressBookList#redo()` is called, the current `AddressBook` changes to `AddressBookList.get(index + 1)` and `index` is incremented by 1.
 If the current `index` is at `AddressBookList.size() - 1`, `AddressBookList` will throw an error stating there is no command to redo.
 
-`AddressBookList` sits in `ModelManager` class where it will be modifed whenever `ModelManager#addPerson()`, `ModelManager#deletePerson()`, and `ModelManager#setPerson()`
+`AddressBookList` sits in `ModelManager` class where it will be modified whenever `ModelManager#addPerson()`, `ModelManager#deletePerson()`, and `ModelManager#setPerson()`
 are called, i.e., whenever `AddressBook` is changed. `ModelManager#undo()` will call `AddressBookList#undo()` and `ModelManager#redo()` will call `AddressBookList#redo()`.
 
 ![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
@@ -217,7 +217,7 @@ Step 1. The user launches the application for the first time. The initial addres
 
 Step 2. The user executes `list d/Engineering` command which filters employees belonging to the Engineering department. This command also executes `getFilteredPersonList()` that alters the Model by containing only the filtered Person list.
 
-Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person Objects from the currentModel and extracting their attributes into a List.
+Step 3. The user executes `export engineering_dept` command which takes the "altered" Model containing filtered Person objects and executes `generateListPeople()` which helps to obtain Person objects from the currentModel and extracting their attributes into a list.
 
 Step 4. After completion of step 3 and still in the `export engineering_dept` command, `generateFile()` and `convertToCsv()` are called sequentially to allow writing of Person' attributes into the exported CSV file.
 
@@ -259,14 +259,14 @@ Step 1: The user launches the application for the first time.
 
 Step 2: The user executes `view_leave` to see the currently registered leaves of the employees.
 This function works like a filter through the `model`. This is done by having a predicate to test if the person has a leave.
-For the default no parameter `view_leave` function, this will invoke a creation of `HasLeaveAnyMonthPredicate` predicate, which tests if the employees has leave in any of the months. The command goes through the `ViewLeaveCommandParser` class to check if there is any parameters.
+For the default no-parameter `view_leave` function, this will invoke the creation of `HasLeaveAnyMonthPredicate` predicate, which tests if the employees have leaves in any of the months. The command goes through the `ViewLeaveCommandParser` class to check if there is any parameters.
 This command will return a list of employees who has leave in any of the months by invoking a `model.updateFilteredPersonsList(predicate)`.
 
-Step 3: The user adds and removes leaves to employees by doing a `leave 2 m/1,-2`
-This command will go through the `LeaveCommandParser` class. The parser will then extract the relevant information like the employee's index and the months to add/remove. This command adds a leave in January and removes a leave in February for the employee on index 2.
+Step 3: The user adds and removes leaves from employees by doing a `leave 2 m/1,-2`
+This command will go through the `LeaveCommandParser` class. The parser will then extract the relevant information, like the employee's index and the months to add or remove. This command adds a leave in January and removes a leave in February for the employee on index 2.
 
 Step 4: The user wants to see the employees with leaves in January or February in the Engineering department by doing a `view_leave m/1,2 d/engineering`
-This works similarly to the default `view_leave` but with parameters. The `ViewLeaveCommandParser` will parse the command and will combine the predicates as it parses the arguments.
+This works similarly to the default `view_leave` but with parameters. The `ViewLeaveCommandParser` will parse the command and combine the predicates as it parses the arguments.
 In this case, the `ViewLeaveCommandParser` will create `HasLeaveThisMonthPredicate` and `MatchingDepartmentPredicate`.
 For every month specified, the parser will create a `HasLeaveThisMonthPredicate` and do an `or()` operation of the predicate, resulting in a `combinedPredicate` variable. The parser will also create a `MatchingDepartmentPredicate` and do an `and()` to the combinedPredicate().
 This `combinedPredicate` will then be passed to the `ViewLeaveCommand` constructor, which will create a `ViewLeaveCommand` that filters the `model` using the `combinedPredicate` specified. 
@@ -293,7 +293,7 @@ The sequence diagram below shows how the `view_leave` commands execute:
 
 * **Alternative 1 (current choice):** User can view leaves for multiple months at once.
     * Pros: The user can view all the employees with leaves in any of the specified months at once when the use case allows.
-    * Cons: Might be confusing to the user at first, the expected format needs to be properly explained. For example, it might be confusing whether the relationship of the months is an "and" or an "or". In this implementation, it is an "or", meaning it will show employees having leave(s) in any of the months instead of all of the months.
+    * Cons: Might be confusing to the user at first, the expected format needs to be properly explained. For example, it might be confusing whether the relationship between the months is an "and" or an "or". In this implementation, it is an "or", meaning it will show employees having leave(s) in any of the months instead of all of the months.
 
 * **Alternative 2:** Only allows users to view one leave month at a time.
     * Pros: Straightforward and intuitive for the users to understand.
@@ -306,7 +306,7 @@ The sequence diagram below shows how the `view_leave` commands execute:
 
 #### Implementation
 
-The birthday feature extends HR Insight by allowing the user to view birthdays in a given month. This is implemented by extracting the `Month` Class from the 'Birthday' class.
+The birthday feature extends HR Insight by allowing the user to view birthdays in a given month. This is implemented by extracting the `Month` class from the 'Birthday' class.
 This operation is exposed in the Command Interface as `Command#BirthdayCommand`. BirthdayCommand can be invoked with or without a parameter.
 
 Given below is an example usage scenario and how the birthday mechanism behaves at each step.
@@ -315,14 +315,14 @@ Step 1: The user launches the application for the first time.
 
 Step 2: The user executes `add n/John Doe ... ` to add a new employee.
 
-Step 3: After adding a few employees into the application, he/she wants to view the birthdays in the month of January
+Step 3: After adding a few employees to the application, he/she wants to view the birthdays in the month of January
 to prepare the birthday celebrations in advance. The `birthday m/1` command will display all employees with birthdays
 in the month of January.
 
-Step 4: The user now wants to view all birthdays that fall in the first quarter which includes Jan, Feb and Mar. The 
+Step 4: The user now wants to view all birthdays that fall in the first quarter, which includes Jan, Feb and Mar. The 
 `birthday m/1,2,3` command will display all employees with birthdays in the first quarter. 
 
-Step 4: The user then realises that today is the first day of a new month and he/she wants to view which employees
+Step 4: The user then realizes that today is the first day of a new month and he/she wants to view which employees
 have birthdays in the current month. The `birthday` command without providing the month will display all employees with
 birthdays in the current month.
 
@@ -331,8 +331,8 @@ The following sequence diagram shows how the `birthday` command works:
 ![SequenceDiagram](images/BirthdayCommand.png)
 
 #### Design Considerations
-The birthday command is designed to show users birthday by month instead of week/day as month gives the user a broader
-range to work with. Furthermore, it is also a common practice for companies to have 1 celebration for all employees'
+The birthday command is designed to show users birthdays by month instead of week or day as month gives the user a broader
+range to work with. Furthermore, it is also a common practice for companies to have one celebration for all employees'
 birthdays in a month rather than having multiple individual celebrations. Hence, this feature is designed to show
 birthdays by month.
 
@@ -353,19 +353,19 @@ birthdays by month.
 
 This feature adds a way to change the theme of the application.
 The default theme is the dark theme, and it can be changed at any point of usage by using the command `theme`.
-This is implemented by adding a `Command#ThemeCommand` to take the user input of changing themes. 
+This is implemented by adding a `Command#ThemeCommand` to take the user input for changing themes. 
 The actual changing of the theme itself is done by changing the stylesheet of the `MainWindow`.
-`MainWindow` keeps track of the current stylesheet and when it receives a theme change request, it will remove the current stylesheet and add the new stylesheet using the `setTheme()` function.
+`MainWindow` keeps track of the current stylesheet, and when it receives a theme change request, it will remove the current stylesheet and add the new stylesheet using the `setTheme()` function.
 
 Given below is an example usage scenario and how the birthday mechanism behaves at each step.
 
 Step 1: The user launches the application for the first time.
 
 Step 2: The user executes `theme` wishing to see the available themes.
-This command will return feedback that the theme is invalid, as there are no arguments detected. It will then show the names of the valid themes currently implemented. At the point of time of writing this developer guide, the available themes are `light`, `dark`, `red`, `green` and `blue`.
+This command will return feedback that the theme is invalid, as there are no arguments detected. It will then show the names of the valid themes currently implemented. At the point of time of writing this developer guide, the available themes are `light`, `dark`, `red`, `green`, and `blue`.
 
 Step 3: The user changes the theme by calling `theme red`.
-This command will pass through the `ThemeCommandParser` class that will parse the arguments given (`red` in this case). The parse class will then return a `ThemeCommand` containing the name of the stylesheet for the given theme. This will continue to get passed on to `MainWindow` through `CommandResult`. `MainWindow` will then execute the `setTheme()` function, which removes the current stylesheet and adds the new stylesheet to the `MainWindow.fxml` file.
+This command will pass through the `ThemeCommandParser` class which will parse the arguments given (`red` in this case). The parse class will then return a `ThemeCommand` containing the name of the stylesheet for the given theme. This will continue to get passed on to `MainWindow` through `CommandResult`. `MainWindow` will then execute the `setTheme()` function, which removes the current stylesheet and adds the new stylesheet to the `MainWindow.fxml` file.
 
 The sequence diagram below shows how the `theme` commands execute:
 <img src="images/ThemeCommandSequenceDiagram.png" width="900" />
@@ -566,7 +566,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3b. User provides a wrong index (Either negative or more than current headcount).
+* 3b. User provides a wrong index (Either negative or more than the current headcount).
 
     * 3b1. HR Insight shows an error message.
 
@@ -598,7 +598,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 3a. User provides a wrong index (Either negative or more than current headcount).
+* 3a. User provides a wrong index (Either negative or more than the current headcount).
 
     * 3a1. HR Insight shows an error message.
 
@@ -662,8 +662,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. User provides a specific month/a list of months.
-    * 1a1. HR Insight shows all birthdays in the specified month/s.
+* 1a. User provides a specific month or a list of months.
+    * 1a1. HR Insight shows all birthdays in the specified month(s).
 
   Use case ends.
 
@@ -683,21 +683,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. User provides a false attribute parameter (a.k.a. wrong prefix).
+* 1a. User provides a false attribute parameter (a.k.a., wrong prefix).
     * 1a1. HR Insight shows an error message.
-    * 1a2. HR Insight shows all the attributes (Prefixes) it can display for employee(s).
+    * 1a2. HR Insight shows all the attributes (prefixes) it can display for employee(s).
 
   Use case ends.
 
 * 1b. User didn't provide any attribute that one wants to view.
     * 1b1. HR Insight shows an error message.
-    * 1b2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
+    * 1b2. HR Insights shows all the attributes (prefixes) it can display for employee(s).
 
   Use case ends.
 
-* 1c. User provides more than 1 prefix/attribute that one wants to view.
-    * 1c1. HR Insight shows an error message informing user of the one attribute limit.
-    * 1c2. HR Insights shows all the attributes (Prefixes) it can display for employee(s).
+* 1c. User provides more than 1 prefix or attribute that they want to view.
+    * 1c1. HR Insight shows an error message informing the user of the one attribute limit.
+    * 1c2. HR Insights shows all the attributes (prefixes) it can display for employee(s).
 
   Use case ends.
 
@@ -765,13 +765,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 2a. User didn't provide any filename to store all the data.
-    * 2a1. HR Insight shows an error message requesting user to indicate a filename.
+* 2a. User didn't provide any filenames to store all the data.
+    * 2a1. HR Insight shows an error message requesting the user to indicate a filename.
 
   Use case ends.
 
-* 2b. User provide excess filenames (> 1) to store the data.
-    * 2b1. HR Insight shows an error message requesting user to specify only one filename.
+* 2b. User provides excess filenames (> 1) to store the data.
+    * 2b1. HR Insight shows an error message requesting the user to specify only one filename.
 
   Use case ends.
 
@@ -787,12 +787,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 * 1a. User didn't provide any theme names.
-    * 1a1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+    * 1a1. HR Insight shows an error message alerting the user of invalid theme name and giving a list of valid theme names.
 
   Use case ends.
 
-* 1b. User provide invalid theme name.
-    * 1b1. HR Insight shows an error message alerting user of invalid theme name and giving a list of valid theme names.
+* 1b. User provides an invalid theme name.
+    * 1b1. HR Insight shows an error message alerting the user of invalid theme name and giving a list of valid theme names.
 
   Use case ends.
 
@@ -832,7 +832,7 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
-   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimal.
 
 2. Saving window preferences 
 
