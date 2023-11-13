@@ -31,11 +31,11 @@ public class Phone {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPhone(String test) {
+        if (test.charAt(0) == '+') {
+            test = test.substring(1);
+        }
         if (test.length() < 3 || test.length() > 20) {
             return false;
-        }
-        if (test.charAt(0) == '+') {
-            return test.substring(1).matches(VALIDATION_REGEX);
         }
         return test.matches(VALIDATION_REGEX);
     }
