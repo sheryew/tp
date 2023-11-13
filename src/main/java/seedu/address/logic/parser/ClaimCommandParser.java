@@ -41,10 +41,6 @@ public class ClaimCommandParser implements Parser<ClaimCommand> {
         }
 
         if (argMultimap.getValue(PREFIX_CLAIM_AMOUNT).isPresent()) {
-            String claimAmt = argMultimap.getValue(PREFIX_CLAIM_AMOUNT).get().substring(1);
-            if (claimAmt.length() > 6) {
-                throw new ParseException("Please input claim amount in the range of 0 to 100000 dollars.");
-            }
             claim = ParserUtil.parseClaim(argMultimap.getValue(PREFIX_CLAIM_AMOUNT).get());
         } else {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ClaimCommand.AMOUNT_EMPTY));
