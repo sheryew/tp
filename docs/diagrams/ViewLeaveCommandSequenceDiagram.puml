@@ -29,13 +29,13 @@ ViewLeaveCommandParser -> HasLeaveAnyMonthPredicate : new HasLeaveAnyMonthPredic
 activate HasLeaveAnyMonthPredicate
 
 create MatchingDepartmentPredicate
-HasLeaveAnyMonthPredicate -> MatchingDepartmentPredicate : or(new MatchingDepartmentPredicate(Engineering))
+HasLeaveAnyMonthPredicate -> MatchingDepartmentPredicate : and(new MatchingDepartmentPredicate(Engineering))
 activate MatchingDepartmentPredicate
 
-MatchingDepartmentPredicate --> HasLeaveAnyMonthPredicate : combinedPredicate
+MatchingDepartmentPredicate --> HasLeaveAnyMonthPredicate
 deactivate MatchingDepartmentPredicate
 
-HasLeaveAnyMonthPredicate --> ViewLeaveCommandParser
+HasLeaveAnyMonthPredicate --> ViewLeaveCommandParser : combinedPredicate
 deactivate HasLeaveAnyMonthPredicate
 
 create ViewLeaveCommand
