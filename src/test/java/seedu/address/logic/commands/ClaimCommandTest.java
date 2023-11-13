@@ -91,6 +91,15 @@ public class ClaimCommandTest {
     }
 
     @Test
+    public void execute_calculationExcessLongBudget_failure() {
+        long claimAmount = (long) (originalBudget + Math.pow(10, 12));
+        ClaimCommand claimCommand = new ClaimCommand(INDEX_FIRST_PERSON, !isSubtract, claimAmount);
+        assertThrows(CommandException.class, () -> {
+            claimCommand.calculateNewClaimBudget(originalBudget);
+        }, Messages.TOO_LARGE_A_NUMBER);
+    }
+
+    @Test
     public void execute_generateNewPerson_success() {
         Money newClaimBudget = new Money(String.valueOf(originalBudget + 1));
         Person expectedPerson = new Person(targetPerson.getName(), targetPerson.getPhone(), targetPerson.getEmail(),
