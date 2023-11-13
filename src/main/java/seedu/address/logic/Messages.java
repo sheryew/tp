@@ -55,6 +55,7 @@ public class Messages {
 
     public static final String MESSAGE_INVALID_THEME = "Invalid theme specified.\nValid themes: "
             + "dark, light, red, green, blue";
+    public static final String TOO_LARGE_A_NUMBER = "Maximum claim budget is $1,000,000,000,000.";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

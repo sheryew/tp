@@ -61,7 +61,7 @@ public class ClaimCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
-        long prevClaimBudget = Integer.parseInt(personToEdit.getClaimBudget().amount);
+        long prevClaimBudget = Long.parseLong(personToEdit.getClaimBudget().amount);
         Money claimBudget = calculateNewClaimBudget(prevClaimBudget);
         Person editedPerson = postClaimPerson(personToEdit, claimBudget);
 
@@ -76,6 +76,7 @@ public class ClaimCommand extends Command {
 
     /**
      * Returns a Money Object which represents the new amount the user has after the claiming process is completed.
+     * The maximum final claim budget remaining for each employee is capped at $1000000000000.
      *
      * @param prevClaimBudget long object on user's claim budget before the claim process.
      * @return Money Object that highlights the new claim budget the user has.
@@ -90,6 +91,9 @@ public class ClaimCommand extends Command {
             newClaimBudget = prevClaimBudget - this.amount;
         } else {
             newClaimBudget = prevClaimBudget + this.amount;
+        }
+        if (newClaimBudget > Math.pow(10, 12)) {
+            throw new CommandException(Messages.TOO_LARGE_A_NUMBER);
         }
         return new Money(String.valueOf(newClaimBudget));
     }

@@ -10,7 +10,7 @@ public class Claim {
     public static final String ALPHABETS_ERROR = "Kindly only input integers for the claim amount!";
 
     public final boolean isSubtract;
-    public final int amount;
+    public final long amount;
 
     /**
      * Returns a Claim Object which contains of two variables, isSubtract and amount.
@@ -26,7 +26,7 @@ public class Claim {
         } else {
             this.isSubtract = true;
         }
-        this.amount = Integer.parseInt(numStr.substring(1));
+        this.amount = Long.parseLong(numStr.substring(1));
     }
 
     /**

@@ -270,6 +270,7 @@ Format:  `leave INDEX m/MONTHS`
 - The `INDEX` **must be a positive integer** 1,2,3, ...
 - The `MONTHS` refers to the month of the leave the employee is taking in integer format (between 1-12).
 - Positive `MONTHS` add leaves on the specified months and negative `MONTHS` remove them.
+- Trailing commas in `MONTHS` (`leave 1 m/1,2,3,,,`) will be ignored, but empty months elsewhere (`leave 1 m/1,,,2`) will raise an error.
 
 Examples:
 - `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
@@ -293,6 +294,8 @@ Format:  `view_leave [m/MONTHS] [d/DEPARTMENT]`
 - Multiple `MONTHS` can be specified, in which employees who have planned leaves in any of the specified months will be shown ("either or" relationship).
 - When specifying multiple `MONTHS`, the months should be separated with commas with no spaces.
 - If no one in the specified department has planned leave dates for the given month(s), an output indicating **no employees is taking leave** is shown.
+- Trailing commas in `MONTHS` (`view_leave m/1,2,3,,,`) will be ignored, but empty months elsewhere (`view_leave m/1,,,2`) will raise an error.
+
 
 Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year.
@@ -328,6 +331,7 @@ Format:  `birthday [m/MONTH(s)]`
 - The month argument is optional. If **no month** is provided, the birthdays in the **current month** are listed.
 - If there is no birthday in the month provided, return **No employees have birthdays in this month**.
 - Months are separated using ",", e.g. to inquire the employees who have birthdays in Mar and Apr, the input is `birthday m/3,4`.
+- Trailing commas in `MONTH(s)` (`birthday m/1,2,3,,,`) will be ignored, but empty months elsewhere (`birthday m/1,,,2`) will raise an error.
 
 Examples:
 - `birthday` displays all employees who have their birthday in the current month.
@@ -380,7 +384,7 @@ Executing command: `sort name desc`
  
 ### Undoing previous commands: `undo`
 
-Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `clear`, `sort`, `redo` commands.
+Undo the most recent commands that modified the employee list, i.e., `add`, `edit`, `delete`, `leave`, `reset_leaves`, `clear`, `sort`, `redo` commands.
 
 Format: `undo`
 
