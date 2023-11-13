@@ -287,11 +287,12 @@ Executing command: `leave 1 m/1,3`
 
 Views all employees who are on leave, with optional filters of month and department.
 
-Format:  `view_leave [m/Month] [d/DEPARTMENT]`
+Format:  `view_leave [m/MONTHS] [d/DEPARTMENT]`
 
 - Gives a list of **all employees** who have leaves planned for the year.
 - The month and department are optional arguments.
 - If no one in the specified department has planned leave dates for the month, an output indicating **no employees is taking leave** is shown.
+- Trailing commas in `MONTHS` (`view_leave m/1,2,3,,,`) will be ignored, but empty months elsewhere (`view_leave m/1,,,2`) will raise an error.
 
 Examples:
 - `view_leave` displays all employees who have planned leave dates in the current year.
@@ -326,6 +327,7 @@ Format:  `birthday [m/MONTH(s)]`
 - The month argument is optional. If **no month** is provided, the birthdays in the **current month** are listed.
 - If there is no birthday in the month provided, return **No employees have birthdays in this month**.
 - Months are separated using ",", e.g. to inquire the employees who have birthdays in Mar and Apr, the input is `birthday m/3,4`.
+- Trailing commas in `MONTH(s)` (`birthday m/1,2,3,,,`) will be ignored, but empty months elsewhere (`birthday m/1,,,2`) will raise an error.
 
 Examples:
 - `birthday` displays all employees who have their birthday in the current month.
