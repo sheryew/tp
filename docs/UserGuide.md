@@ -270,6 +270,7 @@ Format:  `leave INDEX m/MONTHS`
 - The `INDEX` **must be a positive integer** 1,2,3, ...
 - The `MONTHS` refers to the month of the leave the employee is taking in integer format (between 1-12).
 - Positive `MONTHS` add leaves on the specified months and negative `MONTHS` remove them.
+- Trailing commas in `MONTHS` (`leave 1 m/1,2,3,,,`) will be ignored, but empty months elsewhere (`leave 1 m/1,,,2`) will raise an error.
 
 Examples:
 - `list` followed by `leave 1 m/3,4` adds leaves in March and April for the 1st employee in the list.
