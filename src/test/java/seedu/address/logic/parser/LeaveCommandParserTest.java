@@ -17,6 +17,7 @@ public class LeaveCommandParserTest {
     @Test
     public void parse_validArgs_returnsLeaveCommand() {
         assertParseSuccess(parser, " 1 m/2", new LeaveCommand(INDEX_FIRST_PERSON, "0+0000000000"));
+        assertParseSuccess(parser, " 1 m/2,,,", new LeaveCommand(INDEX_FIRST_PERSON, "0+0000000000"));
         assertParseSuccess(parser, " 1 m/-2", new LeaveCommand(INDEX_FIRST_PERSON, "0-0000000000"));
     }
 
@@ -45,5 +46,9 @@ public class LeaveCommandParserTest {
         assertParseFailure(parser, " 1 m/13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
 
         assertParseFailure(parser, " 1 m/-13", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/1,,,3", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, " 1 m/1,123", LeaveCommand.MESSAGE_INVALID_MONTH + LeaveCommand.MESSAGE_USAGE);
     }
 }
