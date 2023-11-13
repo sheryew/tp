@@ -90,7 +90,7 @@ HR Insight proves to be a particularly valuable tool for professionals specializ
 **:information_source: Notes about the command format:**<br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. In `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  e.g. In `add n/NAME`, `NAME` is a parameter that can be used as `add n/John Doe`.
 
 - Items in square brackets are optional.<br>
   e.g `list [d/DEPARTMENT]` can be used as `list` or as `list d/Engineering`.
@@ -207,12 +207,12 @@ Finds employees whose names match any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-- The search is case-insensitive, e.g `hans` will match `Hans`
-- The order of the keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`
+- The search is case-insensitive, e.g `hans` will match `Hans`.
+- The order of the keywords does not matter, e.g. `Hans Bo` will match `Bo Hans`.
 - Only the name is searched.
-- Only full words will be matched, e.g. `Han` will not match `Hans`
+- Only full words will be matched, e.g. `Han` will not match `Hans`.
 - Persons matching at least one keyword will be returned (i.e., `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`.
 
 Examples:
 
@@ -461,7 +461,7 @@ Currently, HR Insight only records employees' leave months. In v2.0, we will rec
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HR Insight home folder.
+**A**: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous HR Insight home folder.
 
 ---
 
